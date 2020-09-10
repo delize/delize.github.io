@@ -1,0 +1,93 @@
+@import "variables";
+@import "mixin";
+/*-------------------------
+       MEDIA SCREENS
+-------------------------*/
+@media (min-width: 992px) and (max-width: 1199px){
+    .navbar-brand {
+        width: 120px;
+    }
+}
+@media (max-width: 1199px) {
+    .blog-content{
+        padding: 18px;
+    }
+}
+@media (max-width: 991px){
+    body{
+        padding-top: 63px;
+    }
+    .full-screen{
+        height: auto;
+    }
+    .personal-img img{
+        display: none;
+    }
+    .hero .personal-item{
+        top: 0;
+    }
+    .header {
+        background-color: $bg-white;
+        padding: 0;
+        box-shadow: 0 1px 3px 0 $grey-3;
+        button span{
+            color: $black;
+        }
+        nav{
+            li a{
+                color: $black-2;
+            }
+            a.navbar-brand{
+                color: $black-2;
+            }
+        }
+    }
+    .blog-content{
+        padding-left: 0;
+    }
+    .arrow-top:after, .arrow-right:after, .arrow-left:after{
+        display: none;
+    }
+    .border-top-radius{
+        border-top-right-radius: 4px;
+        border-top-left-radius: 4px;
+    }
+    .border-bottom-radius{
+        border-bottom-left-radius: 4px;
+        border-bottom-right-radius: 4px;
+    }
+    #my-map{
+        height: 400px;
+    }
+}
+@media screen and (max-width: 767px){
+    h1{
+        font-size: $font-size-h !important;
+    }
+    .p-title-border{
+        border-right: none;
+        border-left: none;
+    }
+}
+@media (max-width: 576px) {
+    .personal-info p span {
+        display: block;
+    }
+    .hero-content{
+        left: 0;
+        transform: translateY(-35%);
+        padding: 0 15px;
+    }
+    .comments img {
+        width: 85px;
+    }
+    .comment-info {
+        margin-left: 100px;
+    }
+    #message.toast {
+        top: 18px;
+        left: inherit;
+        font-size: $f-s-12;
+        padding: 3px 0;
+    }
+}
