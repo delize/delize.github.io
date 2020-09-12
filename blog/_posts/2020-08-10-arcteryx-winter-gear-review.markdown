@@ -1,5 +1,5 @@
 ---
-author: andrewdoering
+author: Andrew Doering
 comments: true
 date: 2020-08-10 01:34:12+00:00
 layout: post

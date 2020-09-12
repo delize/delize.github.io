@@ -1,5 +1,5 @@
 ---
-author: andrewdoering
+author: Andrew Doering
 comments: true
 date: 2019-12-23 07:03:05+00:00
 excerpt: This guide covers how to setup member and group importing, the correct way,

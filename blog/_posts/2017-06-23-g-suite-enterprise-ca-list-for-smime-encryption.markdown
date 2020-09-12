@@ -1,5 +1,5 @@
 ---
-author: andrewdoering
+author: Andrew Doering
 comments: true
 date: 2017-06-23 17:27:53+00:00
 lastmodified: 2019-05-30 17:27:53+00:00

@@ -1,5 +1,5 @@
 ---
-author: andrewdoering
+author: Andrew Doering
 comments: true
 date: 2020-08-08 18:16:49+00:00
 excerpt: Transitioning from legacy Active Directory to a cloud centric HRIS, Okta,
