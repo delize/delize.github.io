@@ -18,11 +18,14 @@ $(document).ready(function () {
     singlePortfolioCarousel();
     smoothScroll();
     typedJS();
+    slyslider();
     portfolioPopup();
     testimonialsCarousel();
     // mapInit();
     backToTop();
     wow();
+
+    
 
 });
 
@@ -319,9 +322,9 @@ function testimonialsCarousel() {
 //     }
 // }
 
-/*-------------------------
-     AJAX CONTACT FORM
--------------------------*/
+// /*-------------------------
+//      AJAX CONTACT FORM
+// -------------------------*/
 // function validateEmail(email) {
 
 //     "use strict";
@@ -462,4 +465,12 @@ function typedJS() {
         };
         var typed = new Typed(".element", options);
     }
+}
+
+
+/*----------------------
+    Back on history
+----------------------*/
+function goBack() { 
+    window.history.back(); 
 }

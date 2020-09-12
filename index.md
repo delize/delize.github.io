@@ -1,7 +1,13 @@
 ---
 title: Andrew Doering
 layout: page
+description: I'm Andrew Doering, and I am a Senior IT Engineer at ThousandEyes in San Francisco, California.
+keywords: CV, resume, Andrew, Doering, Andrew Doering, ThousandEyes, San Francisco, California, Okta, Thousand Eyes, Workspace One, munki
+author: Andrew Doering
+robots: INDEX, FOLLOW
+site: google_analytics
 ---
+
 
 # {{ page.title }}
 

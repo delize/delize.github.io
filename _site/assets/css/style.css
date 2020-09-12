@@ -1045,3 +1045,10 @@ ul.timeline-non-chrono {
   display: inline-block; 
   margin: .5rem;
 }
+
+.highlight {
+  padding: 5px 5px;
+  margin: 5px;
+  color: #fff;
+  background-color: #848484;
+}
