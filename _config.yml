@@ -4,15 +4,29 @@ lastname: Doering
 url: http://127.0.0.1:4000
 social:
   facebook:
-    - url: https://www.facebook.com
+    - url: https://www.facebook.com/
     - user: and.doe
     - icon: fa fb-icon
   github:
-    - url: https://www.github.com
+    - url: https://www.github.com/
     - user: delize
     - icon: fa github-icon
   linkedin:
-    - url: https://www.linkedin.com/in
+    - url: https://www.linkedin.com/in/
     - user: andrewdoering
     - icon: fa linkedin-icon
+  skype:
+    - user: andrew-doering
+    - icon: fa fa-skype
+  slack:
+    - user: heimdall
+    - url: https://www.macadmins.org
+  instagram:
+    - user: dolos01
+    - url: https://www.instagram.com/
+contact:
+  - phone: +1 919 904 4396
+  - email: contact@andrewdoering.org
+  - address: San Francisco, CA, USA
+copyright: 2020
   
