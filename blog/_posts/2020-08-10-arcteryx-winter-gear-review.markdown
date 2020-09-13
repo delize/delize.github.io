@@ -8,6 +8,7 @@ published: false
 slug: arcteryx-winter-gear-review
 title: Arc'teryx - Winter Gear - Review
 wordpress_id: 283
+comments: true
 ---
 
 If you may recall from an [earlier post](https://andrewdoering.org/blog/?p=280&preview=true) I really love technical outdoor gear. I have a lot of gear from Arc'teryx mainly two jackets. Because of this I purchased a large list of gear from Arc'teryx as well, all of this from REI - mainly because of their warranty services. When something goes wrong, they usually get the job done in getting things replaced or resolved.

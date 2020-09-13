@@ -9,6 +9,7 @@ link: https://andrewdoering.org/blog/2019/12/22/workspace-one-okta-users-and-gro
 slug: workspace-one-okta-users-and-groups-working-with-dep-enrollment
 title: Workspace One & Okta - User(s) and Group(s) working with DEP Enrollment
 wordpress_id: 555
+comments: true
 tags:
 - airwatch
 - DEP

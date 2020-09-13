@@ -8,6 +8,7 @@ published: false
 slug: finding-street-art-in-san-francisco
 title: Finding Street Art in San Francisco
 wordpress_id: 147
+comments: true
 categories:
 - San Francicso
 - Street Art

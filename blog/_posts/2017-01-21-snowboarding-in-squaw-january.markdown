@@ -8,8 +8,7 @@ published: false
 slug: snowboarding-in-squaw-january
 title: Snowboarding in Squaw - January
 wordpress_id: 336
-categories:
-- snowboarding
+comments: true
 ---
 
 I was able to up to Squaw after Martin Luther King weekend, which with the week before a huge snow fall occurred. [Reportedly 15 feet](http://squawalpine.com/explore/blog/15-feet-snow-squaw-valley-alpine-meadows-breaks-45-year-historic-record-january?season=winter). That seems like an idiotic amount and it definitely didn't seem like that much when we were out there. However, it was still great snow! It was fresh and unpacked. It was wonderful. There was also a large amount of fog so that going down the mountain was incredibly thrilling! Here are some photos from that weekend!

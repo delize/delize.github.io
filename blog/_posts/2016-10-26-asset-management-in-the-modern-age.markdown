@@ -7,6 +7,7 @@ link: https://andrewdoering.org/blog/2016/10/26/asset-management-in-the-modern-a
 slug: asset-management-in-the-modern-age
 title: Asset Management in the modern age
 wordpress_id: 159
+comments: true
 tags:
 - Altiris
 - Asset

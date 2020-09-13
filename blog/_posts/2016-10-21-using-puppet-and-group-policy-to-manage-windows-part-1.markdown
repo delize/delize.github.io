@@ -8,6 +8,7 @@ published: false
 slug: using-puppet-and-group-policy-to-manage-windows-part-1
 title: Using Puppet and Group Policy to manage Windows (part 1)
 wordpress_id: 71
+comments: true
 tags:
 - Active Directory
 - Powershell

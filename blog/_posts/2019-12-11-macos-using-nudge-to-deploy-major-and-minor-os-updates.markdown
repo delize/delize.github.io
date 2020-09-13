@@ -7,6 +7,7 @@ link: https://andrewdoering.org/blog/2019/12/10/macos-using-nudge-to-deploy-majo
 slug: macos-using-nudge-to-deploy-major-and-minor-os-updates
 title: macOS - Using nudge to deploy major (and minor) OS updates
 wordpress_id: 548
+comments: true
 tags:
 - Catalina
 - Erik Gomez

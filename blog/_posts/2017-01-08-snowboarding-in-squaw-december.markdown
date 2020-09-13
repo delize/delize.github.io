@@ -8,6 +8,7 @@ published: false
 slug: snowboarding-in-squaw-december
 title: Snowboarding in Squaw - December
 wordpress_id: 240
+comments: true
 categories:
 - snowboarding
 tags:

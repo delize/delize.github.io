@@ -8,8 +8,7 @@ published: false
 slug: norrona-winter-gear-my-review
 title: Norrøna - Winter Gear - My Review
 wordpress_id: 280
-categories:
-- snowboarding
+comments: true
 tags:
 - falketind
 - gore-tex

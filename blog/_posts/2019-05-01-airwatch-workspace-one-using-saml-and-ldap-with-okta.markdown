@@ -7,6 +7,7 @@ link: https://andrewdoering.org/blog/2019/05/01/airwatch-workspace-one-using-sam
 slug: airwatch-workspace-one-using-saml-and-ldap-with-okta
 title: Airwatch/Workspace ONE - Using SAML and LDAP with Okta
 wordpress_id: 514
+comments: true
 tags:
 - Okta
 - Workspace One
