@@ -9,6 +9,7 @@ link: https://andrewdoering.org/blog/2020/08/08/transitioning-to-okta-from-activ
 slug: transitioning-to-okta-from-active-directory-new-directory-service-infrastructure
 title: Transitioning To Okta From Active Directory - New Directory Service Infrastructure
 wordpress_id: 595
+comments: true
 tags:
 - Active Directory
 - bamboohr
