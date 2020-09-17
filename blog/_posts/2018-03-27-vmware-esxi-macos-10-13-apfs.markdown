@@ -1,7 +1,7 @@
 ---
 author: Andrew Doering
 comments: true
-date: 2018-03-27 23:56:31+00:00
+date: 2018-03-27 23:56:31 PT
 layout: post
 link: https://andrewdoering.org/blog/2018/03/27/vmware-esxi-macos-10-13-apfs/
 slug: vmware-esxi-macos-10-13-apfs

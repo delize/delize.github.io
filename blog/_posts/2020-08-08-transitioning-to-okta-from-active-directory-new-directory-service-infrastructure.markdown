@@ -1,7 +1,7 @@
 ---
 author: Andrew Doering
 comments: true
-date: 2020-08-08 18:16:49+00:00
+date: 2020-08-08 18:16:49 PT
 excerpt: Transitioning from legacy Active Directory to a cloud centric HRIS, Okta,
   Push System.
 layout: post
@@ -18,6 +18,7 @@ tags:
 - meraki
 - office
 - okta
+blogsingle-backgroundimage: https://images.wallpapersden.com/image/download/huawei-4k-stock-abstract_66336_1920x1080.jpg
 ---
 
 
@@ -576,19 +577,14 @@ We did not modify the Profile Master section for at least a few weeks before con
 As noted in the issues section, Names that have extended sections, or more than a single first and single last name presented issues. This was the ONLY issue that presented itself and you can read our full documentation and post-mortem on the changes that we sent to HR below:
 
 
-
-
-
-
-
-> ### Name Mapping in BambooHR and Okta  ]
+> ### Name Mapping in BambooHR and Okta
 > BambooHR Defaults and Custom Name Fields
 > By default, BambooHR comes with the following fields to capture a person’s name:
 > 
-> First Name  
-> Middle Name  
-> Last Name  
-> Preferred Name
+> * First Name  
+> * Middle Name  
+> * Last Name  
+> * Preferred Name
 > 
 > In most cases, the above is sufficient. The “Preferred Name” can be set to anything (for instance, more than just a single word), however, as of May 5th, 2020, it is typically used to capture the preferred first name, such as a shortened name (i.e. Alexander → Alex).
 > 
@@ -596,31 +592,31 @@ As noted in the issues section, Names that have extended sections, or more than 
 > 
 > In order to accommodate both sides, two additional custom fields can be setup in BambooHR:
 > 
-> Preferred First Name  
-> Preferred Last Name
+> * Preferred First Name  
+> * Preferred Last Name
 > 
 > These will distinguish between what is legally required to be captured by the HR system (using the default fields of BambooHR) and the requested version to accommodate the requester’s commonly used short name (using the additional custom fields setup in BambooHR). To be fully clear and explicit, the above employee would be entered as follows inn BambooHR:
 > 
-> First Name: Alexandre Juarez  
-> Middle Name:  
-> Last Name: Juan-Castillo Alfonso  
-> Preferred Name:
+> * First Name: Alexandre Juarez  
+> * Middle Name:  
+> * Last Name: Juan-Castillo Alfonso  
+> * Preferred Name:
 > 
-> Preferred First Name: Alex  
-> Preferred Last Name: Castillo
+> * Preferred First Name: Alex  
+> * Preferred Last Name: Castillo
 > 
 > Notice that the original “Preferred Name” field is redundant. As it is a BambooHR default field, it cannot be changed/removed, however, it can be hidden and not used generally. The new custom “Preferred First/Last Name” fields, however, can be either hidden or visible to the general employee. It is suggested that they are set to be visible and editable, subject to verification and approval of the people operations team.
 > 
 > ### Name Sync with Okta and Services Provisioned by Okta
 > Okta will pull the names from BambooHR in the logical manner described below. Note that the name in Okta and the majority of services and apps in Okta will be reflected depending which of these fields will be set in BambooHR.
 > 
-> If “Preferred First” and “Preferred Last” name fields are both specified, they will be treated as official first and last names on Okta and all its services. For the above example, the employee will see Alex Castillo as their name outside of BambooHR.  
-If “Preferred First” name field is empty and “Preferred Last” name field is specified, okta will pull BambooHR’s “First Name” field as the first name and “Preferred Last” name field as the last name. In the above example, the employee will see Alexandre Juarez Castillo as their name outside of BambooHR.  
-If “Preferred First” name field is specified and “Preferred Last” name field is empty, okta will pull “Preferred First” name field as the first name and BambooHR’s “Last Name” field as the last name. In the above example, the employee will see Alex Juan-Castillo Alfonso as their name outside of BambooHR.  
-If “Preferred First” and “Preferred Last” name fields are both unspecified, okta will pull BambooHR’s “First Name” and “Last Name” fields as first and last names, respectively. For the above example, the employee will see Alexandre Juarez Juan-Castillo Alfonso as their name everywhere.
+> * If “Preferred First” and “Preferred Last” name fields are both specified, they will be treated as official first and last names on Okta and all its services. For the above example, the employee will see Alex Castillo as their name outside of BambooHR.  
+> * If “Preferred First” name field is empty and “Preferred Last” name field is specified, Okta will pull BambooHR’s “First Name” field as the first name and “Preferred Last” name field as the last name. In the above example, the employee will see Alexandre Juarez Castillo as their name outside of BambooHR.  
+> * If “Preferred First” name field is specified and “Preferred Last” name field is empty, Okta will pull “Preferred First” name field as the first name and BambooHR’s “Last Name” field as the last name. In the above example, the employee will see Alex Juan-Castillo Alfonso as their name outside of BambooHR.  
+> * If “Preferred First” and “Preferred Last” name fields are both unspecified, Okta will pull BambooHR’s “First Name” and “Last Name” fields as first and last names, respectively. For the above example, the employee will see Alexandre Juarez Juan-Castillo Alfonso as their name everywhere.
 >
 > ### The Case of the “displayName” Attribute
-> Both BambooHR and Okta have a user attribute called displayName. The two do not necessarily have to be the same. In case of okta, certain apps and services are provisioned with this attribute for the names as opposed to the separate first and last names. The IT team will create logic on the okta side so that Okta’s displayName attribute matches exactly in the manner described in the above section. In case of BambooHR, the exact functionality of this attribute is described in detail on BambooHR admin help documentation called Display Name. IT recommends that this value is set to {First Name} {Last Name} pair on BambooHR to align with legal name requirements of the HR system.
+> Both BambooHR and Okta have a user attribute called displayName. The two do not necessarily have to be the same. In case of Okta, certain apps and services are provisioned with this attribute for the names as opposed to the separate first and last names. The IT team will create logic on the Okta side so that Okta’s displayName attribute matches exactly in the manner described in the above section. In case of BambooHR, the exact functionality of this attribute is described in detail on BambooHR admin help documentation called Display Name. IT recommends that this value is set to {First Name} {Last Name} pair on BambooHR to align with legal name requirements of the HR system.
 > 
 > 
 
@@ -659,6 +655,8 @@ Before doing this, I would recommend announcing a few things to end users and ma
     * [Reset Password ](https://developer.okta.com/docs/reference/api/users/#reset-password)- `{{url}}/api/v1/users/{{userId}}/lifecycle/reset_password?sendEmail=true`
     * [Set Recovery Question](https://developer.okta.com/docs/reference/api/users/#set-recovery-question-answer) - `{{url}}/api/v1/users/{{userId}}` 
 
+  
+
 
             {
               "credentials": {
@@ -668,10 +666,6 @@ Before doing this, I would recommend announcing a few things to end users and ma
                 }
               }
             }
-
-
-  
-
 Note that this needs to be in the body of the PUT request. Annoyingly, if you use the word "The" in your question, you can't use the word or any variation of "The" in your answer. 
 
 
@@ -911,7 +905,7 @@ Admittedly, the one thing that really annoys me, is that Okta does not provide a
 
 
 
-If you have any questions, feel free to leave a comment below (just note, I don't always pay attention to those) or come by the [MacAdmin](https://www.macadmins.org/)'s [#okta Slack Channel](https://macadmins.slack.com/archives/C0LFP9CP6). There is a super helpful group of people located there that can assist you with this or any other Okta related issues.
+If you have any questions, feel free to leave a comment below (just note, I don't always pay attention to those) or come by the  [#okta Slack Channel](https://macadmins.slack.com/archives/C0LFP9CP6) on [MacAdmin](https://www.macadmins.org/). There is a super helpful group of people located there that can assist you with this or any other Okta related issues.
 
 
 

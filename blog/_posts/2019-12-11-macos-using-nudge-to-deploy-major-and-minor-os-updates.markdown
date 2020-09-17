@@ -1,7 +1,7 @@
 ---
 author: Andrew Doering
 comments: true
-date: 2019-12-11 04:24:00+00:00
+date: 2019-12-11 04:24:00 PT
 layout: post
 link: https://andrewdoering.org/blog/2019/12/10/macos-using-nudge-to-deploy-major-and-minor-os-updates/
 slug: macos-using-nudge-to-deploy-major-and-minor-os-updates

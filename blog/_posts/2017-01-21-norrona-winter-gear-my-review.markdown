@@ -1,7 +1,7 @@
 ---
 author: Andrew Doering
 comments: true
-date: 2017-01-21 06:23:00+00:00
+date: 2017-01-21 06:23:00 PT
 layout: post
 link: https://andrewdoering.org/blog/2017/01/20/norrona-winter-gear-my-review/
 published: false

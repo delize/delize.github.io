@@ -4,7 +4,7 @@
           HERO
 -------------------------*/
 .hero{
-    background: url("http://placehold.it/1920x1080") no-repeat;
+    background: url("{{ page.blogsingle-backgroundimage }}") no-repeat;
     background-size: cover;
     box-shadow: inset 0 0 0 2000px $grey-7;
     .hero-content{

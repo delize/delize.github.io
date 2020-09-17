@@ -1,7 +1,7 @@
 ---
 author: Andrew Doering
 comments: true
-date: 2019-12-23 07:03:05+00:00
+date: 2019-12-23 07:03:05 PT
 excerpt: This guide covers how to setup member and group importing, the correct way,
   in Airwatch/Workspace One using Okta as an LDAP backend.
 layout: post

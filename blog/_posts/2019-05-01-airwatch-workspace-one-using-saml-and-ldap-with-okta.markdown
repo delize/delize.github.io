@@ -1,7 +1,7 @@
 ---
 author: Andrew Doering
 comments: true
-date: 2019-05-01 21:15:00+00:00
+date: 2019-05-01 21:15:00 PT
 layout: post
 link: https://andrewdoering.org/blog/2019/05/01/airwatch-workspace-one-using-saml-and-ldap-with-okta/
 slug: airwatch-workspace-one-using-saml-and-ldap-with-okta

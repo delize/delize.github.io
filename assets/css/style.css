@@ -1,3 +1,6 @@
+---
+---
+
 /*-----------------------------------------------------------
 * Template Name    : UONE - Fully Responsive Personal Template
 * Author           : Retrina Group
@@ -619,7 +622,7 @@ footer .back-to-top:hover {
        SINGLE BLOG
 -------------------------*/
 .page-hero {
-  background-image: url("http://placehold.it/1920x1080") !important;
+  background-image: url("{{ site.blogsingle-backgroundimage }}") !important;
   background-position: center;
   background-size: cover;
   height: 500px;
@@ -1051,4 +1054,37 @@ ul.timeline-non-chrono {
   margin: 5px;
   color: #fff;
   background-color: #848484;
+}
+
+blockquote {
+  border-left: .25em solid #dfe2e5;
+  color: rgba(226, 226, 217, 0.95);
+  padding: 0 1em;
+}
+
+.text-white {
+  color: #fff;
+}
+
+.text-white-imp {
+  color: #fff !important;
+}
+
+.link {
+  color: #d23e50;
+}
+
+.link:hover {
+  color: #d23e50;
+}
+
+.link-imp{
+  color: #d23e50 !important;
+}
+.link-imp:hover {
+  color: #d23e50 !important;
+}
+
+.link-hover:hover {
+  color: #d23e50 !important;
 }

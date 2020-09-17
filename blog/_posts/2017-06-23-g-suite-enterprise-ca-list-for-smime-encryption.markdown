@@ -1,8 +1,8 @@
 ---
 author: Andrew Doering
 comments: true
-date: 2017-06-23 17:27:53+00:00
-lastmodified: 2019-05-30 17:27:53+00:00
+date: 2017-06-23 17:27:53 PT
+lastmodified: 2019-05-30 17:27:53 PT
 layout: post
 link: https://andrewdoering.org/blog/2017/06/23/g-suite-enterprise-ca-list-for-smime-encryption/
 slug: g-suite-enterprise-ca-list-for-smime-encryption

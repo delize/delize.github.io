@@ -1,7 +1,7 @@
 ---
 author: Andrew Doering
 comments: true
-date: 2017-01-21 07:56:36+00:00
+date: 2017-01-21 07:56:36 PT
 layout: post
 link: https://andrewdoering.org/blog/2017/01/20/snowboarding-in-squaw-january/
 published: false
