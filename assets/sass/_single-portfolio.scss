@@ -1,0 +1,70 @@
+@import "variables";
+@import "mixin";
+/*-------------------------
+     Single Portfolio
+-------------------------*/
+.single-portfolio {
+    .portfolio-item-owl {
+        max-width: 750px;
+        margin: 0 auto;
+        img{
+            width: 100%;
+        }
+    }
+    .owl-nav{
+        display: block;
+        position: absolute;
+        bottom: -25px;
+        left: calc(50% - 48px);
+        .owl-prev span, .owl-next span {
+            background: $bg-base-color;
+            color: $white;
+            width: 38px;
+            height: 38px;
+            font-size: 30px;
+            line-height: 35px;
+            text-align: center;
+            display: inline-block;
+            cursor: pointer;
+            border-radius: 30px;
+            margin: 0 5px;
+        }
+        .owl-prev span{
+            user-select: none;
+        }
+    }
+    .owl-carousel .owl-stage-outer {
+        padding-bottom: 10px;
+    }
+}
+.related-portfolio{
+    .owl-stage-outer{
+        margin-bottom: 10px;
+    }
+    .owl-nav{
+        display: block;
+        position: absolute;
+        bottom: -30px;
+        left: calc(50% - 48px);
+        .owl-prev span, .owl-next span{
+            background: $bg-base-color;
+            color: $white;
+            width: 38px;
+            height: 38px;
+            font-size: 30px;
+            line-height: 35px;
+            text-align: center;
+            display: inline-block;
+            cursor: pointer;
+            border-radius: 30px;
+            margin: 0 5px;
+            &:hover{
+                background: $bg-base-color-two;
+            }
+        }
+    }
+}
+.p-title-border{
+    border-right: 1px dotted #929292;
+    border-left: 1px dotted #929292;
+}

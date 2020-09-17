@@ -1,0 +1,31 @@
+@import "variables";
+@import "mixin";
+/*-------------------------
+       COLOR SCHEME
+-------------------------*/
+.color-scheme{
+    position: fixed;
+    z-index: 999;
+    right: -48px;
+    top: 75px;
+    padding: .5rem .75rem;
+    border-radius: 5px 0 0 5px;
+    transition: all 0.5s ease;
+    span{
+        padding-left: .75rem;
+        transition: all 0.3s ease;
+    }
+    &:hover{
+        right: 0;
+        span{
+          padding-left: 0.5rem;
+        }
+    }
+    i{
+        position: relative;
+        top: 1px;
+    }
+    &:hover{
+        color: $white;
+    }
+}

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% include head-meta.html %}
+        {% include head-asset.html %}
+        {% include blog-asset.html %}
+    </head>
+
+    <body data-spy="scroll" data-target="#scrollspy" data-offset="61" class="uone-dark pt-hero">
+
+        {% include preloader.html %}
+
+        <!--    Header Start    -->
+        <header id="header" class="header page-header bg-white fixed-top">
+            <nav id="scrollspy" class="navbar navbar-expand-lg header-nav">
+                <div class="container">
+                    <a class="navbar-brand font-weight-bold text-dark" href="{{ site.url }}/blog">{{ site.firstname }} <span>{{ site.lastname }}</span></a>
+                    <!--  Navbar Toggler Button Start -->
+                    <button class="navbar-toggler collapsed " type="button" data-toggle="collapse" data-target="#toggle-menu" aria-controls="toggle-menu" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="lni-menu size-md"></span>
+                    </button>
+                    <!--  Navbar Toggler Button End -->
+                    <div class="collapse navbar-collapse" id="toggle-menu">
+                        <ul class="navbar-nav nav-pills ml-auto">
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" href="{{ site.url }}/blog">Back</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <!--    Header End    -->
+
+        <!--    Hero Start    -->
+        <section class="hero page-hero py-6" id="hero">
+            <div class="text-center hero-content mx-auto">
+                <h1 class="text-white mb-4 margin="4 px">{{ page.title }}</h1>
+                <p class="mx-auto text-white">
+                    <a href="{{ site.url }}" class="text-white">Home</a>
+                    /
+                    <a href="{{ site.url }}/blog" class="text-white">Blog</a>
+                    /
+                    <span class="text-white">{{ page.title }}</span>
+                </p>
+            </div>
+        </section>
+        <!--    Hero End    -->
+
+        <!--   Blog-single   Start -->
+        <section class="py-6">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10 offset-lg-1 blog">
+                        <div class="rounded px-lg-5">
+                            <div class="text-md-left">
+                                <h4 class="mb-4">{{ page.title }}</h4>
+                                <img src="{{ page.blogsingle-backgroundimage}}" alt="" class="img-fluid w-100 rounded">
+                                <span class="d-inline-block py-4"> {{ page.date }}
+                                        / By <span class="purple-color text-right"> {{ page.author}}. </span>
+                                        </span>
+                                <p class="link-">{{ content }}</p>
+                                {% if page.comments %}
+                                {% include disqus.html %}
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                
+        </section>
+        
+        <!--   Blog-Single End  -->
+
+
+        {% include footer.html %}
+        {% include footer-asset.html %}
+
+    </body>
+</html>

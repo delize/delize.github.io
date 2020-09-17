@@ -1,0 +1,6 @@
+.git-ignore
+.jekyll-cache/**
+.DS_Store
+.history/**
+_site/**
+_site
