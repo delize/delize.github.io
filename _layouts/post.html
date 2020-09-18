@@ -9,27 +9,7 @@
     <body data-spy="scroll" data-target="#scrollspy" data-offset="61" class="uone-dark pt-hero">
 
         {% include preloader.html %}
-
-        <!--    Header Start    -->
-        <header id="header" class="header page-header bg-white fixed-top">
-            <nav id="scrollspy" class="navbar navbar-expand-lg header-nav">
-                <div class="container">
-                    <a class="navbar-brand font-weight-bold text-dark" href="{{ site.url }}/blog">{{ site.firstname }} <span>{{ site.lastname }}</span></a>
-                    <!--  Navbar Toggler Button Start -->
-                    <button class="navbar-toggler collapsed " type="button" data-toggle="collapse" data-target="#toggle-menu" aria-controls="toggle-menu" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="lni-menu size-md"></span>
-                    </button>
-                    <!--  Navbar Toggler Button End -->
-                    <div class="collapse navbar-collapse" id="toggle-menu">
-                        <ul class="navbar-nav nav-pills ml-auto">
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" href="{{ site.url }}/blog">Back</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-        </header>
+        {% include blog-header.html %}
         <!--    Header End    -->
 
         <!--    Hero Start    -->

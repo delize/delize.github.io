@@ -142,6 +142,7 @@ Our Service Account in BambooHR looks like this:
 
 We discussed in depth with our HR team on what information we wanted to import into Okta so we could potentially utilize that information into our services/systems. At a bare minimum, we wanted the following from the HRIS system in Okta:
 
+
 |         Attribute Name        |      Attribute Key      |
 |:-----------------------------:|:-----------------------:|
 |            Username           |         userName        |
@@ -191,6 +192,7 @@ We discussed in depth with our HR team on what information we wanted to import i
 |  Security Training – Expires  |       p4326_u002E1      |
 |  Security Training – Due Date |       p4326_u002E2      |
 |          Reporting To         |           p91           |
+
 
 
 
