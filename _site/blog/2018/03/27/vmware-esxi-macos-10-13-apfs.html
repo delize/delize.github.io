@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>vmware / ESXi + macOS 10.13 APFS</title>
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<meta name="author" content="Andrew Doering" />
+<meta name="ROBOTS" content="">
+        <!--  FavIcon  -->
+<link rel="apple-touch-icon" sizes="180x180" href=/assets/favicon//apple-touch-icon.png >
+<link rel="icon" type="image/png" sizes="32x32" href=/assets/favicon//favicon-32x32.png>
+<link rel="icon" type="image/png" sizes="16x16" href=/assets/favicon//favicon-16x16.png>
+<link rel="manifest" href=/assets/favicon/site.webmanifest>
+
+<!-- Google Fonts -->
+<link async rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli:300,400,600%7CPoppins:400,500,600,700" />
+
+<!--  Bootstrap CSS  -->
+<!-- <link rel="stylesheet" href=/assets/css/bootstrap.css > -->
+<link rel="stylesheet" href=/assets/css/bootstrap.min.css >
+<!--  Line Icon CSS  -->
+<link rel="stylesheet" href=/assets/css/LineIcons.css>
+<!--  Font Awesome CSS  -->
+<link async rel="stylesheet" href=/assets/css/all.min.css />
+<!-- <link rel="stylesheet" href=/assets/css/font-awesome.min.css> -->
+<!--  Animate CSS  -->
+<link rel="stylesheet" href=/assets/css/animate.css> 
+<!--  Magnific Popup CSS  -->
+<link rel="stylesheet" href=/assets/css/magnific-popup.css>
+<!--  Owl-carousel CSS  -->
+<link rel="stylesheet" href=/assets/css/owl.carousel.min.css>
+<!--  Custom Style CSS  -->
+<link rel="stylesheet" href=assets/css/style.css>
+
+        <!--  Custom Style CSS  -->
+<link rel="stylesheet" href=/assets/css/style-blog.css>
+    </head>
+
+    <body data-spy="scroll" data-target="#scrollspy" data-offset="61" class="uone-dark pt-hero">
+
+                <!--  Pre Loader  -->
+        <div id="overlayer"></div>
+        <span class="loader"></span>
+        <!--    Header Start    -->
+<header id="header" class="header page-header bg-white fixed-top">
+    <nav id="scrollspy" class="navbar navbar-expand-lg header-nav">
+        <div class="container">
+            <a class="navbar-brand font-weight-bold text-dark" href="http://127.0.0.1:4000">vmware / ESXi + macOS 10.13 APFS</span></a>
+            <!--  Navbar Toggler Button Start -->
+            <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#toggle-menu" aria-controls="toggle-menu" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="lni-menu size-md"></span>
+            </button>
+            <!--  Navbar Toggler Button End -->
+            <div class="collapse navbar-collapse" id="toggle-menu">
+                <ul class="navbar-nav nav-pills ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" onclick="goBack()" href="javascript:void(0)">Back</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+<!--    Header End    -->
+        <!--    Header End    -->
+
+        <!--    Hero Start    -->
+        <section class="hero page-hero py-6" id="hero">
+            <div class="text-center hero-content mx-auto">
+                <h1 class="text-white mb-4 margin="4 px">vmware / ESXi + macOS 10.13 APFS</h1>
+                <p class="mx-auto text-white">
+                    <a href="http://127.0.0.1:4000" class="text-white">Home</a>
+                    /
+                    <a href="http://127.0.0.1:4000/blog" class="text-white">Blog</a>
+                    /
+                    <span class="text-white">vmware / ESXi + macOS 10.13 APFS</span>
+                </p>
+            </div>
+        </section>
+        <!--    Hero End    -->
+
+        <!--   Blog-single   Start -->
+        <section class="py-6">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10 offset-lg-1 blog">
+                        <div class="rounded px-lg-5">
+                            <div class="text-md-left">
+                                <h4 class="mb-4">vmware / ESXi + macOS 10.13 APFS</h4>
+                                <img src="" alt="" class="img-fluid w-100 rounded">
+                                <span class="d-inline-block py-4"> 2018-03-27 23:56:31 -0700
+                                        / By <span class="purple-color text-right"> Andrew Doering. </span>
+                                        </span>
+                                <p class="link-"><p>First off, this is a verbatim copy of a blog post written <a href="https://licson.net/post/vmware-apfs/">here</a> (<a href="https://licson.net/post/vmware-apfs/">https://licson.net/post/vmware-apfs/</a>) and a cached content version <a href="https://webcache.googleusercontent.com/search?q=cache:Uvv6UFhC2GsJ:https://licson.net/post/vmware-apfs/+&amp;cd=1&amp;hl=en&amp;ct=clnk&amp;gl=us">here</a></p>
+
+<p>I don’t take credit for the content of this at all, the developer deserves all credit for his ingenuity, but I am reposting this as it is incredibly useful, and the current blog has gone off-line due to a database issue.</p>
+
+<h1 id="using-apple-file-system-apfs-with-your-virtualized-mac">Using Apple File System (APFS) with your virtualized Mac</h1>
+
+<p>Apple has just released the macOS High Sierra with new features, one of them is the brand-new Apple File System (APFS) that is optimized for flash storage which newer Macs enjoy. If you happen to be using macOS in a virtualized way, e.g. with VMware, you may have trouble getting the new OS to work as the upgrade forces conversion of the boot partition to APFS which the VMware UEFI does not support.</p>
+
+<p>To solve the problem, we need to let the VMware UEFI know APFS and luckily the APFS driver can be extracted from the High Sierra installer as a UEFI driver executable. We can then slip the driver to the UEFI BIOS that bundles with VMware Player itself and everything should work.</p>
+
+<h2 id="getting-started">Getting Started</h2>
+
+<p>We’ll need 3 things before modifying the VMware UEFI BIOS. They are listed below:</p>
+
+<ul>
+  <li>
+    <p><a href="https://github.com/darkhandz/XPS15-9550-Sierra/blob/master/CLOVER-Install/drivers64UEFI/apfs.efi?raw=true">The APFS UEFI Driver extract</a></p>
+  </li>
+  <li>
+    <p><a href="https://github.com/LongSoft/UEFITool/releases">UEFITool, a tool for editing UEFI BIOS</a></p>
+  </li>
+  <li>
+    <p><a href="https://github.com/pbatard/ffs/releases">FFS to convert the APFS driver to UEFI module</a></p>
+  </li>
+</ul>
+
+<p>To simplify things, you can download my [efi64<em>apfs.rom](https://andrewdoering.org/blog/wp-content/uploads/2018/03/efi64_apfs.rom</em>.zip) (tested on VMware Workstation Pro 14, may work for other versions too). If that ROM doesn’t work for you, go after these steps to get a modified BIOS with APFS support.</p>
+
+<p>Use UEFITool to open EFI64.rom located at [VMware Installation Folder]/x64/, select File &gt; Search and choose GUID tab. Type in 961578FE-B6B7-44C3-AF35-6BC705CD2B1F and double click the result inside Message section. Leave this screen for now.</p>
+
+<p><a href="https://andrewdoering.org/blog/wp-content/uploads/2018/03/vmware_apfs_ubu_screen.png"><img src="https://andrewdoering.org/blog/wp-content/uploads/2018/03/vmware_apfs_ubu_screen.png" alt="UEFITool" /></a></p>
+
+<p>Extract the FFS tool to the same directory as the APFS driver file. Open your command prompt, change directory to that place and run this command:  GenMod apfs.efi .</p>
+
+<p><a href="https://andrewdoering.org/blog/wp-content/uploads/2018/03/vmware_apfs_ffs_screen.png"><img src="https://andrewdoering.org/blog/wp-content/uploads/2018/03/vmware_apfs_ffs_screen.png" alt="" /></a></p>
+
+<p>Go back to UEFITool, right-click the selected item and choose Insert After, then select apfs.ffs from the FFS directory. The screen should look like this.</p>
+
+<p><a href="https://andrewdoering.org/blog/wp-content/uploads/2018/03/vmware_apfs_ins_screen.png"><img src="https://andrewdoering.org/blog/wp-content/uploads/2018/03/vmware_apfs_ins_screen.png" alt="" /></a></p>
+
+<p>Save the modified ROM with the name efi64_apfs.rom to your VM directory.</p>
+
+<h2 id="applying-the-new-uefi-bios">Applying the new UEFI BIOS</h2>
+
+<p>To get the modified UEFI BIOS to work, use a text editor to open the VMX file. Ensure the file contains the following lines.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;code&gt;firmware = "efi"
+efi64.filename = "efi64_apfs.rom"
+&lt;/code&gt;
+</code></pre></div></div>
+
+<p>Save the VMX file and start your VM, your macOS High Sierra will now boot as expected with an APFS volume. Voila!</p>
+</p>
+                                
+                                <div id="disqus_thread"></div>
+<script>
+
+var disqus_config = function () {
+this.page.url = "https://andrewdoering.org/blog/2018/03/27/vmware-esxi-macos-10-13-apfs/";  
+this.page.identifier = "vmware-esxi-macos-10-13-apfs"; 
+};
+
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://andrewdoering-org.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                            
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                
+        </section>
+        
+        <!--   Blog-Single End  -->
+
+
+        <!--   Footer Start  -->
+<footer class="bg-dark">
+    <div class="container">
+        <div class="row py-5">
+            <div class="col-lg-4">
+                <h4 class="text-white mt-3 mt-lg-0">About <span class="base-color"> Me</span></h4>
+                <p class="text-white pt-3 mb-0">Andrew Doering resides in San Francisco, and currently maintains a position at
+                    ThousandEyes as a Senior IT Engineer. </p>
+            </div>
+            <div class="col-lg-4">
+                <h4 class="text-white mt-3 mt-lg-0">Contact <span class="base-color">Us</span></h4>
+                <ul class="list-unstyled text-white pt-2 mb-0">
+                    <li class="py-1"><i class="fas fa-map-marker-alt pr-2"></i> San Francisco, CA 94109 USA</li>
+                    <li class="py-1"><i class="fas fa-phone-square-alt pr-2"></i><a href="tel:+1 919-904-4396"> +1 919 904 4396</a></li>
+                    <li class="py-1"><i class="fas fa-envelope pr-2"></i><a href="mailto:contact@andrewdoering">
+                            contact@andrewdoering.org</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-4">
+                <h4 class="text-white mt-3 mt-lg-0">My <span class="base-color">Socials</span></h4>
+                <ul class="list-unstyled text-white socials pt-2 mb-0">
+                    <li class="py-1"><a class="text-white link-hover" href="https://www.facebook.com/and.doe"><i class="fab fa-facebook-f pr-2" aria-hidden="true"></i>
+                            Facebook</a></li>
+                    <li class="py-1"><a class="text-white link-hover" href="https://www.linkedin.com/in/andrewdoering"><i class="fab fa-linkedin pr-2"
+                                aria-hidden="true"></i> LinkedIn</a></li>
+                    <li class="py-1"><a class="text-white link-hover" href="https://www.github.com/delize"><i class="fab fa-github pr-1" aria-hidden="true"></i>
+                            Github</a></li>
+                    <li class="py-1"><a class="text-white link-hover" href="https://www.instagram.com/dolos01"><i class="fab fa-instagram pr-2" aria-hidden="true"></i>
+                            Instagram</a></li>
+                    <li class="py-1"><a class="text-white link-hover" href="skype:andrew-doering"><i class="fab fa-skype pr-2" aria-hidden="true"></i> andrew-doering</a>
+                    </li>
+                    <li class="py-1"><a class="text-white link-hover" href="https://www.macadmins.org/"><i class="fab fa-slack pr-2" aria-hidden="true"></i> @heimdall</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 border-top pb-5">
+                <p class="mt-3 mb-0 text-white d-lg-inline-block text-center">Copyright © 2020</p>
+                <a href="javascript:void(0);" class="mt-4 mt-lg-3 mb-0 text-white back-to-top d-block d-lg-inline-block float-lg-right text-center">Back To Top</a>
+            </div>
+        </div>
+    </div>
+</footer>
+<!--   Footer End  -->
+        <!--  JavaScripts  -->
+<script src=/assets/js/jquery-3.4.1.min.js></script>
+<!--  Bootstrap Js  -->
+<!-- <script src="assets/js/bootstrap.js"></script> -->
+<script src=/assets/js/bootstrap.min.js></script>
+<!--  Easing Js  -->
+<script src=/assets/js/jquery.easing.min.js></script>
+<!--  Isotope Js  -->
+<script src=/assets/js/slyslider.js></script>
+<!--  Pop UP JS Js  -->
+<script src=/assets/js/jquery.magnific-popup.min.js></script>
+<!--  Owl carousel Js  -->
+<script src=/assets/js/owl.carousel.min.js></script>
+<!--  Wow Js  -->
+<script src=/assets/js/wow.min.js></script>
+<!--  Typed Js  -->
+<script src=/assets/js/typed.js></script>
+<!--  Custom JS  -->
+<script src=/assets/js/uone.js></script>
+
+
+    </body>
+</html>
