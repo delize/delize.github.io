@@ -2,6 +2,7 @@ name: Andrew Doering CV & Blog
 firstname: Andrew
 lastname: Doering
 url: http://127.0.0.1:4000
+baseurl: ""
 # plugins:
 # - jekyll-responsive-image
 social:

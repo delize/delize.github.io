@@ -269,7 +269,7 @@ Creating interopability between Workspace One and Okta, using the ldap interface
 
 ![/](assets/img/okta_ws1_interop.jpg)
 
-![/](/assets/img/nudge800x650.jpg)
+![/](assets/img/nudge800x650.jpg)
 
 ##### [Using nudge on macOS](../blog/2019/12/10/macos-using-nudge-to-deploy-major-and-minor-os-updates/)
 
