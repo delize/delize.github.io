@@ -1056,12 +1056,6 @@ ul.timeline-non-chrono {
   background-color: #848484;
 }
 
-blockquote {
-  border-left: .25em solid #dfe2e5;
-  color: rgba(226, 226, 217, 0.95);
-  padding: 0 1em;
-}
-
 .text-white {
   color: #fff;
 }
