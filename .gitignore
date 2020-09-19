@@ -1,6 +1,11 @@
 .git-ignore
-.jekyll-cache/**
 .DS_Store
-.history/**
-_site/**
-_site
+.history/
+
+_site/
+.jekyll-metadata
+.jekyll-cache/
+.sass-cache/
+
+.bundle/
+vendor/
