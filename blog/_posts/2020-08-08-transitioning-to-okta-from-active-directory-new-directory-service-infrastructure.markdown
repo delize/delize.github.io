@@ -654,10 +654,10 @@ Before doing this, I would recommend announcing a few things to end users and ma
   * Create a new password policy around your companies policies and any new Okta groups that have been created
   * Create an API Token to use Postman as a backup in case all Admin users get locked out of the Administrator Dashboard
   * Have the following Postman Collections prepared to use
-    * [Find User](https://developer.okta.com/docs/reference/api/users/#find-users) - `{{url}}/api/v1/users?q={SEARCHSTRING`}
-    * [Unlock User](https://developer.okta.com/docs/reference/api/users/#unlock-user) - `{{url}}/api/v1/users/{{userId}}/lifecycle/unlock`
-    * [Reset Password ](https://developer.okta.com/docs/reference/api/users/#reset-password)- `{{url}}/api/v1/users/{{userId}}/lifecycle/reset_password?sendEmail=true`
-    * [Set Recovery Question](https://developer.okta.com/docs/reference/api/users/#set-recovery-question-answer) - `{{url}}/api/v1/users/{{userId}}` 
+    * [Find User](https://developer.okta.com/docs/reference/api/users/#find-users) - `{% raw %}{{url}}{% endraw %}/api/v1/users?q={% raw %}{{SEARCHSTRING}}{% endraw %}`
+    * [Unlock User](https://developer.okta.com/docs/reference/api/users/#unlock-user) - `{% raw %}{{url}}{% endraw %}/api/v1/users/{{userId}}/lifecycle/unlock`
+    * [Reset Password ](https://developer.okta.com/docs/reference/api/users/#reset-password)- `{% raw %}{{url}}{% endraw %}/api/v1/users/{{userId}}/lifecycle/reset_password?sendEmail=true`
+    * [Set Recovery Question](https://developer.okta.com/docs/reference/api/users/#set-recovery-question-answer) - `{% raw %}{{url}}{% endraw %}/api/v1/users/{% raw %}{{userId}}{% endraw %}` 
 
   
 
@@ -723,7 +723,7 @@ All users in the group will be pushed and synced to your Active Directory. If yo
 
 While the steps above, I would recommend using your department based groups from the Phase 1 rollout, that way you know that the entire department/team will be have access to the AD Environment if needed. If a smaller subset is required you can revert to the team or department groups from the Phase 1 integration. We also decided to push attributes and other information so that employees had a single place to update and manage these details. You can see an example of our configuration below:
 
-x![](https://andrewdoering.org/blog/wp-content/uploads/2020/08/image-836x1024.png)
+![](https://andrewdoering.org/blog/wp-content/uploads/2020/08/image-836x1024.png)
 
 
 

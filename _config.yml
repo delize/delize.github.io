@@ -32,4 +32,8 @@ contact:
   - email: contact@andrewdoering.org
   - address: San Francisco, CA, USA
 copyright: 2020
+highlighter: rouge
+    syntax_highlighter_opts:
+        block:
+            line_numbers: true
 blogsingle-backgroundimage: https://images.wallpapersden.com/image/download/huawei-4k-stock-abstract_66336_1920x1080.jpg

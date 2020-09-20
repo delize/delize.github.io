@@ -5,6 +5,9 @@
         {% include post-asset.html %}
         {% include blog-asset.html %}
         {% include head-asset.html %}
+        {% if jekyll.environment == 'production' %}
+        {% include analytics.html %}
+        {% endif %}
     </head>
 
     <body data-spy="scroll" data-target="#scrollspy" data-offset="61" class="uone-dark pt-hero">
