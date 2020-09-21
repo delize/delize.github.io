@@ -4,6 +4,7 @@ comments: true
 date: 2018-03-27 23:56:31 PT
 layout: post
 link: https://andrewdoering.org/blog/2018/03/27/vmware-esxi-macos-10-13-apfs/
+excerpt: This is a verbatim copy of a blog post written by "licson" as his site was going down.
 slug: vmware-esxi-macos-10-13-apfs
 title: vmware / ESXi + macOS 10.13 APFS
 wordpress_id: 452
@@ -46,19 +47,19 @@ We’ll need 3 things before modifying the VMware UEFI BIOS. They are listed bel
 
 
 
-To simplify things, you can download my [efi64_apfs.rom](https://andrewdoering.org/blog/wp-content/uploads/2018/03/efi64_apfs.rom_.zip) (tested on VMware Workstation Pro 14, may work for other versions too). If that ROM doesn’t work for you, go after these steps to get a modified BIOS with APFS support.
+To simplify things, you can download my [efi64_apfs.rom](/assets/img/2018-03-27-post/efi64_apfs.rom_.zip) (tested on VMware Workstation Pro 14, may work for other versions too). If that ROM doesn’t work for you, go after these steps to get a modified BIOS with APFS support.
 
 Use UEFITool to open EFI64.rom located at [VMware Installation Folder]/x64/, select File > Search and choose GUID tab. Type in 961578FE-B6B7-44C3-AF35-6BC705CD2B1F and double click the result inside Message section. Leave this screen for now.
 
-[![UEFITool](https://andrewdoering.org/blog/wp-content/uploads/2018/03/vmware_apfs_ubu_screen.png)](https://andrewdoering.org/blog/wp-content/uploads/2018/03/vmware_apfs_ubu_screen.png)
+[![UEFITool](/assets/img/2018-03-27-post/vmware_apfs_ubu_screen.png)]
 
 Extract the FFS tool to the same directory as the APFS driver file. Open your command prompt, change directory to that place and run this command:  GenMod apfs.efi .
 
-[![](https://andrewdoering.org/blog/wp-content/uploads/2018/03/vmware_apfs_ffs_screen.png)](https://andrewdoering.org/blog/wp-content/uploads/2018/03/vmware_apfs_ffs_screen.png)
+[![](/assets/img/2018-03-27-post/vmware_apfs_ffs_screen.png)]
 
 Go back to UEFITool, right-click the selected item and choose Insert After, then select apfs.ffs from the FFS directory. The screen should look like this.
 
-[![](https://andrewdoering.org/blog/wp-content/uploads/2018/03/vmware_apfs_ins_screen.png)](https://andrewdoering.org/blog/wp-content/uploads/2018/03/vmware_apfs_ins_screen.png)
+[![VMware APFS INS Screen](/assets/img/2018-03-27-post/vmware_apfs_ins_screen.png)]
 
 Save the modified ROM with the name efi64_apfs.rom to your VM directory.
 

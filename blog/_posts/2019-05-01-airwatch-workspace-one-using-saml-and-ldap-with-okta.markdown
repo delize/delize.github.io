@@ -2,6 +2,7 @@
 author: Andrew Doering
 comments: true
 date: 2019-05-01 21:15:00 PT
+excerpt: This is a good first read if you want to delve into SAML and WS1 configurations. Please see the updated post for a more up to date and more functional guide. 
 layout: post
 link: https://andrewdoering.org/blog/2019/05/01/airwatch-workspace-one-using-saml-and-ldap-with-okta/
 slug: airwatch-workspace-one-using-saml-and-ldap-with-okta
@@ -28,11 +29,23 @@ tags:
 
 
 
-**UPDATE 12/22/2019 - **Please see[ this post](https://andrewdoering.org/blog/2019/12/22/workspace-one-okta-users-and-groups-working-with-dep-enrollment/) for a more up to date and more functionaly guide. It is good to read this first, before doing the other one however to get a better understanding of our initial decisions.
+**UPDATE 12/22/2019** - Please see[ this post](https://andrewdoering.org/blog/2019/12/22/workspace-one-okta-users-and-groups-working-with-dep-enrollment/) for a more up to date and more functionaly guide. It is good to read this first, before doing the other one however to get a better understanding of our initial decisions.
 
 
 
-
+- [Precursor](#precursor)
+  - [Software Requirements](#software-requirements)
+  - [Initial Expectations](#initial-expectations)
+- [Workspace One - Directory Services Integration](#workspace-one---directory-services-integration)
+- [Okta Profile Mapping](#okta-profile-mapping)
+- [Airwatch - User and Groups Directory Integration](#airwatch---user-and-groups-directory-integration)
+  - [Users](#users)
+  - [Groups](#groups)
+- [OKTA - SAML App for Airwatch](#okta---saml-app-for-airwatch)
+  - [SAML Integration](#saml-integration)
+  - [sDP Bookmark Application](#sdp-bookmark-application)
+- [Airwatch - SAML Settings](#airwatch---saml-settings)
+- [Room for Improvements](#room-for-improvements)
 
 
 
@@ -136,7 +149,7 @@ Setting this portion up is quite easy with the way that the support team and con
 
 
 
-![](https://andrewdoering.org/blog/wp-content/uploads/2019/11/image.png)LDAP Connection Settings
+![LDAP Connection Settings](/assets/blog/2019/11/image.png)
 
 
 
@@ -195,7 +208,7 @@ First, go here:  [https://YOURDOMAIN-admin.okta.com/admin/universaldirectory](ht
 
 
 
-![](https://andrewdoering.org/blog/wp-content/uploads/2019/11/image-4-1024x201.png)
+![Profile Editor](/assets/blog/2019/11/image-4.png)
 
 
 
@@ -207,7 +220,7 @@ Click the add attribute button
 
 
 
-![](https://andrewdoering.org/blog/wp-content/uploads/2019/11/image-5.png)
+![Add Attribute](/assets/blog/2019/11/image-5.png)
 
 
 
@@ -219,11 +232,11 @@ Use the the following settings for the Attributes
 
 
 
-![](https://andrewdoering.org/blog/wp-content/uploads/2019/11/image-2-1024x734.png)
+![](/assets/blog/2019/11/image-2.png)
 
 
 
-![](https://andrewdoering.org/blog/wp-content/uploads/2019/11/image-3-1024x734.png)
+![](/assets/blog/2019/11/image-3.png)
 
 
 
@@ -235,7 +248,7 @@ Now, lets go to Active Directory's mapping, select your domain to setup the mapp
 
 
 
-![](https://andrewdoering.org/blog/wp-content/uploads/2019/11/image-6-1024x330.png)
+![](/assets/blog/2019/11/image-6.png)
 
 
 
@@ -263,7 +276,7 @@ Setting up the users panel
 
 
 
-![](https://andrewdoering.org/blog/wp-content/uploads/2019/11/image-1-1024x346.png)
+![](/assets/blog/2019/11/image-1.png)
 
 
 
@@ -283,7 +296,7 @@ Drop the advanced menu down and select the following features
 
 
 
-![](https://andrewdoering.org/blog/wp-content/uploads/2019/11/image-7.png)
+![](/assets/blog/2019/11/image-7.png)
 
 
 
@@ -295,7 +308,7 @@ We came to the conclusion of using the following settings for the advanced secti
 
 
 
-![](https://andrewdoering.org/blog/wp-content/uploads/2019/11/image-8-955x1024.png)
+![](/assets/blog/2019/11/image-8.png)
 
 
 
@@ -309,40 +322,40 @@ The reasons for these attributes being used are based directly on the attributes
 
 
     
-    <code>ldapsearch -H ldaps://thousandeyes.ldap.okta.com -b "dc=thousandeyes,dc=okta,dc=com" -D "uid=adoering@thousandeyes.com,dc=thousandeyes,dc=okta,dc=com" -W -x "(sn=Doer)"
-    # extended LDIF
-    #
-    # LDAPv3
-    # base <dc=thousandeyes,dc=okta,dc=com> with scope subtree
-    # filter: (sn=Doer)
-    # requesting: ALL
-    #
-    
-    # atesting@thousandeyes.com, users, thousandeyes.okta.com
-    dn: uid=atesting@thousandeyes.com,ou=users,dc=thousandeyes,dc=okta,dc=com
-    objectClass: top
-    objectClass: person
-    objectClass: organizationalPerson
-    objectClass: inetOrgPerson
-    uid: atesting@thousandeyes.com
-    uniqueIdentifier: REMOVINGFROMHERE
-    organizationalStatus: ACTIVE
-    givenName: Andrew
-    sn: Doer
-    cn: Andrew Doer
-    mail: atesting@thousandeyes.com
-    mail: atesting+testing@thousandeyes.com
-    AD_ObjectGUID: REMOVINGFROMHERE
-    sAMAccountName: atesting
-    title: IT Tester
-    department: Engineering
-    
-    # search result
-    search: 2
-    result: 0 Success
-    
-    # numResponses: 2
-    # numEntries: 1</code>
+          ldapsearch -H ldaps://thousandeyes.ldap.okta.com -b "dc=thousandeyes,dc=okta,dc=com" -D "uid=adoering@thousandeyes.com,dc=thousandeyes,dc=okta,dc=com" -W -x "(sn=Doer)"
+          # extended LDIF
+          #
+          # LDAPv3
+          # base <dc=thousandeyes,dc=okta,dc=com> with scope subtree
+          # filter: (sn=Doer)
+          # requesting: ALL
+          #
+          
+          # atesting@thousandeyes.com, users, thousandeyes.okta.com
+          dn: uid=atesting@thousandeyes.com,ou=users,dc=thousandeyes,dc=okta,dc=com
+          objectClass: top
+          objectClass: person
+          objectClass: organizationalPerson
+          objectClass: inetOrgPerson
+          uid: atesting@thousandeyes.com
+          uniqueIdentifier: REMOVINGFROMHERE
+          organizationalStatus: ACTIVE
+          givenName: Andrew
+          sn: Doer
+          cn: Andrew Doer
+          mail: atesting@thousandeyes.com
+          mail: atesting+testing@thousandeyes.com
+          AD_ObjectGUID: REMOVINGFROMHERE
+          sAMAccountName: atesting
+          title: IT Tester
+          department: Engineering
+          
+          # search result
+          search: 2
+          result: 0 Success
+          
+          # numResponses: 2
+          # numEntries: 1
 
 
 
@@ -372,11 +385,11 @@ With groups, we came to the conclusion that the following attributes were requir
 
 
 
-![](https://andrewdoering.org/blog/wp-content/uploads/2019/11/image-10-1024x493.png)
+![](/assets/blog/2019/11/image-10.png)
 
 
 
-![](https://andrewdoering.org/blog/wp-content/uploads/2019/11/image-9-1024x814.png)
+![](/assets/blog/2019/11/image-9.png)
 
 
 
@@ -412,7 +425,7 @@ Create a custom SAML Application in Okta.
 
 
 
-![](https://andrewdoering.org/blog/wp-content/uploads/2019/11/image-11-1024x489.png)
+![](/assets/blog/2019/11/image-11.png)
 
 
 
@@ -432,7 +445,7 @@ Below you will see a heavily redacted SAML setup. Sorry, but as these are all pr
 
 
 
-![](https://andrewdoering.org/blog/wp-content/uploads/2019/11/image-12-1024x767.png)
+![](/assets/blog/2019/11/image-12.png)
 
 
 
@@ -446,21 +459,21 @@ However, you will see a modified version of the links below where you can change
 
 
     
-    <code>Single Sign On URL: https://YOURDSSERVERHERE.awmdm.com/IdentityService/SAML/AssertionService.ashx?binding=HttpPost
-    Requestable SSO URLs, Index
-    https://YOURDSSERVERHERE.awmdm.com/IdentityService/SAML/AssertionService.ashx, 2
-    https://YOURDSSERVERHERE.awmdm.com/MyDevice/SAML/AssertionService.ashx, 5
-    https://YOURDSSERVERHERE.awmdm.com/DeviceManagement/SAML/AssertionService.ashx, 8
-    https://YOURCNSERVERHERE.awmdm.com/AirWatch/SAML/AssertionService.ashx, 11
-    https://YOURDSSERVERHERE.awmdm.com/Catalog/SAML/AssertionService.ashx, 14
-    Audience URI: SOMETHINGHERE
-    
-    
-    Attribute Statements
-    Name, NameFormat, Value
-    uid, Unspecified, user.login
-    objectGUID, Unspecified, user.AD_ObjectGUID
-    uniqueIdentifier, Unspecified, user.getInternalProperty("id")</code>
+          Single Sign On URL: https://YOURDSSERVERHERE.awmdm.com/IdentityService/SAML/AssertionService.ashx?binding=HttpPost
+          Requestable SSO URLs, Index
+          https://YOURDSSERVERHERE.awmdm.com/IdentityService/SAML/AssertionService.ashx, 2
+          https://YOURDSSERVERHERE.awmdm.com/MyDevice/SAML/AssertionService.ashx, 5
+          https://YOURDSSERVERHERE.awmdm.com/DeviceManagement/SAML/AssertionService.ashx, 8
+          https://YOURCNSERVERHERE.awmdm.com/AirWatch/SAML/AssertionService.ashx, 11
+          https://YOURDSSERVERHERE.awmdm.com/Catalog/SAML/AssertionService.ashx, 14
+          Audience URI: SOMETHINGHERE
+          
+          
+          Attribute Statements
+          Name, NameFormat, Value
+          uid, Unspecified, user.login
+          objectGUID, Unspecified, user.AD_ObjectGUID
+          uniqueIdentifier, Unspecified, user.getInternalProperty("id")
 
 
 
@@ -500,7 +513,7 @@ Becuase Airwatch in this way only provides SAML when initiated from the software
 
 
     
-    <code>https://YOURCNSERVERHERE.awmdm.com/AirWatch/Login?GID=YOURGROUPIDHERE</code>
+        https://YOURCNSERVERHERE.awmdm.com/AirWatch/Login?GID=YOURGROUPIDHERE
 
 
 
@@ -509,7 +522,7 @@ Becuase Airwatch in this way only provides SAML when initiated from the software
 
 
 From there, simply add a photo, my recommendation would be to use this photo:  
-https://images.app.goo.gl/FHoBaE4A912jCRmg9
+![](https://images.app.goo.gl/FHoBaE4A912jCRmg9)
 
 
 
@@ -531,7 +544,7 @@ Go to Enterprise Integrations > Directory Services > SAML. Take the Metadata fil
 
 
 
-![](https://andrewdoering.org/blog/wp-content/uploads/2019/12/image-1-1024x841.png)
+![](/assets/blog/2019/12/image-1-1024x841.png)
 
 
 

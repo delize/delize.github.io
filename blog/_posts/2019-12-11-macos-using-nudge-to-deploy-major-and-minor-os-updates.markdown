@@ -3,6 +3,7 @@ author: Andrew Doering
 comments: true
 date: 2019-12-11 04:24:00 PT
 layout: post
+excerpt: This goes over how to deploy nudge to manage macOS Updates in combination with tools and documentation software like Munki or Confluence.
 link: https://andrewdoering.org/blog/2019/12/10/macos-using-nudge-to-deploy-major-and-minor-os-updates/
 slug: macos-using-nudge-to-deploy-major-and-minor-os-updates
 title: macOS - Using nudge to deploy major (and minor) OS updates
@@ -22,7 +23,18 @@ img_alt: Image about using nudge on macOS for updates. Intro image.
 
 
 
-
+- [Prerequisites](#prerequisites)
+- [Let's get started!](#lets-get-started)
+  - [Fork the Github Code to your own repo](#fork-the-github-code-to-your-own-repo)
+  - [Examining the template file and the resources folder](#examining-the-template-file-and-the-resources-folder)
+    - [JAMF specific configuration](#jamf-specific-configuration)
+    - [Munki specific configuration](#munki-specific-configuration)
+    - [ThousandEyes Example Template](#thousandeyes-example-template)
+  - [nudge LaunchAgent](#nudge-launchagent)
+  - [Using GCP](#using-gcp)
+  - [STG & PROD](#stg--prod)
+- [Ways to improve this](#ways-to-improve-this)
+- [Major thanks to Erik](#major-thanks-to-erik)
 
 
 Having users update that do not have administrator permissions in macOS is a pain. Thankfully there is a cool (not new, but not well known) tool out called nudge (by Erik Gomez). You find the tool [here on Github](https://github.com/erikng/nudge).
@@ -107,39 +119,39 @@ If we take a look at the fork we will notice a few specific things. Mainly that 
 
 
     
-    <code>{
-        "preferences": {
-            "button_title_text": "Ready to start the update?",
-            "button_sub_titletext": "Click on the button below.",
-            "cut_off_date": "2018-12-31-00:00",
-            "cut_off_date_warning": 3,
-            "days_between_notifications": 0,
-            "logo_path": "/path/to/company_logo.png",
-            "main_subtitle_text": "A friendly reminder from your local IT team",
-            "main_title_text": "macOS Update",
-            "minimum_os_version": "10.14.0",
-            "more_info_url": "https://google.com",
-            "no_timer": false,
-            "paragraph1_text": "A fully up-to-date device is required to ensure that IT can your accurately protect your computer.",
-            "paragraph2_text": "If you do not update your computer, you may lose access to some items necessary for your day-to-day tasks.",
-            "paragraph3_text": "To begin the update, simply click on the button below and follow the provided steps.",
-            "paragraph_title_text": "A security update is required on your machine.",
-            "path_to_app": "/Applications/Install macOS Mojave.app",
-            "screenshot_path": "/path/to/update_ss.png",
-            "timer_day_1": 600,
-            "timer_day_3": 7200,
-            "timer_elapsed": 10,
-            "timer_final": 60,
-            "timer_initial": 14400,
-            "random_delay": false,
-            "update_minor": false,
-            "update_minor_days": 14
-        },
-        "software_updates": [{
-            "name": "091-22861",
-            "force_install_date": "2018-12-31-00:00"
-        }]
-    }</code>
+        {
+            "preferences": {
+                "button_title_text": "Ready to start the update?",
+                "button_sub_titletext": "Click on the button below.",
+                "cut_off_date": "2018-12-31-00:00",
+                "cut_off_date_warning": 3,
+                "days_between_notifications": 0,
+                "logo_path": "/path/to/company_logo.png",
+                "main_subtitle_text": "A friendly reminder from your local IT team",
+                "main_title_text": "macOS Update",
+                "minimum_os_version": "10.14.0",
+                "more_info_url": "https://google.com",
+                "no_timer": false,
+                "paragraph1_text": "A fully up-to-date device is required to ensure that IT can your accurately protect your computer.",
+                "paragraph2_text": "If you do not update your computer, you may lose access to some items necessary for your day-to-day tasks.",
+                "paragraph3_text": "To begin the update, simply click on the button below and follow the provided steps.",
+                "paragraph_title_text": "A security update is required on your machine.",
+                "path_to_app": "/Applications/Install macOS Mojave.app",
+                "screenshot_path": "/path/to/update_ss.png",
+                "timer_day_1": 600,
+                "timer_day_3": 7200,
+                "timer_elapsed": 10,
+                "timer_final": 60,
+                "timer_initial": 14400,
+                "random_delay": false,
+                "update_minor": false,
+                "update_minor_days": 14
+            },
+            "software_updates": [{
+                "name": "091-22861",
+                "force_install_date": "2018-12-31-00:00"
+            }]
+        }
 
 
 
@@ -258,38 +270,38 @@ We do however, use Munki at ThousandEyes. So I can give you a more specific/deta
 
 
     
-    <code>{
-        "preferences": {
-            "button_title_text": "Ready to start the update?",
-            "button_sub_titletext": "Click on the button below.",
-            "cut_off_date": "2020-1-15-00:00",
-            "cut_off_date_warning": 20,
-            "days_between_notifications": 0,
-            "logo_path": "/Library/Application Support/nudge/Resources/company_logo.png",
-            "main_subtitle_text": "A friendly reminder from your local IT team",
-            "main_title_text": "macOS Update",
-            "minimum_os_version": "10.15.1",
-            "minimum_os_sub_build_version": "19B88",
-            "more_info_url": "https://knowledgebase.documentation.com",
-            "no_timer": false,
-            "paragraph1_text": "A fully up-to-date device is required to ensure that IT can your accurately protect your computer.",
-            "paragraph2_text": "If you do not update your computer, you may lose access to some items necessary for your day-to-day tasks.",
-            "paragraph3_text": "To begin the update, simply click on the button below and follow the provided steps.",
-            "paragraph_title_text": "A security update is required on your machine.",
-            "path_to_app": "/Applications/Install macOS Catalina.app",
-            "screenshot_path": "/Library/Application Support/nudge/Resources/update_stg.png",
-            "timer_day_1": 600,
-            "timer_day_3": 3600,
-            "timer_elapsed": 10,
-            "timer_final": 300,
-            "timer_initial": 14400,
-            "random_delay": false,
-            "update_minor": true,
-            "update_minor_days": 14,
-            "local_url_for_upgrade": "munki://detail-Install_macOS_Catalina"
-        }
-      }
-    </code>
+          {
+            "preferences": {
+                "button_title_text": "Ready to start the update?",
+                "button_sub_titletext": "Click on the button below.",
+                "cut_off_date": "2020-1-15-00:00",
+                "cut_off_date_warning": 20,
+                "days_between_notifications": 0,
+                "logo_path": "/Library/Application Support/nudge/Resources/company_logo.png",
+                "main_subtitle_text": "A friendly reminder from your local IT team",
+                "main_title_text": "macOS Update",
+                "minimum_os_version": "10.15.1",
+                "minimum_os_sub_build_version": "19B88",
+                "more_info_url": "https://knowledgebase.documentation.com",
+                "no_timer": false,
+                "paragraph1_text": "A fully up-to-date device is required to ensure that IT can your accurately protect your computer.",
+                "paragraph2_text": "If you do not update your computer, you may lose access to some items necessary for your day-to-day tasks.",
+                "paragraph3_text": "To begin the update, simply click on the button below and follow the provided steps.",
+                "paragraph_title_text": "A security update is required on your machine.",
+                "path_to_app": "/Applications/Install macOS Catalina.app",
+                "screenshot_path": "/Library/Application Support/nudge/Resources/update_stg.png",
+                "timer_day_1": 600,
+                "timer_day_3": 3600,
+                "timer_elapsed": 10,
+                "timer_final": 300,
+                "timer_initial": 14400,
+                "random_delay": false,
+                "update_minor": true,
+                "update_minor_days": 14,
+                "local_url_for_upgrade": "munki://detail-Install_macOS_Catalina"
+            }
+          }
+
 
 
 
@@ -361,40 +373,40 @@ Now let's move on to the LaunchAgent configuration.
 
 
     
-    <code><?xml version="1.0" encoding="UTF-8"?>
-    <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-    <plist version="1.0">
-    <dict>
-    	<key>Label</key>
-    	<string>com.erikng.nudge</string>
-    	<key>LimitLoadToSessionType</key>
-    	<array>
-    		<string>Aqua</string>
-    	</array>
-    	<key>ProgramArguments</key>
-    	<array>
-    		<string>/Library/Application Support/nudge/Resources/nudge</string>
-    		<string>--jsonurl=https://fake.domain.com/path/to/config.json</string>
-    	</array>
-    	<key>RunAtLoad</key>
-    	<true/>
-    	<key>StandardOutPath</key>
-    	<string>/Library/Application Support/nudge/Logs/nudge.log</string>
-    	<key>StandardErrorPath</key>
-    	<string>/Library/Application Support/nudge/Logs/nudge.log</string>
-    	<key>StartCalendarInterval</key>
-    	<array>
-    		<dict>
-    			<key>Minute</key>
-    			<integer>0</integer>
-    		</dict>
-    		<dict>
-    			<key>Minute</key>
-    			<integer>30</integer>
-    		</dict>
-    	</array>
-    </dict>
-    </plist></code>
+        <?xml version="1.0" encoding="UTF-8"?>
+        <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+        <plist version="1.0">
+        <dict>
+          <key>Label</key>
+          <string>com.erikng.nudge</string>
+          <key>LimitLoadToSessionType</key>
+          <array>
+            <string>Aqua</string>
+          </array>
+          <key>ProgramArguments</key>
+          <array>
+            <string>/Library/Application Support/nudge/Resources/nudge</string>
+            <string>--jsonurl=https://fake.domain.com/path/to/config.json</string>
+          </array>
+          <key>RunAtLoad</key>
+          <true/>
+          <key>StandardOutPath</key>
+          <string>/Library/Application Support/nudge/Logs/nudge.log</string>
+          <key>StandardErrorPath</key>
+          <string>/Library/Application Support/nudge/Logs/nudge.log</string>
+          <key>StartCalendarInterval</key>
+          <array>
+            <dict>
+              <key>Minute</key>
+              <integer>0</integer>
+            </dict>
+            <dict>
+              <key>Minute</key>
+              <integer>30</integer>
+            </dict>
+          </array>
+        </dict>
+        </plist>
 
 
 

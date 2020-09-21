@@ -2,8 +2,7 @@
 author: Andrew Doering
 comments: true
 date: 2019-12-23 07:03:05 PT
-excerpt: This guide covers how to setup member and group importing, the correct way,
-  in Airwatch/Workspace One using Okta as an LDAP backend.
+excerpt: This guide covers how to setup member and group importing, the correct way, in Airwatch/Workspace One using Okta as an LDAP backend.
 layout: post
 link: https://andrewdoering.org/blog/2019/12/22/workspace-one-okta-users-and-groups-working-with-dep-enrollment/
 slug: workspace-one-okta-users-and-groups-working-with-dep-enrollment
@@ -29,7 +28,21 @@ img_alt: Image about Okta and Workspace1 Interoperability. Intro image.
 ---
 
 
-
+- [Introduction](#introduction)
+  - [How this document is structured](#how-this-document-is-structured)
+- [Why is Okta LDAP and WS One UEM Intergation important?](#why-is-okta-ldap-and-ws-one-uem-intergation-important)
+- [Software Requirements](#software-requirements)
+- [Okta - Adding User Attributes](#okta---adding-user-attributes)
+- [Workspace One - Directory Services > Server Configuration](#workspace-one---directory-services--server-configuration)
+- [Workspace One - Directory Services > User Mapping](#workspace-one---directory-services--user-mapping)
+- [Workspace One - Directory Services > Group Mappings](#workspace-one---directory-services--group-mappings)
+- [Okta - Limitations to be aware of](#okta---limitations-to-be-aware-of)
+- [Workspace One - Test your setup](#workspace-one---test-your-setup)
+- [Workspace One - Add Group](#workspace-one---add-group)
+- [Workspace One - DEP Profile](#workspace-one---dep-profile)
+- [Okta - SAML Application](#okta---saml-application)
+- [Our room for improvement](#our-room-for-improvement)
+- [Comments, Questions?](#comments-questions)
 
 
 
@@ -195,7 +208,7 @@ First, go here:  [https://YOURDOMAIN-admin.okta.com/admin/universaldirectory](ht
 
 
 
-![](https://andrewdoering.org/blog/wp-content/uploads/2019/11/image-4-1024x201.png)
+![](/assets/blog/2019/11/image-4.png)
 
 
 
@@ -207,7 +220,7 @@ Click the add attribute button
 
 
 
-![](https://andrewdoering.org/blog/wp-content/uploads/2019/11/image-5.png)
+![](/assets/blog/2019/11/image-5.png)
 
 
 
@@ -219,11 +232,11 @@ Use the the following settings for the Attributes
 
 
 
-![](https://andrewdoering.org/blog/wp-content/uploads/2019/11/image-2-1024x734.png)
+![](/assets/blog/2019/11/image-2.png)
 
 
 
-![](https://andrewdoering.org/blog/wp-content/uploads/2019/11/image-3-1024x734.png)
+![](/assets/blog/2019/11/image-3.png)
 
 
 
@@ -235,7 +248,7 @@ Now, lets go to Active Directory's mapping, select your domain to setup the mapp
 
 
 
-![](https://andrewdoering.org/blog/wp-content/uploads/2019/11/image-6-1024x330.png)
+![](/assets/blog/2019/11/image-6.png)
 
 
 
@@ -264,8 +277,7 @@ To reiterate, you need to have a user that is either ReadOnly or SuperAdmin. The
 
 
 
-![](https://andrewdoering.org/blog/wp-content/uploads/2019/11/2019-11-28_12-39-35-1024x549.jpg)
-
+![](/assets/blog/2019/11/2019-11-28_12-39-35.jpg)
 
 
 
@@ -292,7 +304,7 @@ For the User Mapping you will want to fill out the following attributes, with th
 
 
 
-![](https://andrewdoering.org/blog/wp-content/uploads/2019/12/image-3-1024x993.png)
+![](/assets/blog/2019/12/image-3.png)
 
 
 
@@ -342,7 +354,7 @@ Now, save the following settings and then scroll up to the top of the page. Now 
 
 
 
-![](https://andrewdoering.org/blog/wp-content/uploads/2019/12/image-6-1024x726.png)
+![](/assets/blog/2019/12/image-6.png)
 
 
 
@@ -370,7 +382,7 @@ I was so very close in the original blog post for our group mappings, I only mes
 
 
 
-![](https://andrewdoering.org/blog/wp-content/uploads/2019/12/image-7-1024x801.png)
+![](/assets/blog/2019/12/image-7.png)
 
 
 
@@ -439,7 +451,7 @@ If you test a member, you should see something similar to the following:
 
 
 
-![](https://andrewdoering.org/blog/wp-content/uploads/2019/12/image-8.png)
+![](/assets/blog/2019/12/image-8.png)
 
 
 
@@ -451,7 +463,7 @@ If you test a group, you should see something similar to the following:
 
 
 
-![](https://andrewdoering.org/blog/wp-content/uploads/2019/12/groups.png)
+![](/assets/blog/2019/12/groups.png)
 
 
 
@@ -487,7 +499,7 @@ I will create a group in Okta called `iam_airwatch_test_group`
 
 
 
-![](https://andrewdoering.org/blog/wp-content/uploads/2019/12/image-10.png)
+![](/assets/blog/2019/12/image-10.png)
 
 
 
@@ -499,8 +511,7 @@ So we see that there are two users within the group here. If I then switch back 
 
 
 
-![](https://andrewdoering.org/blog/wp-content/uploads/2019/12/image-11.png)
-
+![](/assets/blog/2019/12/image-11.png)
 
 
 
@@ -511,7 +522,7 @@ So from here, lets say I add the group, my atesting account already exists in th
 
 
 
-![](https://andrewdoering.org/blog/wp-content/uploads/2019/12/image-12-1024x68.png)
+![](/assets/blog/2019/12/image-12-1024x68.png)
 
 
 
@@ -547,7 +558,8 @@ How we have this configured at ThousandEyes:
 
 
 
-![](https://andrewdoering.org/blog/wp-content/uploads/2019/12/image-9.png)
+
+![](/assets/blog/2019/12/image-9.png)
 
 
 
@@ -625,8 +637,7 @@ To also compare this blog post to what VMware originally wrote (at the time of w
 
 
 
-[Configuring-Okta-LDAP-for-use-with-VMware-Workspace-ONE-UEM-2961230](https://andrewdoering.org/blog/wp-content/uploads/2019/12/Configuring-Okta-LDAP-for-use-with-VMware-Workspace-ONE-UEM-2961230.pdf)[Download](https://andrewdoering.org/blog/wp-content/uploads/2019/12/Configuring-Okta-LDAP-for-use-with-VMware-Workspace-ONE-UEM-2961230.pdf)
-
+[Configuring-Okta-LDAP-for-use-with-VMware-Workspace-ONE-UEM-2961230](/assets/blog/2019/12/Configuring-Okta-LDAP-for-use-with-VMware-Workspace-ONE-UEM-2961230.pdf)
 
 
 

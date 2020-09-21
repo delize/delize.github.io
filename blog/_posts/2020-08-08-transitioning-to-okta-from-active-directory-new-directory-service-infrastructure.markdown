@@ -135,11 +135,11 @@ We had already configured and setup Okta as an IdP with BambooHR for SSO/SAML be
 
 Our Service Account in Okta looks like this:
 
-![](https://andrewdoering.org/blog/wp-content/uploads/2020/08/Screen-Shot-2020-08-07-at-8.57.06-PM-1024x656.png)You will notice that we have a User Type called "Service Account", that basically just minimizes any potential attributes so that the user cannot be used with various services. Whatever you want to call the service account will work.
+![](/assets/blog/2020/08/Screen-Shot-2020-08-07-at-8.57.06-PM-1024x656.png)You will notice that we have a User Type called "Service Account", that basically just minimizes any potential attributes so that the user cannot be used with various services. Whatever you want to call the service account will work.
 
 Our Service Account in BambooHR looks like this:
 
-![](https://andrewdoering.org/blog/wp-content/uploads/2020/08/Screen-Shot-2020-08-07-at-9.05.40-PM-1024x588.png)My recommendation here, is to use the exact same email/uid as the Okta Service Account. Mainly to simplify things.
+![](/assets/blog/2020/08/Screen-Shot-2020-08-07-at-9.05.40-PM-1024x588.png)My recommendation here, is to use the exact same email/uid as the Okta Service Account. Mainly to simplify things.
 
 We discussed in depth with our HR team on what information we wanted to import into Okta so we could potentially utilize that information into our services/systems. At a bare minimum, we wanted the following from the HRIS system in Okta:
 
@@ -224,16 +224,16 @@ From here, we setup the integration to occur in our Okta Sandbox (OktaS) & Bambo
 We discussed with both our InfoSec team as well as our HR team on appropriate time frames and ranges to have accounts onboarded before hand, as well as when they should be offboarded. Our Okta Configuration looks like the following:
 
 
-![](https://andrewdoering.org/blog/wp-content/uploads/2020/08/Screen-Shot-2020-08-08-at-12.43.28-AM-1024x552.png)You can see that we are using Departments, and importing those Departments as Groups into Okta. While we had some debate, we initially elected for 3 days prior to the new employees start date to create their account. However, this meant employees starting on a Monday (or Tuesday) would have their account created too late (as we had not switched off of AD yet).  We elected for 5 days instead.
+![](/assets/blog/2020/08/Screen-Shot-2020-08-08-at-12.43.28-AM-1024x552.png)You can see that we are using Departments, and importing those Departments as Groups into Okta. While we had some debate, we initially elected for 3 days prior to the new employees start date to create their account. However, this meant employees starting on a Monday (or Tuesday) would have their account created too late (as we had not switched off of AD yet).  We elected for 5 days instead.
 
 
-![](https://andrewdoering.org/blog/wp-content/uploads/2020/08/Screen-Shot-2020-08-08-at-12.45.52-AM-1024x454.png)We wanted to make sure that any updates that occurred to employees would occur multiple times throughout the day, our HR team was concerned about making these changes too frequently, however for a company the size of ~500 people, I don't see much of an issue moving this down from 6 hours to 1 - 3 hours. Our username format is meant to always be email address across the entire company.
+![](/assets/blog/2020/08/Screen-Shot-2020-08-08-at-12.45.52-AM-1024x454.png)We wanted to make sure that any updates that occurred to employees would occur multiple times throughout the day, our HR team was concerned about making these changes too frequently, however for a company the size of ~500 people, I don't see much of an issue moving this down from 6 hours to 1 - 3 hours. Our username format is meant to always be email address across the entire company.
 
 
-![](https://andrewdoering.org/blog/wp-content/uploads/2020/08/Screen-Shot-2020-08-08-at-12.46.04-AM-1024x504.png)
+![](/assets/blog/2020/08/Screen-Shot-2020-08-08-at-12.46.04-AM-1024x504.png)
 We discussed and wanted to enable all features here - mainly to make sure that minimal fuss and touch would be applied to any accounts going forward.
 
-![](https://andrewdoering.org/blog/wp-content/uploads/2020/08/Screen-Shot-2020-08-08-at-12.46.14-AM-1024x671.png)Due to employees potentially leaving and coming back into the company, we wanted to reactivate suspended Okta Users and reactivate deactivated Okta users.  The safeguards here are honestly very dependent on your needs. We did not modify the original settings here and 20% is the general safeguard for Okta applications.   
+![](/assets/blog/2020/08/Screen-Shot-2020-08-08-at-12.46.14-AM-1024x671.png)Due to employees potentially leaving and coming back into the company, we wanted to reactivate suspended Okta Users and reactivate deactivated Okta users.  The safeguards here are honestly very dependent on your needs. We did not modify the original settings here and 20% is the general safeguard for Okta applications.   
 However, if you are using BambooHR as the sole profile master, and you are deactivating accounts if something occurs at the application level (the employee gets removed from the App, BambooHR gets deactivated, etc) 20% of your employees will be deactivated causing you a massive headache when this occurs. My recommendation would be to set the percentage of your employee base to 20 people or less.
 
 
@@ -283,7 +283,7 @@ To do this, make sure that you create attributes in the User Profile Type first,
 
 
 
-![](https://andrewdoering.org/blog/wp-content/uploads/2020/08/Screen-Shot-2020-08-07-at-10.56.16-PM-1024x945.png)
+![](/assets/blog/2020/08/Screen-Shot-2020-08-07-at-10.56.16-PM-1024x945.png)
 
 
 
@@ -732,7 +732,7 @@ All users in the group will be pushed and synced to your Active Directory. If yo
 
 While the steps above, I would recommend using your department based groups from the Phase 1 rollout, that way you know that the entire department/team will be have access to the AD Environment if needed. If a smaller subset is required you can revert to the team or department groups from the Phase 1 integration. We also decided to push attributes and other information so that employees had a single place to update and manage these details. You can see an example of our configuration below:
 
-![](https://andrewdoering.org/blog/wp-content/uploads/2020/08/image-836x1024.png)
+![](/assets/blog/2020/08/image-836x1024.png)
 
 
 
@@ -808,7 +808,7 @@ For this, again with a cloud first mentality - we wanted to deploy the Radius Ag
 
 
 
-![](https://andrewdoering.org/blog/wp-content/uploads/2020/08/image-1-638x1024.png)
+![](/assets/blog/2020/08/image-1-638x1024.png)
 
 
 

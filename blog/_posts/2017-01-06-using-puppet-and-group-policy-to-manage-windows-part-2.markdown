@@ -4,10 +4,8 @@ comments: true
 date: 2017-01-06 05:31:24+00:00
 layout: post
 link: https://andrewdoering.org/blog/2017/01/05/using-puppet-and-group-policy-to-manage-windows-part-2/
-published: false
 slug: using-puppet-and-group-policy-to-manage-windows-part-2
 title: Using Puppet and Group Policy to manage Windows (part 2)
-wordpress_id: 89
 comments: true
 categories:
 - Active Directory
@@ -18,7 +16,7 @@ categories:
 
 
 
-I previously discussed some pros and cons of Puppet and Group Policy, most of which you could probably gather online elsewhere. But no worries, let's get to the real meat, CONFIG FILES!
+I previously discussed some pros and cons of Puppet and Group Policy (but never actually posted it), most of which you could probably gather online elsewhere. But no worries, let's get to the real meat, CONFIG FILES!
 
 As a side note, Unix file paths are not the same as Windows File paths, of course, this is pretty obvious. However, this also means the traditional \' will actually escape the single quote. Due to this, most of these config files include double quotes
 
