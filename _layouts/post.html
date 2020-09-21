@@ -19,11 +19,11 @@
             <div class="text-center hero-content mx-auto">
                 <h1 class="text-white center mb-4" style="margin=4px">{{ page.title }}</h1>
                 <p class="mx-auto text-white">
-                    <a href="{{ site.url }}" class="text-white">Home</a>
+                    <a href="{{ '/' | relative_url }}" class="text-white">Home</a>
                     /
-                    <a href="{{ absolute_url }}/blog" class="text-white">Blog</a>
+                    <a href="{{ '/blog' | relative_url }}" class="text-white">Blog</a>
                     /
-                    <a href="{{ realtive_url }}" class="text-white">{{ page.title }}</a>
+                    <a href="{{ page.url | relative_url }}" class="text-white">{{ page.title }}</a>
                 </p>
             </div>
         </section>
