@@ -47,9 +47,9 @@
                                         <img src="{{post.img_blog}}" alt="{{post.img_alt}}" class="img-fluid border-top-left-radius border-top-radius">
                                     </div>
                                 </div>
-                                <div class="col-lg-8 px-lg-0 border-bottom-radius">
+                                <div class="col-lg-8 px-lg-4 border-bottom-radius">
                                     <div class="blog-content">
-                                        <h5><a href="post.url" class="text-dark">{{post.title | truncatewords: 6, '...' }}</a></h5>
+                                        <h5><a href="post.url" class="text-dark">{{post.title | truncatewords: 8, '...' }}</a></h5>
                                         <p class="text-muted">{{ post.excerpt | truncatewords: 30, '...' }}</p>
                                         <div class="blog-link">
                                             <a class="text-muted" href="{{ post.url }}" target="_blank">Read More...</a>
