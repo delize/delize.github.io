@@ -1,10 +1,8 @@
 name: Andrew Doering CV & Blog
 firstname: Andrew
 lastname: Doering
-url: https://delize.github.io
+url: https://andrewdoering.org
 baseurl: ""
-# plugins:
-# - jekyll-responsive-image
 social:
   facebook:
     - url: https://www.facebook.com/
@@ -32,7 +30,9 @@ contact:
   - email: contact@andrewdoering.org
   - address: San Francisco, CA, USA
 copyright: 2020
-highlighter: rouge
+markdown: kramdown
+kramdown:
+    highlighter: rouge
     syntax_highlighter_opts:
         block:
             line_numbers: true

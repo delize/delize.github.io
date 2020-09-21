@@ -2,14 +2,12 @@
 author: Andrew Doering
 comments: true
 date: 2020-08-08 18:16:49 PT
-excerpt: Transitioning from legacy Active Directory to a cloud centric HRIS, Okta,
-  Push System.
+excerpt: Transitioning from legacy Active Directory to a cloud centric HRIS, Okta, and Push System. This blog post will go over all workflow process of transitioning, this does not go into low level details on how to transition due to the environment that this took place in. 
 layout: post
 link: https://andrewdoering.org/blog/2020/08/08/transitioning-to-okta-from-active-directory-new-directory-service-infrastructure/
 slug: transitioning-to-okta-from-active-directory-new-directory-service-infrastructure
 title: Transitioning To Okta From Active Directory - New Directory Service Infrastructure
 wordpress_id: 595
-comments: true
 tags:
 - Active Directory
 - bamboohr
@@ -19,6 +17,8 @@ tags:
 - office
 - okta
 blogsingle-backgroundimage: https://images.wallpapersden.com/image/download/huawei-4k-stock-abstract_66336_1920x1080.jpg
+img_blog: /assets/img/2020-08-08-post/800x650.png
+img_alt: Placeholder text
 ---
 
 
@@ -655,10 +655,16 @@ Before doing this, I would recommend announcing a few things to end users and ma
   * Create an API Token to use Postman as a backup in case all Admin users get locked out of the Administrator Dashboard
   * Have the following Postman Collections prepared to use
     * [Find User](https://developer.okta.com/docs/reference/api/users/#find-users) - `{% raw %}{{url}}{% endraw %}/api/v1/users?q={% raw %}{{SEARCHSTRING}}{% endraw %}`
-    * [Unlock User](https://developer.okta.com/docs/reference/api/users/#unlock-user) - `{% raw %}{{url}}{% endraw %}/api/v1/users/{{userId}}/lifecycle/unlock`
-    * [Reset Password ](https://developer.okta.com/docs/reference/api/users/#reset-password)- `{% raw %}{{url}}{% endraw %}/api/v1/users/{{userId}}/lifecycle/reset_password?sendEmail=true`
+    * [Unlock User](https://developer.okta.com/docs/reference/api/users/#unlock-user) - `{% raw %}{{url}}{% endraw %}/api/v1/users/{% raw %}{{userId}}{% endraw %}/lifecycle/unlock`
+    * [Reset Password ](https://developer.okta.com/docs/reference/api/users/#reset-password)- `{% raw %}{{url}}{% endraw %}/api/v1/users/{% raw %}{{userId}}{% endraw %}/lifecycle/reset_password?sendEmail=true`
     * [Set Recovery Question](https://developer.okta.com/docs/reference/api/users/#set-recovery-question-answer) - `{% raw %}{{url}}{% endraw %}/api/v1/users/{% raw %}{{userId}}{% endraw %}` 
 
+
+[//]: # (Hello)
+
+
+
+<!-- end of the list -->
   
 
 
@@ -670,6 +676,8 @@ Before doing this, I would recommend announcing a few things to end users and ma
                 }
               }
             }
+
+
 Note that this needs to be in the body of the PUT request. Annoyingly, if you use the word "The" in your question, you can't use the word or any variation of "The" in your answer. 
 
 
