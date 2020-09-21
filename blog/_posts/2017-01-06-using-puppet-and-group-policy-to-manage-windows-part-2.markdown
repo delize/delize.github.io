@@ -6,6 +6,7 @@ layout: post
 link: https://andrewdoering.org/blog/2017/01/05/using-puppet-and-group-policy-to-manage-windows-part-2/
 slug: using-puppet-and-group-policy-to-manage-windows-part-2
 title: Using Puppet and Group Policy to manage Windows (part 2)
+excerpt: This is an unfinished blog post collection. This should be treated at a beginners guide to understand Puppet.
 comments: true
 categories:
 - Active Directory
