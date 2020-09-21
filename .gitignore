@@ -1,11 +1,10 @@
 .git-ignore
 .DS_Store
 .history/
-
+CNAME
 _site/
 .jekyll-metadata
 .jekyll-cache/
 .sass-cache/
-
 .bundle/
 vendor/
