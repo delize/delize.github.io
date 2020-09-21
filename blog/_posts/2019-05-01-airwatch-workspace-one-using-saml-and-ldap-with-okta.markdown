@@ -15,7 +15,8 @@ tags:
 - Airwatch
 - LDAP
 - LDAP Interface
-- 
+  
+permalink: /blog/:year/:month/:day/:title/
 ---
 
 

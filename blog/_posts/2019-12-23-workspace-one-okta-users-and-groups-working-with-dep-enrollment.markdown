@@ -25,6 +25,7 @@ img_bg: https
 img_bg_alt: Placeholder Alt text
 img_blog: /assets/img/2019-12-22-post/okta_ws1_interop.jpg
 img_alt: Image about Okta and Workspace1 Interoperability. Intro image.
+permalink: /blog/:year/:month/:day/:title/
 ---
 
 

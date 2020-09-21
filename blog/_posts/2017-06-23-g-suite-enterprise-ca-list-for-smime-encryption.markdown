@@ -13,6 +13,8 @@ tags:
 - G Suite
 - S/MIME
 - DigiCert
+
+permalink: /blog/:year/:month/:day/:title/
 ---
 
 My company just recently enabled G Suite Enterprise on our Google Accounts in an attempt to provide a more seamless process for email encryption. We ran into a bit of an issue though, our certificate chain wasn't trusted. Throwing out this message when attempting to upload anything.

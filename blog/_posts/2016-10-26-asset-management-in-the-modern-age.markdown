@@ -21,6 +21,8 @@ tags:
 - SNOW
 - Symantec
 - Asset Management
+
+permalink: /blog/:year/:month/:day/:title/
 ---
 
 There are a lot of tools out there that can assist with Asset Management. Dozens upon dozens, literally. I am sure that a bunch of these seem to initially been designed for multiple purposes, I personally don't believe that is a good design choice. The more solutions you add to a single utility, the more complex it gets, and the more difficult it is to manage. After starting at a recent company, I was tasked to find an asset management solution, which wasn't easy. From an IT perspective, I found exactly what I needed, but, from a financial perspective, this tool made little sense. I will be describing what I searched, the reasons for either going with or dismissing the product, and finally, what the final process was. My focus leaned towards Mac compatible software, and Windows second, as my installation base has a much broader scope with Macs.
