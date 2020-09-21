@@ -17,6 +17,7 @@ tags:
 - LDAP Interface
   
 permalink: /blog/:year/:month/:day/:title/
+robots: all, noarchive
 ---
 
 

@@ -4,7 +4,7 @@ comments: true
 date: 2019-12-11 04:24:00 PT
 layout: post
 excerpt: This goes over how to deploy nudge to manage macOS Updates in combination with tools and documentation software like Munki or Confluence.
-link: https://andrewdoering.org/blog/2019/12/10/macos-using-nudge-to-deploy-major-and-minor-os-updates/
+link: https://andrewdoering.org/blog/2019/12/11/macos-using-nudge-to-deploy-major-and-minor-os-updates/
 permalink: /blog/:year/:month/:day/:title/
 slug: macos-using-nudge-to-deploy-major-and-minor-os-updates
 title: macOS - Using nudge to deploy major (and minor) OS updates
@@ -20,6 +20,7 @@ img_bg: https://images.wallpapersden.com/image/download/huawei-4k-stock-abstract
 img_bg_alt: Placeholder Alt text
 img_blog: /assets/img/2019-12-11-post/nudge800x650.jpg
 img_alt: Image about using nudge on macOS for updates. Intro image.
+robots: all, noarchive
 ---
 
 
