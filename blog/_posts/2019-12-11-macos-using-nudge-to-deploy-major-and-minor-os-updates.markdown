@@ -13,6 +13,11 @@ tags:
 - Erik Gomez
 - nudge
 - OS Updates
+
+img_bg: https://images.wallpapersden.com/image/download/huawei-4k-stock-abstract_66336_1920x1080.jpg
+img_bg_alt: Placeholder Alt text
+img_blog: /assets/img/2019-12-11-post/nudge800x650.jpg
+img_alt: Image about using nudge on macOS for updates. Intro image.
 ---
 
 

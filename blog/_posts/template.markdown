@@ -1,12 +1,13 @@
 ---
-author: Andrew Doering
-comments: true
-date: 2020-08-08 18:16:49 PT
+title: Transitioning To Okta From Active Directory - New Directory Service Infrastructure1
 excerpt: Transitioning from legacy Active Directory to a cloud centric HRIS, Okta, and Push System. This blog post will go over all workflow process of transitioning, this does not go into low level details on how to transition due to the environment that this took place in. 
+link: https://andrewdoering.org/blog/2020/09/20/transitioning-to-okta-from-active-directory-new-directory-service-infrastructure1/
+slug: transitioning-to-okta-from-active-directory-new-directory-service-infrastructure1
+author: Andrew Doering
+published: false
+comments: true
+date: 2020-09-20 18:20:49 PT
 layout: post
-link: https://andrewdoering.org/blog/2020/08/08/transitioning-to-okta-from-active-directory-new-directory-service-infrastructure/
-slug: transitioning-to-okta-from-active-directory-new-directory-service-infrastructure
-title: Transitioning To Okta From Active Directory - New Directory Service Infrastructure
 tags:
 - Active Directory
 - bamboohr
@@ -15,8 +16,8 @@ tags:
 - meraki
 - office
 - okta
-
-img_bg: https://images.wallpapersden.com/image/download/huawei-4k-stock-abstract_66336_1920x1080.jpg
+blogsingle-backgroundimage: https://images.wallpapersden.com/image/download/huawei-4k-stock-abstract_66336_1920x1080.jpg
+img_bg: https
 img_bg_alt: Placeholder Alt text
 img_blog: /assets/img/2020-08-08-post/adoktapython.jpg
 img_alt: Image about Active Directory to Okta mastering transition proces. Intro image.

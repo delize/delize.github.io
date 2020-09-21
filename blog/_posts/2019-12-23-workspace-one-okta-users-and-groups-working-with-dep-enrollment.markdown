@@ -8,7 +8,6 @@ layout: post
 link: https://andrewdoering.org/blog/2019/12/22/workspace-one-okta-users-and-groups-working-with-dep-enrollment/
 slug: workspace-one-okta-users-and-groups-working-with-dep-enrollment
 title: Workspace One & Okta - User(s) and Group(s) working with DEP Enrollment
-wordpress_id: 555
 comments: true
 tags:
 - airwatch
@@ -21,6 +20,12 @@ tags:
 - vmware
 - workspace
 - workspace one
+
+blogsingle-backgroundimage: https://images.wallpapersden.com/image/download/huawei-4k-stock-abstract_66336_1920x1080.jpg
+img_bg: https
+img_bg_alt: Placeholder Alt text
+img_blog: /assets/img/2019-12-22-post/okta_ws1_interop.jpg
+img_alt: Image about Okta and Workspace1 Interoperability. Intro image.
 ---
 
 

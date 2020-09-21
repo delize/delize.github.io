@@ -16,15 +16,15 @@
                     <div class="row mx-0 bg-white mt-4 mt-lg-0">
                         <div class="col-lg-6 px-0">
                             <div class="blog-image arrow-left">
-                                <img src="assets/img/adoktapython.jpg" alt="/" class="img-fluid border-top-left-radius border-top-radius">
+                                <img src="{{site.posts[0].img_blog}}" alt="{{site.posts[0].img_alt}}" class="img-fluid border-top-left-radius border-top-radius">
                             </div>
                         </div>
                         <div class="col-lg-6 px-lg-0 border-bottom-radius">
                             <div class="blog-content">
-                                <h5><a href="../blog/2020/08/08/transitioning-to-okta-from-active-directory-new-directory-service-infrastructure" class="text-dark">Transitioning to Okta from Active Directory</a></h5>
-                                <p class="text-muted">How we transitioned off of Active Directory to a cloud centric Okta service ...</p>
+                                <h5><a href="{{site.posts[0].url}}" class="text-dark">{{ site.posts[0].title | truncate: 46, '...' }}</a></h5>
+                                <p class="text-muted">{{ site.posts[0].excerpt | truncatewords: 30, '...' }}</p>
                                 <div class="blog-link">
-                                    <a class="text-muted" href="../blog/2020/08/08/transitioning-to-okta-from-active-directory-new-directory-service-infrastructure" target="_blank">Read More...</a>
+                                    <a class="text-muted" href="{{site.posts[0].url}}" target="_blank">Read More...</a>
                                 </div>
                             </div>
                         </div>
@@ -33,16 +33,16 @@
                     <div class="row mx-0 bg-white mt-4 mt-lg-0 border-bottom-left-radius border-bottom-radius">
                         <div class="col-lg-6 px-lg-0 order-2 order-lg-1">
                             <div class="blog-content">
-                                <h5><a href="../blog/2019/12/22/workspace-one-okta-users-and-groups-working-with-dep-enrollment" class="text-dark">Connecting Workspace One with Okta's LDAP interface</a></h5>
-                                <p class="text-muted">Creating interopability between Workspace One and Okta, using the ldap interface to lookup users and groups ...</p>
+                                <h5><a href="{{site.posts[1].url}}" class="text-dark">{{ site.posts[1].title | truncate: 46, '...' }}</a></h5>
+                                <p class="text-muted">{{ site.posts[1].excerpt | truncatewords: 30, '...' }}</p>
                                 <div class="blog-link">
-                                    <a class="text-muted" href="../blog/2019/12/22/workspace-one-okta-users-and-groups-working-with-dep-enrollment" target="_blank">Read More...</a>
+                                    <a class="text-muted" href="{{site.posts[1].url}}" target="_blank">Read More...</a>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-6 px-0 order-1 order-lg-2">
                             <div class="blog-image arrow-right">
-                                <img src="assets/img/okta_ws1_interop.jpg" alt="/" class="img-fluid border-top-radius">
+                                <img src="{{site.posts[1].img_blog}}" alt="{{site.posts[1].img_alt}}" class="img-fluid border-top-radius">
                             </div>
                         </div>
                     </div>
@@ -52,15 +52,15 @@
                     <div class="row mx-0">
                         <div class="col-lg-12 px-0">
                             <div class="blog-image arrow-top">
-                                <img src="assets/img/nudge800x650.jpg" alt="/" class="img-fluid border-top-right-radius border-top-radius">
+                                <img src="{{site.posts[2].img_blog}}" alt="{{site.posts[2].img_alt}}" class="img-fluid border-top-right-radius border-top-radius">
                             </div>
                         </div>
                         <div class="col-lg-12 px-lg-0 border-bottom-radius">
                             <div class="blog-content">
-                                <h5><a href="../blog/2019/12/10/macos-using-nudge-to-deploy-major-and-minor-os-updates" class="text-dark">Using nudge on macOS</a></h5>
-                                <p class="text-muted">Deploying major and minor OS Updates via nudge - an open source tool ...</p>
+                                <h5><a href="{{site.posts[2].url}}" class="text-dark">{{ site.posts[2].title | truncate: 46, '...' }}</a></h5>
+                                <p class="text-muted">{{ site.posts[2].excerpt | truncatewords: 30, '...' }}</p>
                                 <div class="blog-link">
-                                    <a class="text-muted" href="../blog/2019/12/10/macos-using-nudge-to-deploy-major-and-minor-os-updates" target="_blank">Read More...</a>
+                                    <a class="text-muted" href="{{site.posts[2].url}}" target="_blank">Read More...</a>
                                 </div>
                             </div>
                         </div>

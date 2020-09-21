@@ -34,6 +34,7 @@
                         <div>
                             <h2 class="text-dark mb-3">Latest <span class="base-color">News</span></h2>
                             <p class="text-muted">Check Out My Latest Blog Posts</p>
+                            <p class="text-muted">Apologies for the mess, I am in the middle of transitioning my site from a jumbled mess to a less jumbled mess (IE: Jekyll). Please let me know if there are any issues with any part of the site!</p>
                         </div>
                     </div>
                 </div>
@@ -49,8 +50,10 @@
                                 </div>
                                 <div class="col-lg-8 px-lg-4 border-bottom-radius">
                                     <div class="blog-content">
-                                        <h5><a href="post.url" class="text-dark">{{post.title | truncatewords: 8, '...' }}</a></h5>
+                                        <h5><a href="{{post.url}}" class="text-dark">{{post.title | truncatewords: 8, '...' }}</a></h5>
                                         <p class="text-muted">{{ post.excerpt | truncatewords: 30, '...' }}</p>
+                                        <div></div>
+                                        <div></div>
                                         <div class="blog-link">
                                             <a class="text-muted" href="{{ post.url }}" target="_blank">Read More...</a>
                                         </div>

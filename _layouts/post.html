@@ -8,6 +8,11 @@
         {% if jekyll.environment == 'production' %}
         {% include analytics.html %}
         {% endif %}
+        <style>
+            .hero-bg {
+              background-image: url("{{ page.img_bg }}")
+            }
+        </style>
     </head>
 
     <body data-spy="scroll" data-target="#scrollspy" data-offset="61" class="uone-dark pt-hero">
@@ -15,9 +20,9 @@
         <!--    Header End    -->
 
         <!--    Hero Start    -->
-        <section class="hero page-hero py-6" id="hero">
+        <section class="hero hero-bg page-hero py-6" id="hero">
             <div class="text-center hero-content mx-auto">
-                <h1 class="text-white center mb-4" style="margin=4px">{{ page.title }}</h1>
+                <h1 class="text-white center mb-4 col-lg-8" style="margin=4px">{{ page.title }}</h1>
                 <p class="mx-auto text-white">
                     <a href="{{ '/' | relative_url }}" class="text-white">Home</a>
                     /
@@ -33,11 +38,11 @@
         <section class="py-6">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-10 offset-lg-1 blog">
-                        <div class="rounded px-lg-5">
+                    <div class="col-lg-12 blog">
+                        <div class="rounded px-lg-1">
                             <div class="text-md-left">
-                                <h4 class="mb-4">{{ page.title }}</h4>
-                                <img src="{{ page.blogsingle-backgroundimage}}" alt="" class="img-fluid w-100 rounded">
+                                <h4 class="mb-4 text-centered" >{{ page.title }}</h4>
+                                <img src="{{ page.img_bg}}" alt="" class="img-fluid w-100 rounded">
                                 <span class="d-inline-block py-4"> {{ page.date }}
                                         / By <span class="purple-color text-right"> {{ page.author}}. </span>
                                         </span>

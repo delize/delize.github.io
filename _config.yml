@@ -1,7 +1,7 @@
 name: Andrew Doering CV & Blog
 firstname: Andrew
 lastname: Doering
-url: https://delize.github.io
+url: https://andrewdoering.org
 baseurl: ""
 social:
   facebook:
@@ -36,4 +36,3 @@ kramdown:
     syntax_highlighter_opts:
         block:
             line_numbers: true
-blogsingle-backgroundimage: https://images.wallpapersden.com/image/download/huawei-4k-stock-abstract_66336_1920x1080.jpg
