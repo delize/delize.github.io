@@ -5,6 +5,7 @@ date: 2019-12-23 07:03:05 PT
 excerpt: This guide covers how to setup member and group importing, the correct way, in Airwatch/Workspace One using Okta as an LDAP backend.
 layout: post
 link: https://andrewdoering.org/blog/2019/12/22/workspace-one-okta-users-and-groups-working-with-dep-enrollment/
+permalink: /blog/:year/:month/:day/:title/
 slug: workspace-one-okta-users-and-groups-working-with-dep-enrollment
 title: Workspace One & Okta - User(s) and Group(s) working with DEP Enrollment
 comments: true
@@ -25,7 +26,7 @@ img_bg: https
 img_bg_alt: Placeholder Alt text
 img_blog: /assets/img/2019-12-22-post/okta_ws1_interop.jpg
 img_alt: Image about Okta and Workspace1 Interoperability. Intro image.
-permalink: /blog/:year/:month/:day/:title/
+
 ---
 
 
