@@ -19,6 +19,8 @@ tags:
 - snowboard
 - squaw
 - winter
+
+robots: all, noarchive
 ---
 
 I really enjoy technical equipment/gear for outdoor equipment. Backpacks, jackets, clothing, all of it. My current list of technical clothing includes:

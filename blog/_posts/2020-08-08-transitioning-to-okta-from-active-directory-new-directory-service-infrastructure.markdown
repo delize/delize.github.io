@@ -21,6 +21,7 @@ img_bg_alt: Placeholder Alt text
 img_blog: /assets/img/2020-08-08-post/adoktapython.jpg
 img_alt: Image about Active Directory to Okta mastering transition proces. Intro image.
 permalink: /blog/:year/:month/:day/:title/
+robots: all, noarchive
 ---
 
 

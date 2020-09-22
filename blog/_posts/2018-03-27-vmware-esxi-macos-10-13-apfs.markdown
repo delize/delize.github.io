@@ -10,6 +10,7 @@ title: vmware / ESXi + macOS 10.13 APFS
 wordpress_id: 452
 comments: true
 permalink: /blog/:year/:month/:day/:title/
+robots: all, noarchive
 ---
 
 First off, this is a verbatim copy of a blog post written [here](https://licson.net/post/vmware-apfs/) ([https://licson.net/post/vmware-apfs/](https://licson.net/post/vmware-apfs/)) and a cached content version [here](https://webcache.googleusercontent.com/search?q=cache:Uvv6UFhC2GsJ:https://licson.net/post/vmware-apfs/+&cd=1&hl=en&ct=clnk&gl=us)

@@ -22,6 +22,8 @@ tags:
 - squaw
 - young scandinavian club
 - ysc
+
+robots: all, noarchive
 ---
 
 It's been a while since I had the chance to snowboard routinely. Thankfully, living in San Francisco, Lake Tahoe is only about three hours away. Makes it really easy to go up for the full weekend. I also found a sweet cabin that I can rent for cheap for a weekend, has a full kitchen, a Finnish sauna, it's awesome. I was able to head up a few times in December. It was a mixture of fun and annoyance.

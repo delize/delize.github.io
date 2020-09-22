@@ -22,6 +22,7 @@ tags:
 - Symantec
 - Asset Management
 
+robots: all, noarchive
 permalink: /blog/:year/:month/:day/:title/
 ---
 

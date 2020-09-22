@@ -11,6 +11,8 @@ comments: true
 categories:
 - Active Directory
 - Puppet
+
+robots: all, noarchive
 ---
 
 # Introduction
