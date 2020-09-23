@@ -26,6 +26,9 @@ img_alt: Image about MongoDB Authorization Issues with Okta LDAP Interface. Intr
 permalink: /blog/:year/:month/:day/:title/
 ---
 
+- [Introduction](#introduction)
+- [Issue](#issue)
+- [Solution](#solution)
 
 # Introduction
 
