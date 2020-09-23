@@ -1,5 +1,5 @@
 ---
-title: Transitioning To Okta From Active Directory - New Directory Service Infrastructure1
+title: Placeholder Title
 excerpt: Transitioning from legacy Active Directory to a cloud centric HRIS, Okta, and Push System. This blog post will go over all workflow process of transitioning, this does not go into low level details on how to transition due to the environment that this took place in. 
 link: https://andrewdoering.org/blog/2020/09/20/transitioning-to-okta-from-active-directory-new-directory-service-infrastructure1/
 slug: transitioning-to-okta-from-active-directory-new-directory-service-infrastructure1

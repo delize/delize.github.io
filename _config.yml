@@ -3,6 +3,7 @@ firstname: Andrew
 lastname: Doering
 url: https://andrewdoering.org
 baseurl: ""
+timezone: Americans/Los_Angeles
 social:
   facebook:
     - url: https://www.facebook.com/
