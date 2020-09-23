@@ -60,6 +60,7 @@ This is nearly verbatim to the document that was sent in for the homework assign
 - [Future Plans](#future-plans)
 - [Summarization](#summarization)
 - [Appendix:](#appendix)
+  - [Supporting Files](#supporting-files)
   - [List of Infrastructure Services to Deploy](#list-of-infrastructure-services-to-deploy)
   - [Example docker-compose for SnipeIT hosted in GCP](#example-docker-compose-for-snipeit-hosted-in-gcp)
   - [GCloud Compute Scripts for an Active Directory Deployment](#gcloud-compute-scripts-for-an-active-directory-deployment)
@@ -315,7 +316,7 @@ This can be initially deployed into a server model method, but if we go the serv
 
 #### Asset Management
 
-[Docker Compose file](/assets/blog/2020/09/eg-infra-engg/example-assetmanagement-docker-compose.yaml )
+[Docker Compose file](/assets/blog/2020/09/eg-infra-engg/example-assetmanagement-docker-compose.yaml) [- Appendix](#example-docker-compose-for-snipeit-hosted-in-gcp)
 
 
 ## CI/CD System
@@ -381,6 +382,9 @@ With the range of software and services outlined in this document, there should 
 
 
 # Appendix:
+
+## Supporting Files
+[Collection of all files](/assets/blog/2020/09/eg-infra-engg/Archive.zip)
 
 ## List of Infrastructure Services to Deploy
 * Asset Management

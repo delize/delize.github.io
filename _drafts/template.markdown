@@ -4,7 +4,7 @@ excerpt: Transitioning from legacy Active Directory to a cloud centric HRIS, Okt
 link: https://andrewdoering.org/blog/2020/09/20/transitioning-to-okta-from-active-directory-new-directory-service-infrastructure1/
 slug: transitioning-to-okta-from-active-directory-new-directory-service-infrastructure1
 author: Andrew Doering
-published: false
+published: false #Remove this after finishing the document
 comments: true
 date: 2020-09-20 18:20:49 PT
 layout: post
