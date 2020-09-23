@@ -52,7 +52,7 @@ We ultimately raised a ticket internally with MongoDB Support, to ask if back po
 
 # Solution
 
-After several weeks of waiting for the issue to be backported. It finally has! Beginning with MongoDB Atlas Versions 3.6.20, 4.0.21, and 4.2.10 you can use Okta's LDAP Interface Okta mastered Groups for Authorization.
+After several weeks of waiting for the issue to be back ported. It finally has! Beginning with MongoDB Atlas Versions 3.6.20, 4.0.21, and 4.2.10 you can use Okta's LDAP Interface Okta mastered Groups for Authorization.
 
 The comments written directly by the PoC in charge of the incident filed:
 
@@ -69,4 +69,4 @@ The comments written directly by the PoC in charge of the incident filed:
         Query Template: {% raw %}ou=groups,dc=yourdomain,dc=okta,dc=com?dn?one?(&(objectClass=groupofUniqueNames)(uniqueMember={USER})){% endraw %}
 
 
-Once configured,, you should be able to use Okta's LDAP Interface in MongoDB Atlas and have successful Authorization results!
+Once configured, you should be able to use Okta's LDAP Interface in MongoDB Atlas and have successful Authorization results!

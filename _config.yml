@@ -36,6 +36,7 @@ kramdown:
     syntax_highlighter_opts:
         block:
             line_numbers: true
+future: true
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
