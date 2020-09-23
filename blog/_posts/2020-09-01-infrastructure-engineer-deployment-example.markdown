@@ -1,6 +1,6 @@
 ---
 title: Infrastructure Engineer Deployment - Example
-excerpt: This is an infrastructure engineer outline, that was created for an interview challenge.
+excerpt: This is an infrastructure engineer assignment outline, that was created for an interview challenge.
 link: https://andrewdoering.org/blog/2020/09/01/infrastructure-engineer-deployment-example
 slug: infrastructure-engineer-deployment-example
 author: Andrew Doering

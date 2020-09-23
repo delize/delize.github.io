@@ -1,6 +1,6 @@
 ---
 title: Authorizing MongoDB Atlas users against Okta's LDAP Groups
-excerpt: Previously MongoDB systems earlier than 4.4 versions, did not properly support doing lookups in Okta's LDAP interface, but recently that has changed. Come find out how!
+excerpt: Previously MongoDB systems earlier than 4.4 versions, did not properly support doing lookups in Okta's LDAP interface properly, but recently that has changed. Come find out how!
 link: https://andrewdoering.org/blog/2020/09/23/authorizing-mongodb-atlas-users-against-oktas-ldap-groups
 slug: authorizing-mongodb-atlas-users-against-oktas-ldap-groups
 author: Andrew Doering
