@@ -4,6 +4,7 @@ comments: true
 date: 2017-01-06 05:31:24+00:00
 layout: post
 link: https://andrewdoering.org/blog/2017/01/05/using-puppet-and-group-policy-to-manage-windows-part-2/
+published: false
 slug: using-puppet-and-group-policy-to-manage-windows-part-2
 title: Using Puppet and Group Policy to manage Windows (part 2)
 excerpt: This is an unfinished blog post collection. This should be treated at a beginners guide to understand Puppet.

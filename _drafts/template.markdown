@@ -16,7 +16,6 @@ tags:
 - meraki
 - office
 - okta
-blogsingle-backgroundimage: https://images.wallpapersden.com/image/download/huawei-4k-stock-abstract_66336_1920x1080.jpg
 img_bg: /assets/blog/2020/10/
 img_bg_alt: Placeholder Alt text
 img_blog: /assets/blog/2020/10/

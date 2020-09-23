@@ -12,7 +12,6 @@ tags:
 - Infrastructure Engineer 
 - Interview Example
 - Homework Assignment
-blogsingle-backgroundimage: https://images.wallpapersden.com/image/download/huawei-4k-stock-abstract_66336_1920x1080.jpg
 img_bg: /assets/blog/2020/09/eg-infra-engg/infra-engg-bg.jpg
 img_bg_alt: Background for Infrastructure Engineer Article
 img_blog: /assets/blog/2020/09/eg-infra-engg/infra-engg-icon.jpg

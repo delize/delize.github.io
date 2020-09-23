@@ -18,7 +18,6 @@ tags:
 - okta
 - authorization
 - authentication
-blogsingle-backgroundimage: https://images.wallpapersden.com/image/download/huawei-4k-stock-abstract_66336_1920x1080.jpg
 img_bg: /assets/blog/2020/09/mongodb_logo.png
 img_bg_alt: MongoDB Logo taken from mongodb.com
 img_blog: /assets/blog/2020/09/stay-on-the-path.jpg
