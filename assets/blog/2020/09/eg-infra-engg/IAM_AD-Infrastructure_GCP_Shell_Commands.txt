@@ -1,0 +1,83 @@
+export region=us-east1
+export zone_1=${region}-b
+export zone_2=${region}-c
+export vpc_name=winaddcnet
+export project_id=company-xyz-ldap
+
+gcloud config set compute/region ${region}
+gcloud config set project ${project_id}
+
+gcloud compute networks create ${vpc_name}  \
+    --description "VPC network to deploy Active Directory" \
+    --subnet-mode custom
+
+gcloud compute networks subnets create private-ad-zone-1 \
+  --network ${vpc_name} \
+  --range 10.250.250.0/28
+
+gcloud compute networks subnets create private-ad-zone-2 \
+    --network ${vpc_name} \
+    --range 10.250.250.16/28
+
+gcloud compute firewall-rules create allow-internal-ports-private-ad \
+    --network ${vpc_name} \
+    --allow tcp:88,135,389,445,464,636,3268,3269,49152-65535,udp:88,123,389,464,icmp \
+    --source-ranges  10.0.0.0/8,172.16.0.0/12,192.168.0.0/16 \
+    --target-tags=ad
+
+gcloud compute firewall-rules create allow-internal-ports-private-dns \
+    --network ${vpc_name} \
+    --allow tcp:53,udp:53,icmp \
+    --source-ranges  10.0.0.0/8,172.16.0.0/12,192.168.0.0/16 \
+    --target-tags=ad
+
+gcloud compute firewall-rules create allow-rdp \
+    --network ${vpc_name} \
+    --allow tcp:3389 \
+    --source-ranges 35.235.240.0/20 \
+    --target-tags=rdp
+
+#source ranges should be adjusted for each service that needs to reach out to the ingress ldap port.
+gcloud compute firewall-rules create allow-ingress-ldaps \
+    --network ${vpc_name} \
+    --allow tcp:636 \
+    --source-ranges 1.2.3.4/32 \
+    --target-tags=ldaps-ingress
+
+
+gcloud compute instances create ad-dc1 --machine-type n1-standard-2 \
+    --boot-disk-type pd-ssd \
+    --boot-disk-size 50GB \
+    --image-family windows-2019 --image-project windows-cloud \
+    --network ${vpc_name} \
+    --zone ${zone_1} \
+    --subnet private-ad-zone-1 \
+    --private-network-ip=10.250.250.1
+
+gcloud compute reset-windows-password ad-dc1 --zone ${zone_1} --quiet
+
+gcloud compute instances create ad-dc2 --machine-type n1-standard-2 \
+    --boot-disk-size 50GB \
+    --boot-disk-type pd-ssd \
+    --image-family windows-2019 --image-project windows-cloud \
+    --can-ip-forward \
+    --network ${vpc_name} \
+    --zone ${zone_2} \
+    --subnet private-ad-zone-2 \
+    --private-network-ip=10.250.250.17
+
+gcloud compute reset-windows-password ad-dc2 --zone ${zone_2} --quiet
+
+
+#Configuring the Windows Domain Controller is separate from the GCP Configuration, so won't configure it in this guide.
+
+#below will allow you to rdp from your local machine into the GCP proxy/tunnel.
+gcloud beta compute start-iap-tunnel ad-dc1 3389 \
+    --local-host-port=localhost:53389 \
+    --zone=${zone_1} \
+    --project=${project-id}
+
+gcloud beta compute start-iap-tunnel ad-dc2 3389 \
+    --local-host-port=localhost:63389 \
+    --zone=${zone_2} \
+    --project=${project-id}

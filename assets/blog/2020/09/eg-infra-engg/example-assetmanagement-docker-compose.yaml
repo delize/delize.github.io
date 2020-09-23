@@ -1,0 +1,119 @@
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  namespace: snipe
+  name: snipe
+  labels:
+    app: snipe
+spec:
+  serviceName: snipe
+  volumeClaimTemplates:
+  - metadata:
+      name: snipe-disk
+    spec:
+      accessModes: ["ReadWriteOnce"]
+      resources:
+        requests:
+          storage: 100Gi
+  replicas: 1
+  selector:
+    matchLabels:
+      app: snipe
+  template:
+    metadata:
+      labels:
+        app: snipe
+    spec:
+      containers:
+      - name: snipe-it
+        image: imagename
+        env:
+        - name: APP_KEY
+          valueFrom:
+            secretKeyRef:
+              name: snipe-app-key
+              key: APP_KEY
+        - name: MAIL_ENV_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: snipe-mail-key
+              key: MAIL_ENV_PASSWORD
+        - name: MAIL_ENV_USERNAME
+          value: example@example.com
+        - name: APP_DEBUG
+          value: "false"
+        - name: MAIL_PORT_587_TCP_ADDR
+          value: smtp.gmail.com
+        - name: MAIL_PORT_587_TCP_PORT
+          value: "587"
+        - name: MAIL_ENV_FROM_ADDR
+          value: example@example.com
+        - name: MAIL_ENV_FROM_NAME
+          value: Example
+        - name: MAIL_ENV_ENCRYPTION
+          value: tls
+        - name: APP_URL
+          value: snipe.example.com:443
+        - name: MYSQL_PORT_3306_TCP_PORT
+          value: "3306"
+        - name: MYSQL_PORT_3306_TCP_ADDR
+          valueFrom:
+            secretKeyRef:
+              name: snipe-database
+              key: host
+        - name: MYSQL_DATABASE
+          valueFrom:
+            secretKeyRef:
+              name: snipe-database
+              key: database
+        - name: MYSQL_USER
+          valueFrom:
+            secretKeyRef:
+              name: snipe-database
+              key: username
+        - name: MYSQL_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: snipe-database
+              key: password
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
+            cpu: 150m
+            memory: 512Mi
+          limits:
+            cpu: 150m
+            memory: 512Mi
+        volumeMounts:
+        - mountPath: /var/lib/snipeit
+          name: snipe-disk
+        - mountPath: /var/www/html/storage/app/backups
+          name: backup-disk
+      - name: snipe-it-backup-sidecar
+        image: imagename2
+        env:
+        - name: GCP_CREDENTIALS_LOCATION
+          value: /tmp/gcpCredentials/creds.json
+        resources:
+          requests:
+            cpu: 50m
+            memory: 128Mi
+          limits:
+            cpu: 50m
+            memory: 128Mi
+        volumeMounts:
+        - mountPath: /var/lib/snipeit
+          name: snipe-disk
+        - mountPath: /shared
+          name: backup-disk
+        - name: gcp-credentials
+          mountPath: "/tmp/gcpCredentials/"
+          readOnly: true
+      volumes:
+      - name: gcp-credentials
+        secret:
+          secretName: snipe-backup-sidecar
+      - name: backup-disk
+        emptyDir: {}

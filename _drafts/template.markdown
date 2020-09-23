@@ -17,10 +17,10 @@ tags:
 - office
 - okta
 blogsingle-backgroundimage: https://images.wallpapersden.com/image/download/huawei-4k-stock-abstract_66336_1920x1080.jpg
-img_bg: https
+img_bg: /assets/blog/2020/10/
 img_bg_alt: Placeholder Alt text
-img_blog: /assets/img/2020-08-08-post/adoktapython.jpg
-img_alt: Image about Active Directory to Okta mastering transition proces. Intro image.
+img_blog: /assets/blog/2020/10/
+img_alt: Placeholder Alt Text
 permalink: /blog/:year/:month/:day/:title/
 ---
 
