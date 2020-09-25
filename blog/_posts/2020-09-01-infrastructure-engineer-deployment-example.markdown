@@ -152,7 +152,7 @@ This is a simple configuration and can be more complex if needed. This also leav
 ### Cloud
 
 
-| Use Case               	| IP Start   	| IP End         	| CIDR 	| <div style="width:30%">Notes</div>|
+| Use Case               	| IP Start   	| IP End         	| CIDR 	| Notes|
 |------------------------	|------------	|----------------	|-------------------	|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------	|
 | Platform               	| 10.0.0.0   	| 10.99.255.254  	|   16 	| This is a total of 6553400 IPs for the platform, from here engineers can then divide the network up as needed for their own services. This would be split out individually, but for the sake of time, I have lumped the whole range together here, and denoted that it has a 16 for each subnet. 	|
 | Staging-Platform       	| 10.100.0.0 	| 10.100.255.254 	|   16 	| Within this range, there should be a sufficient amount of IP Addresses for a Staging Network as well.                                                                                                                                                                                            	|
