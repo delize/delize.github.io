@@ -4,5 +4,5 @@ This is heavily based on the [UOne theme found on ThemeForest](https://themefore
 Feel free to comment on issues or improvements you see, as my goal is to eventually release this as a free/community theme.
 
 
-# Apprectiations:
+# Appreciations:
 [@MichaelCurrin](https://github.com/MichaelCurrin) - He helped me a lot on some of the larger CSS issues I had when trying to convert this to a Jekyll compatible workflow.
