@@ -178,11 +178,11 @@ This is a simple configuration and can be more complex if needed. This also leav
 
 ### Initial Deployment
 
-**[Physical Topology Diagram Link](/assets/blog/2020/09/eg-infra-engg/Company_XYZ-Office-Physical_Topology.png)**:
-![Physical Topology Diagram Link](/assets/blog/2020/09/eg-infra-engg/Company_XYZ-Office-Physical_Topology.png)
+**[Physical Topology Diagram Link](/assets/blog/2020/09/eg-infra-engg/Company_XYZ-Office-Physical_Topology_v1.png)**:
+![Physical Topology Diagram Link](/assets/blog/2020/09/eg-infra-engg/Company_XYZ-Office-Physical_Topology_v1.png)
 
-**[Logical Topology Diagram Link](/assets/blog/2020/09/eg-infra-engg/Company_XYZ-Office-Logical_Topology_(Simplified).png)**
-![Logical Topology Diagram Link](/assets/blog/2020/09/eg-infra-engg/Company_XYZ-Office-Logical_Topology_(Simplified).png)
+**[Logical Topology Diagram Link](/assets/blog/2020/09/eg-infra-engg/Company_XYZ-Office-Logical_Topology_(Simplified)_v1.png)**
+![Logical Topology Diagram Link](/assets/blog/2020/09/eg-infra-engg/Company_XYZ-Office-Logical_Topology_(Simplified)_v1.png)
 
 
 As core/distribution switches have much higher failure rates compared to access switches (due to the amount of services running on the core switches), we would be routing traffic via layer 2 mechanisms rather than layer 2 and taking advantage of layer 3 services in the firewall to deal with routing. We would utilize vlans broadcast at specific ports to be able to achieve this. This results in a less expensive network overall.
@@ -327,8 +327,8 @@ Traditionally, I have used Jenkins and self hosting for a CI/CD system - and thi
 
 If we are deploying infrastructure into GCP, the best route to use is Google’s Cloud Identity. However we need to populate that data into GCP somehow, and that is where our SoT Identity-AAS (IDaaS) provider comes in. I have personal experience with Okta, and think it has more dynamic uses compared to solely using G Suite as an Identity Management tool for all services. I have used that as the backbone to the rest of the infrastructure. From Okta, you can push users into Active Directory. So far, I have found that it works well. The key thing here is that because you can push groups from Okta to any service in a more flexible way than using Active Directory, and you bypass the limitations of AzureAD (for instance, you can’t push AzureAD users into Active Directory on brand new deployments) you end up with a more flexible and modular system. In addition, you can stand up any number of Active Directory environments with the same data from Okta, making it easy to create “staging” or development AD servers for testing when needed with the exact same data that would be considered production.
 
-[Diagram](/assets/blog/2020/09/eg-infra-engg/Company_XYZ-AD_in_GCP.png)
-![Diagram](/assets/blog/2020/09/eg-infra-engg/Company_XYZ-AD_in_GCP.png)
+[Diagram](/assets/blog/2020/09/eg-infra-engg/Company_XYZ-AD_in_GCP_v1.png)
+![Diagram](/assets/blog/2020/09/eg-infra-engg/Company_XYZ-AD_in_GCP_v1.png)
 
 
 Google Cloud Shell Commands  
