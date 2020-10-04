@@ -6,6 +6,7 @@ slug: authorizing-mongodb-atlas-users-against-oktas-ldap-groups
 author: Andrew Doering
 comments: true
 date: 2020-09-22 06:00:00 -0700
+last_modified_at:
 layout: post
 tags:
 - Okta

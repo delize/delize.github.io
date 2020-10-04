@@ -1,21 +1,19 @@
 ---
 title: Placeholder Title
-excerpt: Transitioning from legacy Active Directory to a cloud centric HRIS, Okta, and Push System. This blog post will go over all workflow process of transitioning, this does not go into low level details on how to transition due to the environment that this took place in. 
-link: https://andrewdoering.org/blog/2020/09/20/transitioning-to-okta-from-active-directory-new-directory-service-infrastructure1/
-slug: transitioning-to-okta-from-active-directory-new-directory-service-infrastructure1
+excerpt: Placeholder Description
+link: https://andrewdoering.org/blog/
+slug: 
 author: Andrew Doering
 published: false #Remove this after finishing the document
 comments: true
 date: 2020-09-20 18:20:49 PT
+last_modified_at: 
 layout: post
 tags:
-- Active Directory
-- bamboohr
-- hris
-- infrastructure
-- meraki
-- office
-- okta
+- list
+- all
+- tags
+- here
 img_bg: /assets/blog/2020/10/
 img_bg_alt: Placeholder Alt text
 img_blog: /assets/blog/2020/10/

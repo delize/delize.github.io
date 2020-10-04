@@ -43,13 +43,19 @@
                             <div class="text-md-left">
                                 <h4 class="mb-4 text-centered" >{{ page.title }}</h4>
                                 <img src="{{ page.img_bg}}" alt="" class="img-fluid w-100 rounded">
-                                <span class="d-inline-block py-4"> {{ page.date }}
+                                <span class="d-inline-block py-4"> Published: {{ page.date | date: "%b %-d, %Y" }} 
+                                        {% if page.last_modified_at %}                                        
+                                            / Last updated: {{ page.last_modified_at | date: "%b %-d, %Y" }}
+                                        {% endif %}
                                         / By <span class="purple-color text-right"> {{ page.author}}. </span>
                                         </span>
                                 <p class="link-">{{ content }}</p>
-                                {% if page.comments %}
-                                {% include disqus.html %}
+                                {% if jekyll.environment == 'production' %}
+                                    {% if page.comments %}
+                                    {% include disqus.html %}
+                                    {% endif %}
                                 {% endif %}
+
                             </div>
                         </div>
                     </div>
