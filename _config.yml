@@ -1,35 +1,41 @@
 name: Andrew Doering CV & Blog
 firstname: Andrew
 lastname: Doering
+fullname: Andrew Doering
 url: https://andrewdoering.org
 baseurl: ""
 timezone: Americans/Los_Angeles
 social:
   facebook:
-    - url: https://www.facebook.com/
-    - user: and.doe
-    - icon: fa fb-icon
+    url: https://www.facebook.com/
+    user: and.doe
+    icon: fab fa-facebook-f
   github:
-    - url: https://www.github.com/
-    - user: delize
-    - icon: fa github-icon
+    url: https://www.github.com/
+    user: delize
+    site-repo: /delize.github.io
+    icon: fab fa-github
   linkedin:
-    - url: https://www.linkedin.com/in/
-    - user: andrewdoering
-    - icon: fa linkedin-icon
+    url: https://www.linkedin.com/in/
+    user: andrewdoering
+    icon: fab fa-linkedin
   skype:
-    - user: andrew-doering
-    - icon: fa fa-skype
+    user: andrew-doering
+    icon: fab fa-skype
   slack:
-    - user: heimdall
-    - url: https://www.macadmins.org
+    user: heimdall
+    url: https://www.macadmins.org
+    icon: fab fa-slack 
   instagram:
-    - user: dolos01
-    - url: https://www.instagram.com/
+    user: dolos01
+    url: https://www.instagram.com/
+    icon: fab fa-instagram
 contact:
-  - phone: +1 919 904 4396
-  - email: contact@andrewdoering.org
-  - address: San Francisco, CA, USA
+  phone: +1 919 904 4396
+  email: contact@andrewdoering.org
+  address: San Francisco, CA, USA
+resume:
+  file: Andrew_Doering_Online_Resume_2020_TB.pdf
 copyright: 2020
 markdown: kramdown
 kramdown:

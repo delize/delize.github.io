@@ -7,33 +7,33 @@
                 </div>
             </div>
             <div class="col-lg-8 personal-item">
-                <h1 class="text-white mb-0">I'm Andrew Doering</h1>
+                <h1 class="text-white mb-0">I'm {{ site.fullname }}</h1>
                 <h4 class="typed-color text-capitalize mb-2"><span class="typed-color"></span><span class="element"
                         data-elements="., A Senior IT Engineer., A photographer., An eager learner., A dedicated individual., Avid snowboarder., ">
                     </span></h4>
                 <div class="row">
                     <div class="col-5 col-lg-4 personal-info">
                         <p class="text-white">Language : <span class="text-gray">Multilingual</span></p>
-                        <p class="text-white">Phone : <span class="text-gray"><a class="text-gray link-hover" href="tel:+1 919-904-4396">+1 919-904-4396</a></span></p>
-                        <p class="text-white">City : <span class="text-gray"> San Francisco, CA</span></p>
+                        <p class="text-white">Phone : <span class="text-gray"><a class="text-gray link-hover" href="tel:{{ site.contact.phone }}">{{ site.contact.phone }}</a></span></p>
+                        <p class="text-white">City : <span class="text-gray"> {{ site.contact.address }}</span></p>
                     </div>
                     <div class="col-6 col-lg-5 personal-info">
                         <p class="text-white">Degree : <span class="text-gray">Bachelors</span></p>
                         <p class="text-white">E-Mail : <span class="text-gray"><a class="text-gray link-hover"
-                                    href="mailto:contact@andrewdoering.org">contact@andrewdoering.org</a></span></p>
+                                    href="mailto:{{ site.contact.email }}">{{ site.contact.email }}</a></span></p>
                         <p class="text-white">Nationality : <span class="text-gray">American</span></p>
                     </div>
                     <div class="col-5 col-lg-4 personal-info" style="padding-right: 0px;">
                         <ul class="list-inline social-icon mt-2">
-                            <li class="list-inline-item"><a href="https://www.facebook.com/and.doe"><i class="fab fa-facebook-f "></i></a></li>
-                            <li class="list-inline-item"><a href="https://www.github.com/delize"><i class="fab fa-github"></i></a></li>
-                            <li class="list-inline-item"><a href="https://www.linkedin.com/in/andrewdoering"><i class="fab fa-linkedin"></i></a></li>
-                            <li class="list-inline-item"><a href="skype:andrew-doering"><i class="fab fa-skype"></i></a></li>
-                            <li class="list-inline-item"><a href="https://www.instagram.com/dolos01"><i class="fab fa-instagram"></i></a></li>
+                            <li class="list-inline-item"><a href="{{ site.social.facebook.url | append: site.social.facebook.user }}"><i class="{{ site.social.facebook.icon}}"></i></a></li>
+                            <li class="list-inline-item"><a href="{{ site.social.github.url | append: site.social.github.user}}"><i class="{{ site.social.github.icon }}"></i></a></li>
+                            <li class="list-inline-item"><a href="{{ site.social.linkedin.url | append: site.social.linkedin.user }}"><i class="{{ site.social.linkedin.icon}}"></i></a></li>
+                            <li class="list-inline-item"><a href="skype:{{ site.social.skype.user}}"><i class="{{ site.social.skype.icon }}"></i></a></li>
+                            <li class="list-inline-item"><a href="{{ site.social.instagram.url | append: site.social.instagram.user}}"><i class="{{ site.social.instagram.icon }}"></i></a></li>
                         </ul>
                     </div>
                     <div class="col-6 col-lg-5 personal-info download-cv">
-                        <p> <a href="/assets/file/Andrew_Doering_Online_Resume_2020_TB.pdf"
+                        <p> <a href="/assets/file/{{ site.resume.file }}"
                                 class="pill-button-cv mt-0 mb-lg-0 mr">Download CV</a></p>
                     </div>
                 </div>

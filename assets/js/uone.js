@@ -468,6 +468,20 @@ function typedJS() {
 }
 
 
+
+/*-------------------------
+        Color Scheme
+-------------------------*/
+
+function colorScheme(){
+    var $darkLogo = $('.dark-logo');
+        $('.color-scheme').click(function() {
+            $("body").toggleClass('uone-dark');
+            $('.color-scheme').removeClass('d-none').addClass('d-inline-block');
+            $(this).removeClass('d-inline-block').addClass('d-none');
+        });
+    }
+
 /*----------------------
     Back on history
 ----------------------*/
