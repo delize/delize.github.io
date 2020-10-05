@@ -6,7 +6,7 @@ slug:
 author: Andrew Doering
 published: false #Remove this after finishing the document
 comments: true
-date: 2020-09-20 18:20:49 PT
+date: 2020-09-20 18:20:49 -0700
 last_modified_at: 
 layout: post
 tags:
