@@ -1,7 +1,8 @@
 a , a:hover {
-    color: #d23e50 !important;
+    color: #d23e50;
     text-decoration: none; }
-table {
+
+    table {
     margin-left:auto; 
     margin-right:auto;
 }
