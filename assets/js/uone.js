@@ -21,6 +21,7 @@ $(document).ready(function () {
     slyslider();
     portfolioPopup();
     testimonialsCarousel();
+    colorScheme();
     // mapInit();
     backToTop();
     wow();
