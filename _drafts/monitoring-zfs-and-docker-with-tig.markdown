@@ -30,9 +30,14 @@ I wanted a way to have historical data from the system in case something went _h
 
 A bit of background on the system in place here, and yes - I am a data hoarder and a fan of data storage systems.
 
+__TIG System Specs:__
+* CPU: Intel NUC 8i3BEH1
+* Memory: 16GB RAM
+* Storage: 1x 128 GB NVME 
 
 __ESXi Hypervisor Specs:__
 
+* OS: ESXi 7.0
 * CPU: AMD Ryzen 7 1700 Eight-Core Processor
 * Memory: 64 GB ECC Memory
 * Storage:
@@ -68,7 +73,8 @@ So with all that said and done, the things I wanted to monitor came out to be:
 * Docker 
 * ZFS Pool
 * Network Traffic
-* 
+  
+
 
 # Getting Started
 
@@ -118,5 +124,7 @@ I started out doing this for my docker-compose file
 
 ```
 
-I am aware Docker volume stores are supposedly the more supported/official way to go, but, I can't get away from accessing files directly off the host filesystem - it's just convenient to me.
+I am aware Docker volume stores are supposedly the more supported/official way to go, due to their flexibility and ease of use, and honestly I do agree with that for larger scale systems. For my use case, it's just more convenient to me to use bind mounts at the current moment.
+
+You might notice I don't have a web front end (something like Nginx, Traefik) in use here. I am hosting this for internal use only and it is not publicly available. Any public facing service goes through a different endpoint entirely. 
 
