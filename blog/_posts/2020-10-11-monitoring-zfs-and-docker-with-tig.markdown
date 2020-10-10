@@ -5,7 +5,7 @@ link: https://andrewdoering.org/blog/2020/10/10/monitoring-zfs-and-docker-with-t
 slug: monitoring-zfs-and-docker-with-tig
 author: Andrew Doering
 comments: true
-date: 2020-10-10 12:00:00 -0700
+date: 2020-10-11 01:00:00 -0700
 last_modified_at: 
 layout: post
 tags:
@@ -16,10 +16,12 @@ tags:
 - telegraf
 - influxdb
 - grafana
+categories:
+- monitoring
 img_bg: /assets/blog/2020/10/grafana_cc_img.jpg
 img_bg_alt: Grafana Creative Commons screenshot of creating graph configuration
-img_blog: /assets/blog/2020/10/ #Must be 500 x 650 pixels
-img_alt: Placeholder Alt Text
+img_blog: /assets/blog/2020/10/blog_img.png #Must be 800 x 650 pixels
+img_alt: Grafana logo taken from wikipedia
 permalink: /blog/:year/:month/:day/:title/
 ---
 
@@ -359,8 +361,13 @@ From here, you should be able to start setting up graphs in Grafana.
 
 ### Configuring Graphs in Grafana
 
-Grafana hosts a lot of good template graphfs [here](https://grafana.com/grafana/dashboards), and admittedly, a lot of them for my use case don't work (beacuse I was not using Docker Swarm, or the default template just didn't align with my database). So it required a bit of rework in some cases to fix the filtering systems. 
+Grafana hosts a lot of good template graphfs [here](https://grafana.com/grafana/dashboards), and admittedly, a lot of them for my use case don't work (beacuse I was not using Docker Swarm, or the default template just didn't align with my database). So it required a bit of rework in some cases to fix the Variables configurations.
 
+![Docker Dashboard](/assets/blog/2020/10/docker-dashboard.png)
+
+When it comes to System Performance, I came across another pre-made graph, that had the features I wanted, but, didn't work instantly when loading via the dashboard id. After a bit of tweaking to data sources, and Variables, I eventually got it working well and now have a rotating dashboard.
+
+![System Dashboard](/assets/blog/2020/10/system-dashboard.png)
 
 ## Future things I want to do
 
