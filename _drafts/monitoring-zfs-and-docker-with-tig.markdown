@@ -38,17 +38,20 @@ __ESXi Hypervisor Specs:__
 * Storage:
   * NVME: 1x Samsung 970 Pro 1TB, 1x WD SN750 1TB
   * SSD: 2x Intel DC S3510 120 GB 
+  * SATA: 6x WD Red 6TB Drives
 * GPU: Nvidia GT 710
 * Motherboard: ASRock X470 Master SLI/AC
+* HBA: LSI 2008 PCI-E Card
 
 __NAS Guest Specs:__
 
 * OS: Ubuntu 20.04 LTS
 * Memory: 48 GB
 * Root Drive: 40 GB
-* ZFS Pool: 32 TB (WD RED 6TB Drives - SATA_WDC_WD60EFRX-68L_WD)
-* Cache: 1TB
-* HBA: LSI SAS2008 PCI-Express Fusion-MPT SAS-2 Falcon rev. 03 ([Flashed to IT mode](https://forums.serverbuilds.net/t/guide-updating-your-lsi-sas-controller-with-a-uefi-motherboard/131))
+* Passthrough:
+  * HBA: LSI SAS2008 PCI-Express Fusion-MPT SAS-2 Falcon rev. 03 ([Flashed to IT mode](https://forums.serverbuilds.net/t/guide-updating-your-lsi-sas-controller-with-a-uefi-motherboard/131))
+  * ZFS Pool: 32 TB (WD RED 6TB Drives - SATA_WDC_WD60EFRX-68L_WD)
+  * Cache: 1TB
 
 You might think 48 GB of memory is overkill for a system that mainly deals with storage and a few applications. Unfortunately, not at the current moment - but I do agree, it is overkill. I also use rclone as an online storage system with Google Drive as a backend. Meaning this is my normal:
 
@@ -68,7 +71,6 @@ So with all that said and done, the things I wanted to monitor came out to be:
 * Docker 
 * ZFS Pool
 * Network Traffic
-* 
 
 # Getting Started
 
@@ -103,8 +105,8 @@ I started out doing this for my docker-compose file
                 - '2003:2003'
             environment:
                 - INFLUXDB_HTTP_AUTH_ENABLED=true
-                - INFLUXDB_ADMIN_USER=myuser
-                - INFLUXDB_ADMIN_PASSWORD=mysecret
+                - INFLUXDB_ADMIN_USER=$myuser
+                - INFLUXDB_ADMIN_PASSWORD=$mysecret
             volumes:
                 - '/media/docker/influxdb:/var/lib/influxdb'
             restart: always
