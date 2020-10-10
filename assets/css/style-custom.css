@@ -609,6 +609,8 @@ footer .back-to-top:hover {
     top: 1px; }
   .color-scheme:hover {
     color: #ffffff; }
+  .color-scheme a { color: #ffffff; }	
+  .color-scheme a:hover { color: #ffffff; }
 
 /*-------------------------
        BLOG PAGE
