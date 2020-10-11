@@ -3,7 +3,7 @@
     <nav id="scrollspy" class="navbar navbar-expand-lg header-nav">
         <div class="container">
             <a class="navbar-brand font-weight-bold text-dark" href="{{ '/' | absolute_url }}">
-                <span>{{ site.firstname }} {{ site.lastname }}'s Blog</span>
+                <span>{{ site.firstname }} {{ site.lastname }}</span>
             </a>
             
             <!--  Navbar Toggler Button Start -->
@@ -15,10 +15,13 @@
             <div class="collapse navbar-collapse" id="toggle-menu">
                 <ul class="navbar-nav nav-pills ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link text-dark" href="{{ '/blog' | relative_url }}">Back to Blog</a>
+                        {% if page.url != "/blog/" %} <a class="nav-link text-dark" href="{{ '/blog' | relative_url }}">Back to Blog</a>
+                        {% elsif page.url == "/blog/" %} <a class="nav-link text-dark" href="{{ '/' | absolute_url }}">Back to Site</a>
+                        {% else %} <span>You uncovered a secret, something went wrong. Please report it on Github!</span>
+                        {% endif %}
                     </li>
                 </ul>
-            </div>
+            </div> 
         </div>
     </nav>
 </header>

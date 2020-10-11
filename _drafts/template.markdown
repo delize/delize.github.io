@@ -18,7 +18,7 @@ categories:
 - random
 img_bg: /assets/blog/2020/10/
 img_bg_alt: Placeholder Alt text
-img_blog: /assets/blog/2020/10/ #Must be 800 x 650 pixels
+img_blog: /assets/blog/2020/10/ # Image must be 800 x 650
 img_alt: Placeholder Alt Text
 permalink: /blog/:year/:month/:day/:title/
 ---

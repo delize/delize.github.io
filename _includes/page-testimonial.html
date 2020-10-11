@@ -4,68 +4,15 @@
         <div class="row">
             <div class="col-12">
                 <div class="owl-carousel">
+                    {% for person in site.data.testimonial %}
                     <div class="testimonial-item">
-                        <p>"Thank you Andrew! You played a critical role in Cisco's first ever all-virtual laptop retention program of an acquired 
-                            company during a pandemic. Your help in building and running the necessary Mac scripts to remove all TE management 
-                            software, AV, etc., Along with pushing the Mac scripts for all the necessary Cisco software. ... Thank you so much!"</p>
+                        <p> {{person.quote}} </p>
                         <div>
-                            <img src="assets/img/dave-chan.jpg" alt="Dave Chan, Integration Lead at Cisco" class="mx-auto rounded-circle">
+                            <img src="assets/img/{{person.img}}" alt="{{person.alt}}" class="mx-auto rounded-circle">
                         </div>
-                        <h4 class="mt-3">-Dave Chan, <span class="font-weight-bold">Integration Lead, Cisco</span></h4>
+                        <h4 class="mt-3">- {{person.name}}, <span class="font-weight-bold">{{person.title}}, {{person.company}}</span></h4>
                     </div>
-                    
-                    <div class="testimonial-item">
-                        <p>"Timing couldn't be worse for our IT team during the transition to Cisco. I as the leader of the ThousandEyes IT Team went 
-                            on paternity leave right in the middle of the most crucial time during the transition. Andrew stepped up the 
-                            plate to take over the leadership void that was left. I am proud to have this individual on my team who has really 
-                            help(ed) build an amazing IT (team) that has enabled the ThousandEyes to reach many milestones including the M&A with Cisco. Thank you!"</p>
-                        <div>
-                            <img src="assets/img/steven-garcia.jpg" alt="Steven Garcia, IT Manager, ThousandEyes" class="mx-auto rounded-circle">
-                        </div>
-                        <h4 class="mt-3">-Steven Garcia, <span class="font-weight-bold">IT Manager, ThousandEyes</span></h4>
-                    </div>
-
-                    <!-- Item 01 -->
-                    <div class="testimonial-item">
-                        <p>" Andrew was able to push forward and successfully complete this (Meeting Room Management) project that solves a big
-                        internal issue the company has been having for a while. Andrew worked closely with the Finance team and implemented the
-                        asset management (system). Andrew created a detailed and thorough plan to implement a laptop management system, one of
-                        the biggest IT challenges we have. "</p>
-                        <div>
-                            <img src="assets/img/paulo-cabido.jpg" alt="Paulo Cabido" class="mx-auto rounded-circle">
-                        </div>
-                        <h4 class="mt-3">-Paulo Cabido, <span class="font-weight-bold">Sr. Director of Engineering Operations, ThousandEyes</span></h4>
-                    </div>
-                    <!-- Item 02 -->
-                    <div class="testimonial-item">
-                        <p>" It's been great to see the thought and effort that you put into the facility-related IT projects (even the frustrating
-                        and unreasonable ones haha). It does not go unnoticed or unappreciated!👍 "</p>
-                        <div>
-                            <img src="assets/img/natalie-pinto.jpg" alt="Natalie Pinto" class="mx-auto rounded-circle">
-                        </div>
-                        <h4 class="mt-3">-Natalie Pinto, <span class="font-weight-bold">Operations Manager, ThousandEyes</span></h4>
-                    </div>
-                    <!-- Item 03 -->
-                    <div class="testimonial-item">
-                        <p>" Literally within minutes of me placing the request Andrew called me to install the software on my system, which he
-                        completed with swift professionalism. ... The speed of fulfillment of the requests and the professionalism demonstrated
-                        by each team member along the chain were truly exceptional displays of customer service – a feat not easily accomplished
-                        in an area as challenging as client support. "</p>
-                        <div>
-                            <img src="assets/img/ross-berrier.jpg" alt="Ross Berrier" class="mx-auto rounded-circle">
-                        </div>
-                        <h4 class="mt-3">-Ross Berrier, <span class="font-weight-bold">Sourcing Manager, Indirect Goods & Services, LORD Corporation</span></h4>
-                    </div>
-                    <div class="testimonial-item">
-                        <p>" Wanted to give some Kudos to Andrew for identifying a simple fix to an issue our group has been having for a couple of
-                        years with HFM add-in for excel crashing. Your group probably spent 12 hrs on this issue last year rebuilding profiles,
-                        pc’s etc…, so this will save us all some time. "</p>
-                        <div>
-                            <img src="assets/img/nathan-houston.jpg" alt="Nathan Houston" class="mx-auto rounded-circle">
-                        </div>
-                        <h4 class="mt-3">-Nathan Houston, <span class="font-weight-bold">Sr. Business Analyst, LORD Corporation</span>
-                        </h4>
-                    </div>
+                    {% endfor %}
                 </div>
             </div>
         </div>

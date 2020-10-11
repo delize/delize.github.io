@@ -1,0 +1,158 @@
+# work: 
+#   - company: 
+#     title: 
+#     startdate:
+#     enddate:
+#     description:
+
+# education:
+#   - university: 
+#     degree:
+#     major:
+#     startdate:
+#     enddate:
+#     description:
+
+# volunteer: 
+#   - company: 
+#     title: 
+#     startdate:
+#     enddate:
+#     description:
+workheader: Work Experience
+work: 
+  - company: Cisco / ThousandEyes
+    title: Senior IT Engineer
+    startdate: 2020-08-15 00:00 -00:00
+    enddate:
+    description: "Cisco acquired ThousandEyes on August 15th, 2020. Post acquisition, I have been working on integration and migrations of services 
+    into Cisco's services. These services have included, MDM transition (Workspace One to JAMF), G Suite to O365, Zoom to WebEx, BambooHR to internal 
+    HRMS system."
+  - company: ThousandEyes
+    title: Senior IT Engineer
+    startdate: 2019-01-01 00:00 -00:00
+    enddate: 2020-08-15 00:00 -00:00
+    description: "Currently work on major infrastructure/architectural changes and company wide deployments. 
+    Some examples of responsibilities and achievements include: Lead for Cisco Acquisition in IT & Business-Related Services, 
+    for discovery and post-close. Team Lead for IT Engineering, and Tier 3 Escalation Support to IT Support team. 
+    Spearheaded transition from WebEx to Zoom globally, including global deployment of Zoom Rooms in each location, 
+    creating a 75% improvement in satisfaction across the company. Spearheaded large scale Workspace One (MDM) deployment 
+    to all macOS and Windows machines with the use of open source tools to scale to 400+ employees. 
+    Developed a zero-touch deployment solution for macOS and Windows using open source tools, 
+    decreasing provisioning time from 200 minutes to 20 minutes (90% improvement). 
+    Created internal migration plan from manual HR & employee creation workflows to automated workflows through BambooHR and Okta, 
+    reducing input error in user creation. Deployed FedRAMP backend components of our software platform, 
+    created FedRAMP (strict) policies to support internal improvement plan over the next year. 
+    Created and executed migration plan to deprecate on-premise Active Directory in favor of cloud based IAM solutions through Okta, 
+    and AzureAD interop for Windows clients. Outlined server-less infrastructure improvements in GCP environment for existing services."
+  - company: ThousandEyes
+    title: IT Support Engineer II
+    startdate: 2016-01-01 00:00 -00:00
+    enddate: 2018-12-31 00:00 -00:00
+    description: "Hired as first IT employee in the company. Some responsibilities and achievements include: 
+    Boot strap IT and Help function, starting headcount of 50 to the current headcount of ~430. 
+    Create foundational policies (based around ITIL) for the helpdesk function and roles, including SLA, reporting data, priority definitions, 
+    on-call system. Developed solutions for full disk encryption (FDE) & key escrow solution, migration from HipChat to Slack, 
+    Single Sign-On (SSO) projects, Munki EUC deployment, and open source asset management database (SnipeIT) deployed into 
+    Google Cloud Platform. Administration of Atlassian, Active Directory, G Suite, Github, Okta, WebEx, and others. 
+    Deployed three new office locations (Austin, London, San Francisco) consisting of AV-equipment, networking equipment, 
+    VoIP equipment in short time frames. Created and deployed Local Administrator Password Solution for macOS with custom python script. 
+    Vendor Management, including local and international vendors (US, Great Britain, Ireland, Australia, Japan, Singapore, Germany). 
+    Travel to offices as needed/when required to support local conferences, on-site break/fix issues, and employee base."
+  - company: LORD Corporation
+    title: IS Intern
+    startdate: 2011-06-01 00:00 -00:00
+    enddate: 2012-08-31 00:00 -00:00
+    description: "Worked in an International Traffic in Arms Regulation (ITAR) & Information Technology Infrastructure Library (ITIL) environment. 
+    Handle Tier 1 & 2 support incidents, resolving forty incidents on a weekly basis for 3000+ employees in remote and on-site across 
+    four office locations domestically, and provide minor assistance to international office locations. Handle provisioning of laptops, 
+    phones, AV systems. Write documentation in SharePoint pertaining to improvements and break fix."
+educationheader: Education
+education:
+  - university: East Carolina University
+    degree: Bachelor of Science
+    major: Industrial Technology
+    startdate: 2013-08-01 00:00 -00:00
+    enddate: 2015-08-31 00:00 -00:00
+    description: Took courses pertaining in various fields in Industrial Technology, including Analytics, Systems Engineering,
+                        International Communications, Global Learning, and more. East Carolina University also had a study abroad program with
+                        several universities in the Nordics, and I choose to spend one year abroad. I also participated in a college community
+                        called Quest, to help ease transfer students transition into the university.
+  - university: Linnéuniversitetet / Linnaeus University
+    degree: Study Abroad
+    major: 
+    startdate: 2014-08-01 00:00 -00:00
+    enddate: 2015-06-31 00:00 -00:00
+    description: Studied on an exchange semester in Sweden, with courses focusing on International Law, Networking Security, Swedish Culture (Sports, Art, and Film). 
+                        I also took courses remotely at my home university during this time. I participated in various international student festivals, local festivals, and school led activities.
+
+  - university: Wake Tech Community College
+    degree: Associate of Science
+    major: Networking Technology
+    startdate: 2009-01-01 00:00 -00:00
+    enddate: 2013-05-31 00:00 -00:00
+    description: Took courses here to transition to a four year school. Degree courses were related primarily to CCNA and CCNP based content, Red Hat Administration, Windows System Administration.
+
+volunteerheader: Volunteer
+volunteer: 
+  - company: Young Scandinavians Club
+    title: Web Tech
+    startdate: 2019-05-01 00:00 -00:00
+    enddate: ""
+    description: Help maintain a WordPress E-commerce website that includes roughly one
+                        thousand members. Performing simple tasks, and maintenance related activities.
+  - company: Norrlands Nation
+    title: Sports Committee Member & Photographer
+    startdate: 2015-01-01 00:00 -00:00
+    enddate: 2015-06-31 00:00 -00:00
+    description: "Created advertising material for several sporting events within Norrlands such as:
+                        dodgeball, floorball, and soccer. Also took photographs of the events for use on social
+                        media."
+  - company: Sivans
+    title: Various 
+    startdate: 2014-08-01 00:00 -00:00
+    enddate: 2015-06-31 00:00 -00:00
+    description: I performed various front of house roles in a Swedish student pub that
+                        primarily served Swedish students. Often working behind the bar 
+                        to practice speaking in Swedish, or working as security. 
+                        On average the bar would serve 500 students a night.
+  - company: Overclock.net
+    title: Game Server Administrator
+    startdate: 2010-01-01 00:00 -00:00
+    enddate: 2014-01-31 00:00 -00:00
+    description: "I took over the game server administration role as an avid fan of the
+                        Battlefield series, to manage two ranked servers with three different game modes (Rush, Conquest, and 32-man). I
+                        performed the following tasks: Managed several game servers for the Battlefield video game series, Managed
+                        a team of ten game server moderators, Remotely configured and applied updates, Installed software so that other
+                        game moderators could remotely manage the game servers without actively playing the game, Allowed players to
+                        manage certain elements of the game (map choice, kick/voting, reporting/alerting admins). I also clearly
+                        defined policies, server & play rules, update mechanisms, patch time slots."
+  - company: Växjö International Students
+    title: Sports Committee Member & Photographer
+    startdate: 2015-01-01 00:00 -00:00
+    enddate: 2015-06-31 00:00 -00:00
+    description: "Assisted in setting up events like VIS Sports Saturday, Volleyball
+                        competitions, and other events that created activities for international students. Also created events pertaining to
+                        sports in and around the city, and led a ski trip to Isaberg. Also took photographs of the events for use
+                        on social media."
+  - company: Slottstalarna
+    title: Various
+    startdate: 2014-08-01 00:00 -00:00
+    enddate: 2015-06-31 00:00 -00:00
+    description: "I performed various front of house roles in a Swedish student pub that
+                        served a mixture of Swedish and international students. Often working behind the bar to practice speaking in
+                        Swedish and due to the fast paced environment. On average the bar would server 400 student a night."
+  - company: East Carolina University
+    title: Transfer Program Speaker
+    startdate: 2013-08-01 00:00 -00:00
+    enddate: 2015-05-31 00:00 -00:00
+    description: "Presented to potential students and parents of the university from
+                        groups of 10 to 100. Described transfer programs in-depth, adjusting as a non-traditional student and activities
+                        to get involved with at the university for inbound students."
+  - company: Overclock.net
+    title: Networking Editor
+    startdate: 2009-10-01 00:00 -00:00
+    enddate: 2012-12-31 00:00 -00:00
+    description: Interviewed for the role to write documentation and publications
+                        related to networking content for the website on overclock.net under the username "GH0" or "Lige", an example of
+                        writing can be <a class="text-dark link-hover" href="https://www.overclock.net/forum/45-networking-security/684875-guide-interworkings-internet.html#post7409055">found here</a>.

@@ -1,0 +1,65 @@
+- name: Client Platform Engineering
+  skills:
+  - AutoPkg(r)
+  - Bash 
+  - Chocolatey
+  - macOS 
+  - macOS packaging
+  - Munki
+  - Powershell
+  - Python
+  - Server 2019
+  - Windows 10
+
+
+- name: SaaS Administration
+  skills:
+  - Atlassian Suite
+  - Asana
+  - Azure AD
+  - G Suite
+  - Github
+  - Okta
+  - Meraki
+  - Office Suite / O365
+  - RingCentral
+  - Slack
+  - Workspace One (Airwatch)
+  - Zoom
+
+- name: Infrastructure Management
+  skills:
+  - AWS
+  - Azure
+  - DHCP / isc-dhcp
+  - DNS / bind9
+  - Docker
+  - GCP
+  - Jenkins
+  - Networking (CCNA/CCNP)
+  - Palo Alto Network
+  - PostgreSQL
+  - Puppet
+  - Ubiquiti Networks
+  - Virtualization (ESXi, Xen)
+
+- name: Programming
+  skills:
+  - Ruby
+  - CSS
+  - YAML
+  - Powershell
+  - Python
+  - VS Code
+
+- name: Languages
+  skills:
+  - English - Native
+  - Swedish
+  - Norwegian
+
+- name: Other
+  skills:
+  - Custom SAML Deployments
+  - git
+  - Technical Writing

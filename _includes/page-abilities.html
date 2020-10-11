@@ -13,26 +13,14 @@
             </div>
             <div class="col-lg-6">
                 <div id="skills" class="skill-box pt-5 pt-lg-4">
-                    <div class="skillbar clearfix" data-percent="95%">
-                        <div class="skillbar-title"><span>Endpoint Management</span></div>
+                    {% for skill in site.data.abilities %}
+                    <div class="skillbar clearfix" data-percent="{{skill.percent}}%">
+                        <div class="skillbar-title"><span>{{skill.title}}</span></div>
                         <div class="fill-skillbar skillbar-bar"></div>
-                        <!-- <div class="skill-bar-percent">95%</div> -->
+                        <!-- <div class="skill-bar-percent">{{skill.percent}}%</div> -->
                     </div>
-                    <div class="skillbar clearfix " data-percent="85%">
-                        <div class="skillbar-title"><span>Teaching & Mentoring</span></div>
-                        <div class="fill-skillbar skillbar-bar"></div>
-                        <!-- <div class="skill-bar-percent">85%</div> -->
-                    </div>
-                    <div class="skillbar clearfix" data-percent="90%">
-                        <div class="skillbar-title"><span>Leadership</span></div>
-                        <div class="fill-skillbar skillbar-bar"></div>
-                        <!-- <div class="skill-bar-percent">75%</div> -->
-                    </div>
-                    <div class="skillbar clearfix" data-percent="85%">
-                        <div class="skillbar-title"><span>Adaptability</span></div>
-                        <div class="fill-skillbar skillbar-bar"></div>
-                        <!-- <div class="skill-bar-percent"></div> -->
-                    </div>
+                    {% endfor %}
+                   
                 </div>
             </div>
         </div>
