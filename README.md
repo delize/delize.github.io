@@ -1,3 +1,5 @@
+![workflow-badge](https://github.com/delize/delize.github.io/workflows/deploy/badge.svg)
+
 # Personal Website
 This is heavily based on the [UOne theme found on ThemeForest](https://themeforest.net/item/uone-personal-portfolio-and-resume-template/25005328), however, it has been modified heavily for use with Jekyll/Github Pages.
 
