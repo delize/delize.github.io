@@ -1,0 +1,57 @@
+cpe:
+  - AutoPkg(r)
+  - Bash 
+  - Chocolatey
+  - macOS 
+  - macOS packaging
+  - Munki
+  - Powershell
+  - Python
+  - Server 2019
+  - Windows 10
+
+saasoperation: 
+  - Atlassian Suite
+  - Asana
+  - Azure AD
+  - G Suite
+  - Github
+  - Okta
+  - Meraki
+  - Office Suite / O365
+  - RingCentral
+  - Slack
+  - Workspace One (Airwatch)
+  - Zoom
+
+infrastructure:
+  - AWS
+  - Azure
+  - DHCP / isc-dhcp
+  - DNS / bind9
+  - Docker
+  - GCP
+  - Jenkins
+  - Networking (CCNA/CCNP)
+  - Palo Alto Network
+  - PostgreSQL
+  - Puppet
+  - Ubiquiti Networks
+  - Virtualization (ESXi, Xen)
+
+programming:
+  - Ruby
+  - YAML
+  - Powershell
+  - Python
+  - VS Code
+
+languages:
+  - English - Native
+  - Swedish
+  - Norwegian
+
+other:
+  - Custom SAML Deployments
+  - git
+  - Technical Writing
