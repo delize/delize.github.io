@@ -10,7 +10,7 @@ date: 2020-11-1 01:00:00 -0700
 last_modified_at: 
 layout: post
 tags:
-- installapplications
+- `installapplications`
 - nudge
 - macOS
 - workspace_one
@@ -39,6 +39,7 @@ permalink: /blog/:year/:month/:day/:title/
     - [What we used on Windows:](#what-we-used-on-windows)
   - [MDM Deployment Phase](#mdm-deployment-phase)
     - [What we used on macOS:](#what-we-used-on-macos-1)
+    - [What we used on Windows:](#what-we-used-on-windows-1)
     - [Workspace One Configuration](#workspace-one-configuration)
       - [Split paths for existing and new devices](#split-paths-for-existing-and-new-devices)
         - [Existing devices](#existing-devices)
@@ -50,6 +51,8 @@ permalink: /blog/:year/:month/:day/:title/
 At [$previouscompany](https://andrewdoering.org/#resume) we had gone through a long struggle of managing devices properly. When I was hired in 2016, it didn't help that I was hired having never actively used a macOS device before in my life - and admittedly I was out of scope, but doubled down and did a lot of research off and on hours. Our initial deployment of a provisioning system was using DeployStudio. It worked (slowly and barely) for two years (from 2016 - 2018), and admittedly, we were still a small company at this point, roughly 250 max, however, the mistake had already been made as our biggest two years of growth were during this time period. However to continue to scale the companies operations, we needed to get an efficient and flexible system.
 
 After an uphill battle, countless research documents, proposals, and explanations, we finally reached a point where it was agreed on that we would obtain an MDM solution. Going to detail exactly what we went through in terms of deployments before MDM, during/after MDM, and going forward (with Windows 10 and Big Sur).
+
+This blog post has been written post-acquisition, as well as about a year after our deployment of this process as we will no longer be using this deployment method.
 
 
 ### Initial Deployment Phases 
@@ -64,6 +67,7 @@ This is for the time period between 2016 and the end of 2017.
 * [Sal](https://github.com/salopensource)
 * [Crypt Client](https://github.com/grahamgilbert/crypt)
 * [Crypt Server](https://github.com/grahamgilbert/Crypt-Server)
+* [Local LAPSmac](https://github.com/delize/local-LAPS-python)
 
 
 To go into detail on this, we would create a prepared image from AutoDMG with the latest updates. We would go the "Golden Image" route. Once the golden image was prepared (which was a thin image, not a monolithic image), we would then drop it on our DeployStudio system and began the deployment process.
@@ -82,6 +86,8 @@ For our Windows deployment, there was minimal work needed, as we scripted up mos
 
 ### MDM Deployment Phase
 
+This project was initiated at the beginning of 2018 and completed by mid-2018. 
+
 #### What we used on macOS:
 
 * [Munki](https://www.munki.org/)
@@ -92,9 +98,16 @@ For our Windows deployment, there was minimal work needed, as we scripted up mos
 * [umad](https://github.com/macadmins/umad)
 * [nudge](https://github.com/macadmins/nudge) (and a more [feature rich fork exists](https://github.com/LcTrKiD/nudge))
 * [installapplications](https://github.com/macadmins/installapplications) 
+* [Developer ID Installer Certificate](https://developer.apple.com/support/certificates/)
 
-Since we previously had already rolled out Munki to our fleet, this made the MDM enrollment a lot easier.
+Since we previously already were using Munki thoughout our fleet, this made the MDM enrollment a lot easier.
 
+#### What we used on Windows:
+
+* [Windows Autopilot](https://www.microsoft.com/en-us/microsoft-365/windows/windows-autopilot)
+* [Chef](https://www.chef.io/)
+* [Chocolatey](https://chocolatey.org/products/chocolatey-for-business)
+* [Crypt Client](https://github.com/johnnyramos/bitlocker2crypt)
 
 #### Workspace One Configuration
 
@@ -113,7 +126,7 @@ While ultimately, internally we did want to create programs for the bottom two i
 
 ###### Existing devices
 
-We created an organizational group specifically for previous devices within the company. 
+We created an organizational group specifically for previous devices within the company. Here we utilized umad, and only umad. 
 
 
 ###### New / Zero Touch Provisioning System
@@ -121,8 +134,13 @@ We created an organizational group specifically for previous devices within the 
 Again, we created an organizational group specifically for new devices. This was meant to be a way that we could easily monitor devices being registered on a weekly basis for new employees. We had several other methods of doing this (eg: Sal), but this way, our IT team, InfoSec teams, and other teams could pull data out of Workspace One for all new devices rather than have the entire list of all previous devices.
 
 
+
 ### Moving forward
 
 Now that we are being acquired, all of our device management plan has been scrapped.However, with that said, I do want to make some comments on the direction of Big Sur and how the zero-touch provisioning system is changing.
 
-A lot of installapplications use cases come from the userland configuration to display context to a user once it hits the login screen. However, there have been [reports](https://macadmins.slack.com/archives/C54N3AT2B/p1601644844008600) of this [failing](https://macadmins.slack.com/archives/C54N3AT2B/p1601408174001500) or not working as expected with ``11.0b*`.
+First and foremost, Python is getting removed in Big Sur. Meaning that you have to have roll your own in the deployment process. With `installapplications`, this is now a problem. The `mdmclient` on macOS is rather finicky and not entirely stable. Since we now have to bundle python and `installapplications`, it raises the size from ~25 kilobytes to ~25 megabytes. 
+
+A huge component of `installapplications` use cases come from the ability to display and load userland context for the user once they hit the desktop environment. However, there have been [reports](https://macadmins.slack.com/archives/C54N3AT2B/p1601644844008600) of this [failing](https://macadmins.slack.com/archives/C54N3AT2B/p1601408174001500) or not working as expected with macOS 11.0 Beta / Big Sur. Granted that due to Big Sur being in beta, there may be some unexpected behavior, but it seems the best route going forward is to no longer use DEP Notify directly launched from `installapplications`.
+
+The most optimal route going forward for new deployments is to 
