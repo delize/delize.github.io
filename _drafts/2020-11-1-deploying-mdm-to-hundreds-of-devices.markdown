@@ -2,7 +2,7 @@
 title: How we deployed MDM (Workspace One) to hundreds of devices
 excerpt: This blog post summarizes the thoughts and processes behind our deployment of 
 link: https://andrewdoering.org/blog/2020/11/01/deploying-mdm-to-hundreds-of-devices
-slug: deploying-mdm-to-hundreds-of-devices
+#slug: deploying-mdm-to-hundreds-of-devices
 author: Andrew Doering
  #Remove this after finishing the document
 comments: true
@@ -10,7 +10,7 @@ date: 2020-11-1 01:00:00 -0700
 last_modified_at: 
 layout: post
 tags:
-- `installapplications`
+- installapplications
 - nudge
 - macOS
 - workspace_one
@@ -33,20 +33,22 @@ img_alt: Placeholder Alt Text
 permalink: /blog/:year/:month/:day/:title/
 ---
 
-- [Introduction](#introduction)
-  - [Initial Deployment Phases](#initial-deployment-phases)
-    - [What we used on macOS:](#what-we-used-on-macos)
-    - [What we used on Windows:](#what-we-used-on-windows)
-  - [MDM Deployment Phase](#mdm-deployment-phase)
-    - [What we used on macOS:](#what-we-used-on-macos-1)
-    - [What we used on Windows:](#what-we-used-on-windows-1)
-    - [Workspace One Configuration](#workspace-one-configuration)
-      - [Split paths for existing and new devices](#split-paths-for-existing-and-new-devices)
-        - [Existing devices](#existing-devices)
-        - [New / Zero Touch Provisioning System](#new--zero-touch-provisioning-system)
-  - [Moving forward](#moving-forward)
-
-## Introduction
+- [Initial Deployment Phases](#initial-deployment-phases)
+  - [What we used on macOS:](#what-we-used-on-macos)
+  - [What we used on Windows:](#what-we-used-on-windows)
+- [MDM Deployment Phase](#mdm-deployment-phase)
+  - [What we used on macOS:](#what-we-used-on-macos-1)
+  - [What we used on Windows:](#what-we-used-on-windows-1)
+  - [Workspace One Configuration](#workspace-one-configuration)
+    - [Split paths for existing and new devices](#split-paths-for-existing-and-new-devices)
+    - [Existing devices](#existing-devices)
+    - [New / Zero Touch Provisioning System](#new--zero-touch-provisioning-system)
+      - [installapplications](#installapplications)
+      - [How we deployed Munki](#how-we-deployed-munki)
+        - [Rolling our own](#rolling-our-own)
+        - [Manifests](#manifests)
+      - [How new employees gain admin access:](#how-new-employees-gain-admin-access)
+- [Moving forward](#moving-forward)
 
 At [$previouscompany](https://andrewdoering.org/#resume) we had gone through a long struggle of managing devices properly. When I was hired in 2016, it didn't help that I was hired having never actively used a macOS device before in my life - and admittedly I was out of scope, but doubled down and did a lot of research off and on hours. Our initial deployment of a provisioning system was using DeployStudio. It worked (slowly and barely) for two years (from 2016 - 2018), and admittedly, we were still a small company at this point, roughly 250 max, however, the mistake had already been made as our biggest two years of growth were during this time period. However to continue to scale the companies operations, we needed to get an efficient and flexible system.
 
@@ -55,11 +57,11 @@ After an uphill battle, countless research documents, proposals, and explanation
 This blog post has been written post-acquisition, as well as about a year after our deployment of this process as we will no longer be using this deployment method.
 
 
-### Initial Deployment Phases 
+## Initial Deployment Phases 
 
 This is for the time period between 2016 and the end of 2017.
 
-#### What we used on macOS:
+### What we used on macOS:
 
 * [DeployStudio](https://www.deploystudio.com/)
 * [AutoDMG](https://github.com/MagerValp/AutoDMG)
@@ -76,7 +78,7 @@ We had several different workflows for each department and team, pre-installing 
 
 There were a few issues here that came out of this, the largest one was the ability to support macOS images that would become branched due to hardware revisions. The other was once the T2 chips were released, we couldn't really use DeployStudio anymore.
 
-#### What we used on Windows:
+### What we used on Windows:
 
 * OEM Windows 10 Image
 * [Crypt Client](https://github.com/johnnyramos/bitlocker2crypt)
@@ -84,11 +86,11 @@ There were a few issues here that came out of this, the largest one was the abil
 
 For our Windows deployment, there was minimal work needed, as we scripted up most of our onboarding processes, we could have defnitely 
 
-### MDM Deployment Phase
+## MDM Deployment Phase
 
-This project was initiated at the beginning of 2018 and completed by mid-2018. 
+This project was initiated at the beginning of 2018 and completed by mid-2018, was in use during and up to the acquisition.
 
-#### What we used on macOS:
+### What we used on macOS:
 
 * [Munki](https://www.munki.org/)
 * [Sal](https://github.com/salopensource)
@@ -102,18 +104,18 @@ This project was initiated at the beginning of 2018 and completed by mid-2018.
 
 Since we previously already were using Munki thoughout our fleet, this made the MDM enrollment a lot easier.
 
-#### What we used on Windows:
+### What we used on Windows:
 
 * [Windows Autopilot](https://www.microsoft.com/en-us/microsoft-365/windows/windows-autopilot)
 * [Chef](https://www.chef.io/)
 * [Chocolatey](https://chocolatey.org/products/chocolatey-for-business)
 * [Crypt Client](https://github.com/johnnyramos/bitlocker2crypt)
 
-#### Workspace One Configuration
+### Workspace One Configuration
 
 I have already written up on our [SAML and Directory Services deployment of Workspace One](https://andrewdoering.org/blog/2019/12/23/workspace-one-okta-users-and-groups-working-with-dep-enrollment/), however I have not described our existing setup. 
 
-##### Split paths for existing and new devices
+#### Split paths for existing and new devices
 
 The requirements we had setup were:
 
@@ -122,20 +124,49 @@ The requirements we had setup were:
 3. Do nothing for Bring your own Device (ByoD)
 4. Do nothing for Employee Owned / Personal Devices (EOPD)
 
-While ultimately, internally we did want to create programs for the bottom two items, we were not able to get anything greenlighted internally. Within IT, we saw the bottom two as potential risks, and the long term effort was to enable device trust and context based access via Okta to minimize data loss and that risk. However there were issues at play from above that did not allow us to execute 3 or 4.
+While ultimately, internally we did want to create programs for the bottom two items, we were not able to get anything green lit internally. Within IT, we saw the bottom two as potential risks, and the long term effort was to enable device trust and context based access via Okta to minimize data loss and that risk. However there were issues at play from above that did not allow us to execute 3 or 4.
 
-###### Existing devices
+#### Existing devices
 
-We created an organizational group specifically for previous devices within the company. Here we utilized umad, and only umad. 
+We created an organizational group specifically for previous devices within the company. Here we utilized umad and had two routes that would be taken:
 
+* umad + DEP
+* umad + manual
 
-###### New / Zero Touch Provisioning System
+The bulk of our devices were DEP capable directly after deploying umad, and the bulk of our team did so cleanly. 
+
+From there, our first line support team (who were also our IT engineering team, yay for teams of 2!) after about a week or two of deployment time. This was enough time for employees to enroll themselves, and in addition for the timer to kick in with umad to the point where it would become annoying enough for employees that did not enroll (to require an incident to be opened to either stop the pop ups or enroll into MDM).
+
+#### New / Zero Touch Provisioning System
 
 Again, we created an organizational group specifically for new devices. This was meant to be a way that we could easily monitor devices being registered on a weekly basis for new employees. We had several other methods of doing this (eg: Sal), but this way, our IT team, InfoSec teams, and other teams could pull data out of Workspace One for all new devices rather than have the entire list of all previous devices.
 
+##### installapplications
 
 
-### Moving forward
+
+##### How we deployed Munki
+
+###### Rolling our own
+
+
+
+###### Manifests 
+
+We use a similar munki deployment that follows the same principles as [Munki Enroll](https://github.com/edingc/munki-enroll) and [Munki Serial Enroll](https://github.com/aysiu/munki-serial-enroll). However, our tool was internally developed and has not been released - namely our service does not rely on PHP. Our structure of our repos is described like:
+
+![Structure Diagram](assets/blog/2020/10/mdm/structure.png)
+
+This way, we had the flexibility to deploy to a device, to a team/department, to a region, and globally across the domain. 
+
+
+##### How new employees gain admin access:
+
+Before our acquisition, we did not grant admin access across the board to the company (due to InfoSec requirements), we only allowed a few departments (namely: engineering, InfoSec, customer success, and pre-sales solution engineers). Due to the flexibility of our Munki enrollments.
+
+[Rich Trouton](https://derflounder.wordpress.com/) at SAP has published [Privileges.app](https://github.com/SAP/macOS-enterprise-privileges/). We use this in certain Munki manifests to automatically install and grant access, while also setting up a post install script to automatically run and enable admin access after Munki installed the application. We could do this natively [with munki](https://github.com/munki/munki/wiki/Managing-Admin-Rights-With-Munki), however we wanted to provide the opportunity for our engineers to dynamically switch admin context on the fly, and SAP's tool allows us to do this.
+
+## Moving forward
 
 Now that we are being acquired, all of our device management plan has been scrapped.However, with that said, I do want to make some comments on the direction of Big Sur and how the zero-touch provisioning system is changing.
 
