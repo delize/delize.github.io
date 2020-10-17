@@ -42,12 +42,14 @@ permalink: /blog/:year/:month/:day/:title/
   - [Workspace One Configuration](#workspace-one-configuration)
     - [Split paths for existing and new devices](#split-paths-for-existing-and-new-devices)
     - [Existing devices](#existing-devices)
+      - [macOS](#macos)
+      - [Windows](#windows)
     - [New / Zero Touch Provisioning System](#new--zero-touch-provisioning-system)
-      - [installapplications](#installapplications)
-      - [How we deployed Munki](#how-we-deployed-munki)
-        - [Rolling our own](#rolling-our-own)
-        - [Manifests](#manifests)
-      - [How new employees gain admin access:](#how-new-employees-gain-admin-access)
+      - [macOS](#macos-1)
+        - [installapplications](#installapplications)
+        - [How we deployed Munki](#how-we-deployed-munki)
+        - [How new employees gain admin access:](#how-new-employees-gain-admin-access)
+      - [Windows](#windows-1)
 - [Moving forward](#moving-forward)
 
 At [$previouscompany](https://andrewdoering.org/#resume) we had gone through a long struggle of managing devices properly. When I was hired in 2016, it didn't help that I was hired having never actively used a macOS device before in my life - and admittedly I was out of scope, but doubled down and did a lot of research off and on hours. Our initial deployment of a provisioning system was using DeployStudio. It worked (slowly and barely) for two years (from 2016 - 2018), and admittedly, we were still a small company at this point, roughly 250 max, however, the mistake had already been made as our biggest two years of growth were during this time period. However to continue to scale the companies operations, we needed to get an efficient and flexible system.
@@ -84,7 +86,7 @@ There were a few issues here that came out of this, the largest one was the abil
 * [Crypt Client](https://github.com/johnnyramos/bitlocker2crypt)
 * Group Policy Scripts
 
-For our Windows deployment, there was minimal work needed, as we scripted up most of our onboarding processes, we could have defnitely 
+For our Windows deployment, there was minimal work needed, as we scripted up most of our onboarding processes, we definitely had some improvements to be made here, however Windows was always considered a lower priority compared to macOS - even tough about 30% of our workforce was Windows based clients, and we have several build machines, and servers that were Windows based. 
 
 ## MDM Deployment Phase
 
@@ -128,43 +130,56 @@ While ultimately, internally we did want to create programs for the bottom two i
 
 #### Existing devices
 
+##### macOS
+
 We created an organizational group specifically for previous devices within the company. Here we utilized umad and had two routes that would be taken:
 
 * umad + DEP
 * umad + manual
 
-The bulk of our devices were DEP capable directly after deploying umad, and the bulk of our team did so cleanly. 
+The bulk of our devices were DEP capable directly after deploying umad, and the bulk of our team enrolled smoothly.
 
 From there, our first line support team (who were also our IT engineering team, yay for teams of 2!) after about a week or two of deployment time. This was enough time for employees to enroll themselves, and in addition for the timer to kick in with umad to the point where it would become annoying enough for employees that did not enroll (to require an incident to be opened to either stop the pop ups or enroll into MDM).
+
+##### Windows
+
+Some text here.
 
 #### New / Zero Touch Provisioning System
 
 Again, we created an organizational group specifically for new devices. This was meant to be a way that we could easily monitor devices being registered on a weekly basis for new employees. We had several other methods of doing this (eg: Sal), but this way, our IT team, InfoSec teams, and other teams could pull data out of Workspace One for all new devices rather than have the entire list of all previous devices.
 
-##### installapplications
+
+##### macOS 
+
+###### installapplications
 
 
 
-##### How we deployed Munki
+###### How we deployed Munki
 
-###### Rolling our own
+More text here
+
+**Rolling our own**
 
 
 
-###### Manifests 
+**Manifests** 
 
 We use a similar munki deployment that follows the same principles as [Munki Enroll](https://github.com/edingc/munki-enroll) and [Munki Serial Enroll](https://github.com/aysiu/munki-serial-enroll). However, our tool was internally developed and has not been released - namely our service does not rely on PHP. Our structure of our repos is described like:
 
-![Structure Diagram](assets/blog/2020/10/mdm/structure.png)
+![Structure Diagram](/assets/blog/2020/10/mdm/structure.png)
 
 This way, we had the flexibility to deploy to a device, to a team/department, to a region, and globally across the domain. 
 
 
-##### How new employees gain admin access:
+###### How new employees gain admin access:
 
-Before our acquisition, we did not grant admin access across the board to the company (due to InfoSec requirements), we only allowed a few departments (namely: engineering, InfoSec, customer success, and pre-sales solution engineers). Due to the flexibility of our Munki enrollments.
+Before our acquisition, we did not grant admin access across the board to the company (due to InfoSec requirements), we only allowed a few departments (namely: engineering, InfoSec, customer success, and pre-sales solution engineers). Due to the flexibility of our Munki enrollments, it was quite easy to accomplish in this way.
 
 [Rich Trouton](https://derflounder.wordpress.com/) at SAP has published [Privileges.app](https://github.com/SAP/macOS-enterprise-privileges/). We use this in certain Munki manifests to automatically install and grant access, while also setting up a post install script to automatically run and enable admin access after Munki installed the application. We could do this natively [with munki](https://github.com/munki/munki/wiki/Managing-Admin-Rights-With-Munki), however we wanted to provide the opportunity for our engineers to dynamically switch admin context on the fly, and SAP's tool allows us to do this.
+
+##### Windows
 
 ## Moving forward
 
