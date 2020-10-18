@@ -2,11 +2,7 @@
 
 source 'https://rubygems.org'
 
-<<<<<<< Updated upstream
-gem 'jekyll', "~> 3.9"
-=======
 gem 'jekyll', "~> 4.1"
->>>>>>> Stashed changes
 
 group :jekyll_plugins do
   gem 'jekyll-feed'
