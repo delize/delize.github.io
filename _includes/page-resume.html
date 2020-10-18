@@ -6,8 +6,8 @@
             <div class="col-lg-6">
                 <h3 class="text-dark mb-4">{{ site.data.resume.workheader }}</h3>
                 <ul class="timeline">
-                    {% assign previouswork = site.data.resume.work | where_expr: item, item.enddate != nil | where_expr: item, item.enddate != '' |  sort: 'enddate' | reverse %}
-                    {% assign currentwork = site.data.resume.work | where_expr: item, item.enddate == nil | where_expr: item, item.enddate |  sort: 'startdate' | reverse %}
+                    {% assign previouswork = site.data.resume.work | where_exp:"entry", "entry.enddate != nil and entry.enddate != blank and entry.enddate != ''" |  sort: 'enddate' | reverse %}
+                    {% assign currentwork = site.data.resume.work | where_exp:"entry", "entry.enddate == nil or entry.enddate == blank or entry.enddate == ''" |  sort: 'startdate' | reverse %}
                     {% assign work = currentwork | concat: previouswork %}
                     {% for workplace in work %}
                     <li>
@@ -24,8 +24,8 @@
             <div class="col-lg-6">
                 <h3 class="text-dark mb-4 mt-5 mt-lg-0">{{ site.data.resume.volunteerheader }}</h3>
                 <ul class="timeline">
-                    {% assign previouswork = site.data.resume.volunteer | where_expr: item, item.enddate != nil | where_expr: item, item.enddate != '' |  sort: 'enddate' | reverse %}
-                    {% assign currentwork = site.data.resume.volunteer | where_expr: item, item.enddate == nil | where_expr: item, item.enddate |  sort: 'startdate' | reverse %}
+                    {% assign previouswork = site.data.resume.volunteer | where_exp:"entry", "entry.enddate != nil and entry.enddate != blank and entry.enddate != ''" |  sort: 'enddate' | reverse %}
+                    {% assign currentwork = site.data.resume.volunteer | where_exp:"entry", "entry.enddate == nil or entry.enddate == blank or entry.enddate == ''" |  sort: 'startdate' | reverse %}
                     {% assign volunteer = currentwork | concat: previouswork %}
                     {% for workplace in volunteer %}
                     <li>
@@ -47,8 +47,8 @@
             <div class="row">
                 <div class="col-lg-auto">
                     <ul class="timeline">
-                        {% assign previousedu = site.data.resume.education | where_expr: item, item.enddate != nil | where_expr: item, item.enddate != '' |  sort: 'enddate' | reverse %}
-                        {% assign currentedu = site.data.resume.education | where_expr: item, item.enddate == nil | where_expr: item, item.enddate |  sort: 'startdate' | reverse %}
+                        {% assign previousedu = site.data.resume.education | where_exp:"entry", "entry.enddate != nil and entry.enddate != blank and entry.enddate != ''" |  sort: 'enddate' | reverse %}
+                        {% assign currentedu = site.data.resume.education | where_exp:"entry", "entry.enddate == nil or entry.enddate == blank or entry.enddate == ''" |  sort: 'startdate' | reverse %}
                         {% assign education = currentedu | concat: previousedu %}
                         {% for university in education %}
                         <li>
