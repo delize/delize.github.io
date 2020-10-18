@@ -1,6 +1,6 @@
 ---
 title: How we deployed MDM (Workspace One) to hundreds of devices
-excerpt: This blog post summarizes the thoughts and processes behind our deployment of 
+excerpt: This blog post summarizes the thoughts and processes behind our deployment of workspace one to several hundred devices on both Windows and macOS.
 link: https://andrewdoering.org/blog/2020/11/01/deploying-mdm-to-hundreds-of-devices
 #slug: deploying-mdm-to-hundreds-of-devices
 author: Andrew Doering
@@ -257,9 +257,7 @@ For the Windows side, we configured [auto-discovery](https://docs.vmware.com/en/
 
 While rolling this out for zero-touch, we did run into a single issue which unfortunately was a show stopper for zero-touch only. That is, when you have Active Directory previously hooked up to Okta, it causes issues when mapping `uniqueidentifiers` vs `ObjectGUID`. We ultimately had to open up a support case to attempt to resolve this, and then were redirected to ProServices to fix the problem. By the time we got approval for ProServices, the announcement of an acquisition was announced the next day. The annoying part about this issue, is that it ONLY presented itself when utilizing AzureAD's Workspace One VMware app during OOBE experience. If manual sign up using AzureAD Domain Join and manual enrollment into Workspace One MDM, it was not present.
 
-This is related to this setting:
-
-![External ID](/assets/blog/2020/10/mdm/Screen%20Shot%202020-10-17%20at%208.27.16%20PM.png)
+![External ID Error](/assets/blog/2020/10/mdm/Screen%20Shot%202020-10-17%20at%208.27.16%20PM.png)
 
 However, because we already have 400+ accounts in O365, and an immutableID is well, immutable, we were not sure how to go through with this without causing massive issues. Unfortunately, this was never brought up to us until far after, and while writing this, I realized that there was some misconfigurations when going through our Professional Services with Workspace One that did not take into account this configuration in Okta and AzureAD.
 
@@ -268,7 +266,7 @@ This is what happens, which is interesting due to the lack of use of Active Dire
 
 While Okta being federated does imitate ADSync, our federated configuration does not actually show up as an External Identity in AzureAD's configuration.
 
-It does seem that Microsoft has finally recognized a major flaw, and allowed the ability to [create custom attributes in AzureAD](https://docs.microsoft.com/en-us/azure/active-directory/external-identities/user-flow-add-custom-attributes). This could have helped us with a workaround. However, if anyone **does** know of a way to fix this issue, I would honestly love to hear it. There is [a lot](https://support.okta.com/help/servlet/fileField?id=0BE2A00000004Sj) of [documentation](https://www.okta.com/sites/default/files/Okta-3rd-Party-UEM-Interop_Workspace-ONE.pdf) [I have](https://help.okta.com/en/prod/Content/Topics/Apps/Office365-Deployment/provision-users.htm) read in the past, however even if we can't/don't use it going forward, just for completion and a way to close a loop here.
+It does seem that Microsoft has finally allowed the ability to [create custom attributes in AzureAD](https://docs.microsoft.com/en-us/azure/active-directory/external-identities/user-flow-add-custom-attributes). This could have helped us with a workaround. However, if anyone **does** know of a way to fix this issue, I would honestly love to hear it. There is [a lot](https://support.okta.com/help/servlet/fileField?id=0BE2A00000004Sj) of [documentation](https://www.okta.com/sites/default/files/Okta-3rd-Party-UEM-Interop_Workspace-ONE.pdf) [I have](https://help.okta.com/en/prod/Content/Topics/Apps/Office365-Deployment/provision-users.htm) read in the past, however even if we can't/don't use it going forward, just for completion and a way to close a loop here.
 
 We unfortunately went the manual route. Requiring users to sign in manually to Azure AD, and then manually sign into the MDM.
 
