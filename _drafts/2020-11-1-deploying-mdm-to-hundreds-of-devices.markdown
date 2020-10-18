@@ -251,7 +251,7 @@ Once their initial installation was finished, we would run Jamf Connect Sync on 
 
 The forgotten step-child, as I mentioned, trying to get anything done within our environment on Windows was difficult as management deemed it unnecessary. All the while our fleet deployment of windows was ~25% of our total systems. Fortunately, the improvements we made with macOS (and MDM in general) also were baked into (to a minimal degree) for Windows as well. Meaning, that remote employees and workforces could be rolled out without someone sitting next to the computer for 30 to 60 minutes configuring a PC. Unfortunately, we couldn't use it in the provisioning process due to upper management.
 
-However, once covid happened, we had sudden approval to initiate Windows improvements
+However, once covid happened, we had sudden approval to initiate Windows improvements.
 
 ###### Autopilot / OOBE
 
@@ -273,6 +273,8 @@ However, because we already have 400+ accounts in O365, and an immutableID is we
 
 This is what happens:
 ![Workspace One, AzureAD Error](/assets/blog/2020/10/mdm/Screen%20Shot%202020-10-17%20at%208.27.16%20PM.png)
+
+It does seem that Microsoft has finally recognized a major flaw, and allowed the ability to [create custom attributes in AzureAD](https://docs.microsoft.com/en-us/azure/active-directory/external-identities/user-flow-add-custom-attributes). This could have helped us with a workaround. However, if anyone **does** know of a way to fix this issue, I would honestly love to hear it. Even if we can't/don't use it going forward, just for completion.
 
 We unfortunately went the manual route. Requiring users to sign in manually to Azure AD, and then manually sign into the MDM. 
 
