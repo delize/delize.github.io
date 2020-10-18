@@ -21,15 +21,17 @@ tags:
 - MDM
 - device enrollment program
 - mobile device management
+- zero-touch provisioning
 categories:
 - mdm
 - provisioning
 - macOS
 - Windows
-img_bg: /assets/blog/2020/10/
-img_bg_alt: Placeholder Alt text
+- zero-touch
+img_bg: /assets/blog/2020/10/mdm/background.jpg
+img_bg_alt: Workspace One MDM Deployment to hundreds of devices.
 img_blog: /assets/blog/2020/10/ # Image must be 800 x 650
-img_alt: Placeholder Alt Text
+img_alt: Blog micro image
 permalink: /blog/:year/:month/:day/:title/
 ---
 
@@ -41,6 +43,9 @@ permalink: /blog/:year/:month/:day/:title/
     - [What we used on macOS](#what-we-used-on-macos-1)
     - [What we used on Windows](#what-we-used-on-windows-1)
     - [Registering devices from our Vendor with Apple Business Manager](#registering-devices-from-our-vendor-with-apple-business-manager)
+      - [Apple ECommerce Websites](#apple-ecommerce-websites)
+      - [CDW](#cdw)
+      - [SHI](#shi)
   - [Workspace One Configuration & Workflow](#workspace-one-configuration--workflow)
     - [Scope of devices for enrollment/management](#scope-of-devices-for-enrollmentmanagement)
     - [Existing devices](#existing-devices)
@@ -53,8 +58,9 @@ permalink: /blog/:year/:month/:day/:title/
         - [How new employees gain admin access](#how-new-employees-gain-admin-access)
         - [User Experience](#user-experience)
       - [Windows](#windows-1)
-        - [Deployment Process](#deployment-process)
-        - [~2 Years Later](#2-years-later)
+        - [Autopilot / OOBE](#autopilot--oobe)
+        - [Deployment Process ( ~2 Years Later)](#deployment-process--2-years-later)
+        - [Chef and Chocolatey](#chef-and-chocolatey)
   - [Summary](#summary)
 - [Moving forward](#moving-forward)
   - [Outside of $currentcompany](#outside-of-currentcompany)
@@ -97,7 +103,7 @@ There were a few issues here that came out of this, the largest one was the abil
 
 For our Windows deployment, there was minimal work needed, as we scripted up most of our onboarding processes, we definitely had some improvements to be made here, however Windows was always considered a lower priority compared to macOS - even tough about ~25% of our workforce was Windows based clients, and we have several build machines, and servers that were Windows based. 
 
-We were also told that trying to get statistical and reporting on our Windows environment was not currently relevant when we went through this project (much to my disagreement, we abided by this and didn't capture details). My reaction to these conversations is summed up by the following meme:
+We were also told that trying to get statistical and reporting on our Windows environment, to assist with evidence and provide data that we needed to improve our Windows enviroment, was not currently relevant when we went through this project (much to my disagreement, we abided by this and didn't capture details). My reaction to these conversations is summed up by the following meme:
 
 ![Ryan Reynolds](/assets/blog/2020/10/mdm/giphy.gif)
 
@@ -126,7 +132,7 @@ Since we previously already were using Munki thoughout our fleet, this made the 
 
 #### What we used on Windows
 
-* [Windows Autopilot](https://www.microsoft.com/en-us/microsoft-365/windows/windows-autopilot)
+* [Windows Autopilot](https://www.microsoft.com/en-us/microsoft-365/windows/windows-autopilot) / [OOBE](https://docs.vmware.com/en/VMware-Workspace-ONE-UEM/1903/Windows_Desktop_Device_Management/GUID-AWT-ENROLL-OOBE.html)
 * [Chef](https://www.chef.io/)
 * [Chocolatey](https://chocolatey.org/products/chocolatey-for-business)
 * [Crypt Client](https://github.com/johnnyramos/bitlocker2crypt)
@@ -134,8 +140,19 @@ Since we previously already were using Munki thoughout our fleet, this made the 
 #### Registering devices from our Vendor with Apple Business Manager
 
 
-We generally purchased all devices through CDW, SHI, or directly through an Apple Business Account based on location. Each company has a DEP Reseller ID, and adding that DEP Reseller ID to your Business Account allows them to automatically register devices back into your MDM workflow.
+We generally purchased all devices through CDW, SHI, or directly through an Apple Business Account based on location. For Apple, each reseller company has a DEP Reseller ID, and adding that DEP Reseller ID to your Business Account allows them to automatically register devices back into your MDM workflow. 
 
+##### Apple ECommerce Websites
+
+We had apple business accounts in all of the regions that provide a business platform, for our business location registrations. [This](https://ecommerce.apple.com/content/b2b/static/en/us/flags.html) was very helpful, however there were limitations. The main limitation was a lack of automation around pulling assets into an asset management system. However with the 
+
+##### CDW
+
+We utilized a script that I wrote [here](https://github.com/delize/snipeit_cdw_automation) to upload data into SnipeIT. From there, we allowed CDW access to our environment for Apple Business Manager to upload device data. After initially looking at [Autopilot](https://www.microsoft.com/en-us/microsoft-365/windows/windows-autopilot), [due to cost](https://www.reddit.com/r/sysadmin/comments/8hpqoe/anybody_using_windows_10_autopilot/) however, the same reasons in this reddit thread, we opted to go a different route. This is no fault to CDW, but the cost of Autopilot is absurd when similar services in other vendors are free and Microsoft offers it for free on Surface devices. If we were to deploy 1000 machines, at the cost of $10 per machine, $10,000 in addition to the laptop amount purchased. 
+
+##### SHI
+
+Generally we don't purchase many EUC devices through SHI, but we added the DEP Reseller IDs to our ABM account anyways.
 
 ### Workspace One Configuration & Workflow
 
@@ -187,7 +204,7 @@ Again, we created an organizational group specifically for new devices. This was
 
 ###### installapplications
 
-We started development of this workflow with installapplications with version 1.0 and ended up finalizing the original deployment using 1.2.1.
+We started development of this workflow with installapplications with version 1.0 and ended up finalizing the original deployment using 1.2.1. There is a [great example repository here](https://github.com/erikng/installapplicationsdemo). We used this as our base example, but removed a substantial amount of scripts that were not relevant to us. 
 
 
 ###### How we deployed Munki
@@ -234,13 +251,38 @@ Once their initial installation was finished, we would run Jamf Connect Sync on 
 
 The forgotten step-child, as I mentioned, trying to get anything done within our environment on Windows was difficult as management deemed it unnecessary. All the while our fleet deployment of windows was ~25% of our total systems. Fortunately, the improvements we made with macOS (and MDM in general) also were baked into (to a minimal degree) for Windows as well. Meaning, that remote employees and workforces could be rolled out without someone sitting next to the computer for 30 to 60 minutes configuring a PC. Unfortunately, we couldn't use it in the provisioning process due to upper management.
 
-###### Deployment Process
+However, once covid happened, we had sudden approval to initiate Windows improvements
 
-For the Windows side, 
+###### Autopilot / OOBE
 
-###### ~2 Years Later
+Workspace One has a nice guide on how to setup both AutoPilot and OOBE that can be [found here](https://techzone.vmware.com/enrolling-windows-10-devices-using-azure-ad-vmware-workspace-one-uem-operational-tutorial#1108817). This was the base we used to get our configuration off the ground and running. We did run into a hitch that I will describe a little later on.
 
-We finally got approval to roll out MDM at the start of covid because we never "officially" rolled out the MDM deployment process for new devices. 
+###### Deployment Process ( ~2 Years Later)
+
+For the Windows side, we configured [auto-discovery](https://docs.vmware.com/en/VMware-Workspace-ONE-UEM/services/System_Settings_On_Prem/GUID-AWT-DEVICESUSERS-WINDOWS-WADS.html) feature that Workspace One supports. This (minimally) shortens manual process by 2 to 3 steps. For automatic steps, it generally can help automate the entire process where end users do not have to fill in server configurations. 
+
+![Workspace One Auto Discovery](/assets/blog/2020/10/mdm/Screen%20Shot%202020-10-17%20at%207.49.48%20PM.png)
+
+While rolling this out for zero-touch, we did run into a single issue which unfortunately was a show stopper for zero-touch only. That is, when you have Active Directory previously hooked up to Okta, it causes issues when mapping `uniqueidentifiers` vs `ObjectGUID`. We ultimately had to open up a support case to attempt to resolve this, and then were redirected to ProServices to fix the problem. By the time we got approval for ProServices, the announcement of an acquisition was announced the next day. The annoying part about this issue, is that it ONLY presented itself when utilizing AzureAD's Workspace One VMware app during OOBE experience. If manual sign up using AzureAD Domain Join and manual enrollment into Workspace One MDM, it was not present.
+
+This is related to this setting:
+
+![External ID](/assets/blog/2020/10/mdm/Screen%20Shot%202020-10-17%20at%208.27.16%20PM.png)
+
+However, because we already have 400+ accounts in O365, and an immutableID is well, immutable, we were not sure how to go through with this without causing massive issues. Unfortunately, this was never brought up to us until far after, and while writing this, I realized that there was some misconfigurations when going through our Professional Services with Workspace One that did not take into account this configuration in Okta and AzureAD. 
+
+This is what happens:
+![Workspace One, AzureAD Error](/assets/blog/2020/10/mdm/Screen%20Shot%202020-10-17%20at%208.27.16%20PM.png)
+
+We unfortunately went the manual route. Requiring users to sign in manually to Azure AD, and then manually sign into the MDM. 
+
+###### Chef and Chocolatey
+
+Once this was done, we setup the remaining equivalent scripts, and deployed our required applications for a short term roll out.
+
+Long term, the plan was to deploy [Chef on Windows](https://docs.chef.io/windows/). With that, we would deploy [chocolatey](tey.org/products/chocolatey-for-business) and allow for a self service deployment of software similar to SCCM, but with far less expense.
+
+While we had a high level plan on the end states, we did not have a low level plan, and one of my peers wanted to take that over to get a better understanding of the NuGet framework. The idea here was that we would have Chef managing devices similar to Munki but utilizing the cookbooks of other companies like Facebook, Uber, and others. Once we got a baseline we would then start developing our own to utilize it more to our needs. 
 
 ### Summary
 
