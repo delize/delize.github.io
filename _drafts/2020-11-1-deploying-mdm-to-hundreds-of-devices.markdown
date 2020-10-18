@@ -54,9 +54,11 @@ permalink: /blog/:year/:month/:day/:title/
         - [User Experience](#user-experience)
       - [Windows](#windows-1)
         - [Deployment Process](#deployment-process)
-        - [2 Years Later](#2-years-later)
+        - [~2 Years Later](#2-years-later)
   - [Summary](#summary)
 - [Moving forward](#moving-forward)
+  - [Outside of $currentcompany](#outside-of-currentcompany)
+  - [Within $currentcompany](#within-currentcompany)
 - [Supporting Documents](#supporting-documents)
 
 At [$previouscompany](https://andrewdoering.org/#resume) we had gone through a long struggle of managing devices properly. When I was hired in 2016, we had nothing in place for our entire company and everything was done manually. Our initial provisioning system focused on macOS as that was the most widely used OS within the company. It worked (slowly and barely) for two years (from 2016 - ~2018), and admittedly, we were still a small company at this point, roughly 250 max, however, the mistake had already been made as our biggest two years of growth were during this time period. However to continue to scale the companies operations, we needed to get an efficient and flexible system that incorporated both macOS and Windows.
@@ -230,15 +232,15 @@ Once their initial installation was finished, we would run Jamf Connect Sync on 
 
 ##### Windows
 
-The forgotten step-child, as I mentioned, trying to get anything done within our environment on Windows was difficult as management deemed it unnecessary. All the while our fleet deployment of windows was ~25% of our total systems. Fortunately, the improvements we made with macOS (and MDM in general) also were baked into (to a minimal degree) for Windows as well. Meaning, that remote employees and workforces could be rolled out without someone sitting next to the computer for 30 to 60 minutes configuring a PC. 
+The forgotten step-child, as I mentioned, trying to get anything done within our environment on Windows was difficult as management deemed it unnecessary. All the while our fleet deployment of windows was ~25% of our total systems. Fortunately, the improvements we made with macOS (and MDM in general) also were baked into (to a minimal degree) for Windows as well. Meaning, that remote employees and workforces could be rolled out without someone sitting next to the computer for 30 to 60 minutes configuring a PC. Unfortunately, we couldn't use it in the provisioning process due to upper management.
 
 ###### Deployment Process
 
-We hooked up 
+For the Windows side, 
 
-###### 2 Years Later
+###### ~2 Years Later
 
-We finally got approval to roll out MDM 
+We finally got approval to roll out MDM at the start of covid because we never "officially" rolled out the MDM deployment process for new devices. 
 
 ### Summary
 
@@ -250,6 +252,7 @@ With all this setup and configured, it worked well and allowed a lot more time f
 
 ## Moving forward
 
+### Outside of $currentcompany
 Now that we are being acquired, all of our device management plan has been scrapped. However, with that said, I do want to make some comments on the direction of Big Sur and how the zero-touch provisioning system is changing.
 
 First and foremost, Python is getting removed in Big Sur. Meaning that you have to have roll your own in the deployment process. With `installapplications`, this is no longer a problem as there is a version released with compatible python, however, this leads to other potential issues. The `mdmclient` on macOS is rather finicky and not entirely reliable. Since we now have to bundle python and `installapplications`, it raises the size from ~25 kilobytes to ~25 megabytes. 
@@ -257,6 +260,10 @@ First and foremost, Python is getting removed in Big Sur. Meaning that you have 
 A huge component of `installapplications` use cases come from the ability to display and load userland context for the user once they hit the desktop environment. However, there have been [reports](https://macadmins.slack.com/archives/C54N3AT2B/p1601644844008600) of this [failing](https://macadmins.slack.com/archives/C54N3AT2B/p1601408174001500) or not working as expected with macOS 11.0 Beta / Big Sur. Granted that due to Big Sur being in beta, there may be some unexpected behavior, but it seems the best route going forward is to no longer use DEP Notify directly launched from `installapplications`. Rather, use outset on first boot and set a flag to signify if DEPNotify had been run, and if not run it. 
 
 Due to our deprecation of services, I am interested to see what comes out of Big Sur and Windows 10, and have been closely following both the [Windows discord](https://discord.me/winadmins) as well as the [MacAdmins Slack](https://www.macadmins.org/).
+
+### Within $currentcompany
+
+It will be interesting to see how a large legacy centric company attempts to convert to a cloud centric company with "traditional management" frameworks. The lack of use of Chef or Puppet on EUC devices, while not a limiting factor, does limit a lot of imagination and expansion room.
 
 ## Supporting Documents
 
