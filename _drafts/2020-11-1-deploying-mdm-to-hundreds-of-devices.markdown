@@ -126,7 +126,7 @@ This project was initiated at the beginning of 2018 and completed by mid-2018, t
 - [Developer ID Installer Certificate](https://developer.apple.com/support/certificates/)
 - [Apple Business Manager](https://business.apple.com/)
 
-Since we previously already were using Munki throughout our fleet, this made the MDM enrollment a lot easier.
+Since we previously using Munki throughout our fleet, this made the MDM enrollment a lot easier.
 
 #### What we used on Windows
 
@@ -145,11 +145,11 @@ We had apple business accounts in all of the regions that provide a business pla
 
 ##### CDW
 
-We utilized a script that I wrote [here](https://github.com/delize/snipeit_cdw_automation) to upload data into SnipeIT. From there, we allowed CDW access to our environment for Apple Business Manager to upload device data. After initially looking at [Autopilot](https://www.microsoft.com/en-us/microsoft-365/windows/windows-autopilot), [due to cost](https://www.reddit.com/r/sysadmin/comments/8hpqoe/anybody_using_windows_10_autopilot/) however, the same reasons in this reddit thread, we opted to go a different route. This is no fault to CDW, but the cost of Autopilot is absurd when similar services in other vendors are free and Microsoft offers it for free on Surface devices. If we were to deploy 1000 machines, at the cost of $10 per machine, $10,000 in addition to the laptop amount purchased.
+We utilized a script that I wrote [here](https://github.com/delize/snipeit_cdw_automation) to upload data into SnipeIT. From there, we allowed CDW access to our environment for Apple Business Manager to upload device data. After initially looking at [Autopilot](https://www.microsoft.com/en-us/microsoft-365/windows/windows-autopilot), [due to cost](https://www.reddit.com/r/sysadmin/comments/8hpqoe/anybody_using_windows_10_autopilot/) however, the same reasons in this reddit thread, we opted to go a different route. This is no fault to CDW, but the cost of Autopilot is absurd when similar services in other vendors are free and Microsoft offers it for free on Surface devices. If we were to deploy 1000 machines, at the cost of $10.00 per machine, $10,000.00 in addition to the laptop amount purchased.
 
 ##### SHI
 
-Generally we don't purchase many EUC devices through SHI, but we added the DEP Reseller IDs to our ABM account anyways.
+Generally we don't purchase many EUC devices through SHI, but we added the DEP Reseller IDs to our ABM account anyways. We did not setup an integration for AzureAD/Windows Devices.
 
 ### Workspace One Configuration & Workflow
 
