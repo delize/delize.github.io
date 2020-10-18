@@ -40,28 +40,30 @@ permalink: /blog/:year/:month/:day/:title/
   - [Prerequisites](#prerequisites)
     - [What we used on macOS](#what-we-used-on-macos-1)
     - [What we used on Windows](#what-we-used-on-windows-1)
-  - [Registering devices from our Vendor with Apple Business Manager](#registering-devices-from-our-vendor-with-apple-business-manager)
+    - [Registering devices from our Vendor with Apple Business Manager](#registering-devices-from-our-vendor-with-apple-business-manager)
   - [Workspace One Configuration & Workflow](#workspace-one-configuration--workflow)
     - [Scope of devices for enrollment/management](#scope-of-devices-for-enrollmentmanagement)
     - [Existing devices](#existing-devices)
       - [macOS](#macos)
       - [Windows](#windows)
-      - [Windows](#windows-1)
-    - [New / Zero Touch Provisioning System](#new--zero-touch-provisioning-system)
+    - [Zero Touch Provisioning System](#zero-touch-provisioning-system)
       - [macOS](#macos-1)
         - [installapplications](#installapplications)
         - [How we deployed Munki](#how-we-deployed-munki)
         - [How new employees gain admin access](#how-new-employees-gain-admin-access)
         - [User Experience](#user-experience)
-      - [Windows](#windows-2)
+      - [Windows](#windows-1)
+        - [Deployment Process](#deployment-process)
+        - [2 Years Later](#2-years-later)
   - [Summary](#summary)
 - [Moving forward](#moving-forward)
+- [Supporting Documents](#supporting-documents)
 
 At [$previouscompany](https://andrewdoering.org/#resume) we had gone through a long struggle of managing devices properly. When I was hired in 2016, we had nothing in place for our entire company and everything was done manually. Our initial provisioning system focused on macOS as that was the most widely used OS within the company. It worked (slowly and barely) for two years (from 2016 - ~2018), and admittedly, we were still a small company at this point, roughly 250 max, however, the mistake had already been made as our biggest two years of growth were during this time period. However to continue to scale the companies operations, we needed to get an efficient and flexible system that incorporated both macOS and Windows.
 
 After an uphill battle, countless research documents, proposals, and explanations, we finally reached a point where it was agreed on that we would obtain an MDM solution. This will detail exactly what we went through in terms of deployments before MDM, during/after MDM, and going forward (with Windows 10 and Big Sur).
 
-This blog post has been written post-acquisition and about a year after our deployment of this process,we will no longer be using this deployment method due to the acquisition. 
+This blog post has been written post-acquisition and about a year after our deployment of this process, this is not a summary of what have in active use, but the fundamentals we have used in the past. We will no longer be using this deployment method due to the acquisition. 
 
 
 ## Initial Deployment Process
@@ -83,7 +85,7 @@ To go into detail on this, we would create a prepared image from AutoDMG with th
 
 We had several different workflows for each department and team, pre-installing the necessary software for them ahead of their onboarding (or at least what IT was told about). These would be installed after the image was installed on each machine. 
 
-There were a few issues here that came out of this, the largest one was the ability to support macOS images that would become branched due to hardware revisions. The other was once the T2 chips were released, we couldn't really use DeployStudio anymore.
+There were a few issues here that came out of this, the largest one was the ability to support macOS images that would become branched due to hardware revisions. The other was once the T2 chips were released, we couldn't really use DeployStudio anymore, and finally manual builds were just overall time consuming and not worth it in the long run. No one should be manually building laptops at this point of device lifecycles (looking at you $currentcompany).
 
 ### What we used on Windows:
 
@@ -91,11 +93,15 @@ There were a few issues here that came out of this, the largest one was the abil
 * [Crypt Client](https://github.com/johnnyramos/bitlocker2crypt)
 * Group Policy Scripts
 
-For our Windows deployment, there was minimal work needed, as we scripted up most of our onboarding processes, we definitely had some improvements to be made here, however Windows was always considered a lower priority compared to macOS - even tough about 30% of our workforce was Windows based clients, and we have several build machines, and servers that were Windows based. 
+For our Windows deployment, there was minimal work needed, as we scripted up most of our onboarding processes, we definitely had some improvements to be made here, however Windows was always considered a lower priority compared to macOS - even tough about ~25% of our workforce was Windows based clients, and we have several build machines, and servers that were Windows based. 
+
+We were also told that trying to get statistical and reporting on our Windows environment was not currently relevant when we went through this project (much to my disagreement, we abided by this and didn't capture details). My reaction to these conversations is summed up by the following meme:
+
+![Ryan Reynolds](/assets/blog/2020/10/mdm/giphy.gif)
 
 ## MDM Deployment Phase
 
-This project was initiated at the beginning of 2018 and completed by mid-2018, was in use during and up to the acquisition.
+This project was initiated at the beginning of 2018 and completed by mid-2018, the fundamental pieces of this workflow was used during and up to the acquisition.
 
 ### Prerequisites
 
@@ -123,7 +129,7 @@ Since we previously already were using Munki thoughout our fleet, this made the 
 * [Chocolatey](https://chocolatey.org/products/chocolatey-for-business)
 * [Crypt Client](https://github.com/johnnyramos/bitlocker2crypt)
 
-### Registering devices from our Vendor with Apple Business Manager
+#### Registering devices from our Vendor with Apple Business Manager
 
 
 We generally purchased all devices through CDW, SHI, or directly through an Apple Business Account based on location. Each company has a DEP Reseller ID, and adding that DEP Reseller ID to your Business Account allows them to automatically register devices back into your MDM workflow.
@@ -148,13 +154,11 @@ The requirements we ended up with were:
 3. Do nothing for mobile phones (BYOD)
 4. Do nothing for Employee Owned / Personal Computing Devices (EOPD / BYOD)
 
-Internally we did want to create programs for the bottom two items, we were not able to get anything green lit internally. Within IT, we saw the bottom two as potential risks, and the long term effort was to enable device trust and context based access via Okta to minimize data loss and that risk. We do not distribute phones from a company owned mobile plan. However there were issues at play from above that did not allow us to execute 3 or 4. 
+Internally we did want to create programs for the bottom two items, we were not able to get anything green lit internally. Within IT, we saw the bottom two as potential risks, and the long term effort was to enable device trust and context based access via Okta to minimize data loss and that risk. We do not distribute phones from a company owned mobile plan. However there were issues at play from above that did not allow us to execute 3 or 4.
 
-With the scope settled, we took two different paths for existing vs new devices. 
+With the scope settled, we took two different paths for existing vs new devices.
 
 #### Existing devices
-
-
 
 ##### macOS
 
@@ -171,31 +175,28 @@ From there, our first line support team (who were also our IT engineering team, 
 
 Windows has a self registration portal for enrolling devices into an MDM, located under the "Access work or school" in system settings, on the right side pane labeled `Enroll only in Device Management`. Utilizing this, users could self-enroll their devices as long as they had administrator access and secondary/additional software was not needed like it was for macOS. 
 
-##### Windows
 
-Some text here.
-
-#### New / Zero Touch Provisioning System
+#### Zero Touch Provisioning System
 
 Again, we created an organizational group specifically for new devices. This was meant to be a way that we could easily monitor devices being registered on a weekly basis for new employees. We had several other methods of doing this (eg: Sal), but this way, our IT team, InfoSec teams, and other teams could pull data out of Workspace One for all new devices rather than have the entire list of all previous devices.
 
 
-##### macOS 
+##### macOS
 
 ###### installapplications
 
-We started development of this workflow with installapplications with version 1.0 and ended up finalizing the original deployment using 1.2.1. 
+We started development of this workflow with installapplications with version 1.0 and ended up finalizing the original deployment using 1.2.1.
 
 
 ###### How we deployed Munki
 
 We compiled a smaller/custom version of Munki that allows us to do a single run of Munki against our webserver hosting our manifests. With this single run, we implement a bootstrap manifest that runs once, and then our custom auto enroll kicks in and allows us to use the serial number subsequent Munki runs.
 
-**Rolling our own**
+Rolling our own:
 
 There is some documentation and several blog posts on how to compile munki, rather than going in depth on how we did this and due to the length since we did this, I would prefer to [link](https://blog.eriknicolasgomez.com/2017/03/08/Custom-DEP-Part-2-Creating-a-custom-package-and-deploying-Munki/) [different](https://tombridge.com/2017/04/27/getting-started-with-installapplication-depnotify-and-simplemdm/) [posts](https://therestoftheowl.com/blog/2018/11/09/installapplications-for-dummies-part-1/) here.
 
-**Manifests** 
+Manifests:
 
 We use a similar munki deployment that follows the same principles as [Munki Enroll](https://github.com/edingc/munki-enroll) and [Munki Serial Enroll](https://github.com/aysiu/munki-serial-enroll). However, our tool was internally developed and has not been released - namely our service does not rely on PHP. Our structure of our repos is described below:
 
@@ -218,12 +219,26 @@ We heavily utilized [DEPNotify](https://gitlab.com/Mactroll/DEPNotify) to inform
 
 After this, we would then reset the dock in place to set our generally most used services. This would consist of actual applications, or links/shortcuts to web applications (mainly G Suite services). 
 
-We wanted to minimize the deployment time, configuration of a device shouldn't take more than 15 to 20 minutes, any longer and not only does it ruin the experience, it also is detrimental to the new employee as more could go wrong with the deployment. 
+We wanted to minimize the deployment time, configuration of a device shouldn't take more than 15 to 20 minutes, any longer (in our mind, 30 minutes or more) and not only does it ruin the experience, it also is detrimental to the new employee as more could go wrong with the deployment. To make sure our intended deployment was less than 20 minutes we simulated a few environments. A 1 Megabit connection (worst case scenario), 1 Megabyte, 5 Megabytes, and Full Speed (in my testing - that is a 1 Gigabyte downstream on a home ISP). In testing the worst case scenario ended up being 23 minutes where the best case scenario ended up being between 10 - 15 minutes in a virtualized ESXi machine. We considered this successful.
 
 If something does go wrong with the deployment, we also created a package that would fire off a stand alone setup package that would install all the necessary tools that would have been installed during the first experience.
 
+Once their initial installation was finished, we would run Jamf Connect Sync on reboot logins to prompt the user to sync their password down from Okta to their local device.
+
+![Jamf Connect Sync](/assets/blog/2020/10/mdm/macOS%20New%20Hire%20Guide_Page_8_Image_0001.png)
+
 
 ##### Windows
+
+The forgotten step-child, as I mentioned, trying to get anything done within our environment on Windows was difficult as management deemed it unnecessary. All the while our fleet deployment of windows was ~25% of our total systems. Fortunately, the improvements we made with macOS (and MDM in general) also were baked into (to a minimal degree) for Windows as well. Meaning, that remote employees and workforces could be rolled out without someone sitting next to the computer for 30 to 60 minutes configuring a PC. 
+
+###### Deployment Process
+
+We hooked up 
+
+###### 2 Years Later
+
+We finally got approval to roll out MDM 
 
 ### Summary
 
@@ -239,6 +254,10 @@ Now that we are being acquired, all of our device management plan has been scrap
 
 First and foremost, Python is getting removed in Big Sur. Meaning that you have to have roll your own in the deployment process. With `installapplications`, this is no longer a problem as there is a version released with compatible python, however, this leads to other potential issues. The `mdmclient` on macOS is rather finicky and not entirely reliable. Since we now have to bundle python and `installapplications`, it raises the size from ~25 kilobytes to ~25 megabytes. 
 
-A huge component of `installapplications` use cases come from the ability to display and load userland context for the user once they hit the desktop environment. However, there have been [reports](https://macadmins.slack.com/archives/C54N3AT2B/p1601644844008600) of this [failing](https://macadmins.slack.com/archives/C54N3AT2B/p1601408174001500) or not working as expected with macOS 11.0 Beta / Big Sur. Granted that due to Big Sur being in beta, there may be some unexpected behavior, but it seems the best route going forward is to no longer use DEP Notify directly launched from `installapplications`. Rather, use outset on first boot and set a flag to signify if DEPNotify had been run, and if not run it. T
+A huge component of `installapplications` use cases come from the ability to display and load userland context for the user once they hit the desktop environment. However, there have been [reports](https://macadmins.slack.com/archives/C54N3AT2B/p1601644844008600) of this [failing](https://macadmins.slack.com/archives/C54N3AT2B/p1601408174001500) or not working as expected with macOS 11.0 Beta / Big Sur. Granted that due to Big Sur being in beta, there may be some unexpected behavior, but it seems the best route going forward is to no longer use DEP Notify directly launched from `installapplications`. Rather, use outset on first boot and set a flag to signify if DEPNotify had been run, and if not run it. 
 
-The most optimal route going forward for new deployments is to 
+Due to our deprecation of services, I am interested to see what comes out of Big Sur and Windows 10, and have been closely following both the [Windows discord](https://discord.me/winadmins) as well as the [MacAdmins Slack](https://www.macadmins.org/).
+
+## Supporting Documents
+
+While I don't feel comfortable publishing our documentations around our processes, happy to distribute them privately if anyone may potentially need them or want to look at them. Feel free to comment below, and/or send me an [email](mailto:contact@andrewdoering.org).
