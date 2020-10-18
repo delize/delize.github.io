@@ -749,7 +749,7 @@ body.uone-dark {
   color: rgba(226, 226, 217, 0.95) !important; }
 
 .uone-dark .portfolio .portfolio-item-content:before {
-  background-color: rgba(27, 30, 33, 0.9); }
+  background-color: rgba(27, 30, 33, 1.0); }
 
 .uone-dark .portfolio .portfolio-icon a {
   color: #6c757d;
@@ -759,10 +759,10 @@ body.uone-dark {
     color: #ffffff; }
 
 .uone-dark .bg-dark, .uone-dark .bg-white {
-  background-color: rgba(27, 30, 33, 0.9) !important; }
+  background-color: rgba(27, 30, 33, 1.0) !important; }
 
 .uone-dark .services-item {
-  background-color: rgba(27, 30, 33, 0.9); }
+  background-color: rgba(27, 30, 33, 1.0); }
 
 .uone-dark .services-icon {
   opacity: 0.03; }
@@ -777,8 +777,8 @@ body.uone-dark {
   border-color: transparent transparent #1b1e21 transparent; }
 
 .uone-dark .img-thumbnail {
-  background-color: rgba(27, 30, 33, 0.9);
-  border: 1px solid rgba(27, 30, 33, 0.9); }
+  background-color: rgba(27, 30, 33, 1.0);
+  border: 1px solid rgba(27, 30, 33, 1.0); }
 
 .uone-dark .blog-content h5 a:hover {
   color: #e6e6e6 !important; }
@@ -835,7 +835,7 @@ body.uone-dark {
   .portfolio-filter li a {
     color: rgba(226, 226, 217, 0.95) !important; }
   .portfolio .portfolio-item-content:before {
-    background-color: rgba(27, 30, 33, 0.9); }
+    background-color: rgba(27, 30, 33, 1.0); }
   .portfolio .portfolio-icon a {
     color: #6c757d;
     background-color: #ffffff; }
@@ -843,9 +843,9 @@ body.uone-dark {
       background-color: #d23e50;
       color: #ffffff; }
   .bg-dark, .bg-white {
-    background-color: rgba(27, 30, 33, 0.9) !important; }
+    background-color: rgba(27, 30, 33, 1.0) !important; }
   .services-item {
-    background-color: rgba(27, 30, 33, 0.9); }
+    background-color: rgba(27, 30, 33, 1.0); }
   .services-icon {
     opacity: 0.03; }
   .arrow-left::after {
@@ -855,8 +855,8 @@ body.uone-dark {
   .arrow-top::after {
     border-color: transparent transparent #1b1e21 transparent; }
   .img-thumbnail {
-    background-color: rgba(27, 30, 33, 0.9);
-    border: 1px solid rgba(27, 30, 33, 0.9); }
+    background-color: rgba(27, 30, 33, 1.0);
+    border: 1px solid rgba(27, 30, 33, 1.0); }
   .blog-content h5 a:hover {
     color: #e6e6e6 !important; }
   .form-item .form-control {
