@@ -11,14 +11,13 @@ layout: post
 tags:
 - Okta
 - LDAP Interface
-- MongoDB
-- Atlas
 - MongoDB Atlas
 - Cloud
-- office
-- okta
-- authorization
-- authentication
+- Okta
+- Authorization
+- Authentication
+categories:
+- Identity Access Management
 img_bg: /assets/blog/2020/09/mongodb_logo.png
 img_bg_alt: MongoDB Logo taken from mongodb.com
 img_blog: /assets/blog/2020/09/stay-on-the-path.jpg

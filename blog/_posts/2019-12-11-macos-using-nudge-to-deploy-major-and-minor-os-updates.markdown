@@ -12,9 +12,12 @@ wordpress_id: 548
 comments: true
 tags:
 - Catalina
-- Erik Gomez
+- macOS
 - nudge
 - OS Updates
+
+categories:
+- macOS
 
 img_bg: https://images.wallpapersden.com/image/download/huawei-4k-stock-abstract_66336_1920x1080.jpg
 img_bg_alt: Placeholder Alt text

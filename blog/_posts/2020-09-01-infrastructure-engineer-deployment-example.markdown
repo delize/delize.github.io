@@ -12,6 +12,7 @@ tags:
 - Infrastructure Engineer 
 - Interview Example
 - Homework Assignment
+
 img_bg: /assets/blog/2020/09/eg-infra-engg/infra-engg-bg.jpg
 img_bg_alt: Background for Infrastructure Engineer Article
 img_blog: /assets/blog/2020/09/eg-infra-engg/infra-engg-icon.jpg

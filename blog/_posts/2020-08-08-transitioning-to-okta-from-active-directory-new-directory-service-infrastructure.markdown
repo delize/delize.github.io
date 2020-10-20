@@ -9,13 +9,14 @@ slug: transitioning-to-okta-from-active-directory-new-directory-service-infrastr
 title: Transitioning To Okta From Active Directory - New Directory Service Infrastructure
 tags:
 - Active Directory
-- bamboohr
-- hris
-- infrastructure
-- meraki
-- office
-- okta
-
+- BambooHR
+- HRIS
+- Infrastructure
+- Meraki
+- Ofice
+- Okta
+categories:
+- Identity Access Management
 img_bg: https://images.wallpapersden.com/image/download/huawei-4k-stock-abstract_66336_1920x1080.jpg
 img_bg_alt: Placeholder Alt text
 img_blog: /assets/img/2020-08-08-post/adoktapython.jpg

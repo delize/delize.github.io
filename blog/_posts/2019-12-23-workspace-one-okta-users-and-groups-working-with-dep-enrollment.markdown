@@ -10,17 +10,17 @@ slug: workspace-one-okta-users-and-groups-working-with-dep-enrollment
 title: Workspace One & Okta - User(s) and Group(s) working with DEP Enrollment
 comments: true
 tags:
-- airwatch
+- Airwatch
 - DEP
-- groups
+- Groups
 - macOS
-- okta
-- one
-- users
-- vmware
+- Okta
+- Users
 - workspace
 - workspace one
-
+categories:
+- Identity Access Management
+- Mobile Device Management
 blogsingle-backgroundimage: https://images.wallpapersden.com/image/download/huawei-4k-stock-abstract_66336_1920x1080.jpg
 img_bg: https
 img_bg_alt: Placeholder Alt text

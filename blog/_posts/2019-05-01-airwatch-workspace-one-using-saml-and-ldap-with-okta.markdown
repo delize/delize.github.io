@@ -15,6 +15,9 @@ tags:
 - Airwatch
 - LDAP
 - LDAP Interface
+categories:
+- Identity Access Management
+- Mobile Device Management
   
 permalink: /blog/:year/:month/:day/:title/
 robots: all, noarchive

@@ -23,11 +23,9 @@ tags:
 - mobile device management
 - zero-touch provisioning
 categories:
-- mdm
-- provisioning
+- Mobile Device Management
 - macOS
 - Windows
-- zero-touch
 img_bg: /assets/blog/2020/10/mdm/background.webp
 img_bg_alt: Workspace One MDM Deployment to hundreds of devices.
 img_blog: /assets/blog/2020/10/mdm/smaller_icon.jpg # Image must be 800 x 650

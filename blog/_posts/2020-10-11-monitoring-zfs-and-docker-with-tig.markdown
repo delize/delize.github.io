@@ -17,7 +17,7 @@ tags:
 - influxdb
 - grafana
 categories:
-- monitoring
+- Monitoring
 img_bg: /assets/blog/2020/10/grafana_cc_img.jpg
 img_bg_alt: Grafana Creative Commons screenshot of creating graph configuration
 img_blog: /assets/blog/2020/10/blog_img.png #Must be 800 x 650 pixels

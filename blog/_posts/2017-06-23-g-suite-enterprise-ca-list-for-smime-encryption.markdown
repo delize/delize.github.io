@@ -13,6 +13,8 @@ tags:
 - G Suite
 - S/MIME
 - DigiCert
+categories:
+- G Suite
 
 permalink: /blog/:year/:month/:day/:title/
 robots: all, noarchive
