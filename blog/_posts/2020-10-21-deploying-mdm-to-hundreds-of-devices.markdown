@@ -259,9 +259,6 @@ While rolling this out for zero-touch, we did run into a single issue which unfo
 
 However, because we already have 400+ accounts in O365, and an immutableID is well, immutable, we were not sure how to go through with this without causing massive issues. Unfortunately, this was never brought up to us until far after, and while writing this, I realized that there was some misconfigurations when going through our Professional Services with Workspace One that did not take into account this configuration in Okta and AzureAD.
 
-This is what happens, which is interesting due to the lack of use of Active Directory in AzureAD:
-![Workspace One, AzureAD Error](/assets/blog/2020/10/mdm/Screen%20Shot%202020-10-17%20at%208.27.16%20PM.png)
-
 While Okta being federated does imitate ADSync, our federated configuration does not actually show up as an External Identity in AzureAD's configuration.
 
 It does seem that Microsoft has finally allowed the ability to [create custom attributes in AzureAD](https://docs.microsoft.com/en-us/azure/active-directory/external-identities/user-flow-add-custom-attributes). This could have helped us with a workaround. However, if anyone **does** know of a way to fix this issue, I would honestly love to hear it. There is [a lot](https://support.okta.com/help/servlet/fileField?id=0BE2A00000004Sj) of [documentation](https://www.okta.com/sites/default/files/Okta-3rd-Party-UEM-Interop_Workspace-ONE.pdf) [I have](https://help.okta.com/en/prod/Content/Topics/Apps/Office365-Deployment/provision-users.htm) read in the past, however even if we can't/don't use it going forward, just for completion and a way to close a loop here.
