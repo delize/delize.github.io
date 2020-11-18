@@ -6,7 +6,7 @@ slug: authorizing-mongodb-atlas-users-against-oktas-ldap-groups
 author: Andrew Doering
 comments: true
 date: 2020-09-22 06:00:00 -0700
-last_modified_at:
+last_modified_at: 2020-11-17 21:00:00 -0700
 layout: post
 tags:
 - Okta
@@ -28,6 +28,7 @@ permalink: /blog/:year/:month/:day/:title/
 - [Introduction](#introduction)
 - [Issue](#issue)
 - [Solution](#solution)
+- [Update 2020/11/17](#update-20201117)
 
 # Introduction
 
@@ -72,3 +73,27 @@ The comments written directly by the PoC in charge of the incident filed:
 
 
 Once configured, you should be able to use Okta's LDAP Interface in MongoDB Atlas and have successful Authorization results!
+
+
+# Update 2020/11/17
+
+After writing and utilizing this more. We ran into issues with Mongo Compass, connecting to Mongo Atlas with Okta as the backend through the LDAPi. These issues are not present with mongo cli tools.
+
+After doing a decent amount of research and requesting Splunk logs from Okta, we came to the conclusion that Mongo logs out after each request/connection/session initiated. They do not keep a constant session open while the Compass software is connected to the clusters.
+
+In addition to this, instead of doing a single request to the cluster, multiple requests are made (usually 1 to 2) to each shard. The end result is that this spams the end user with (4 - 8) MFA requests. 
+
+Our Company Default Okta authentication policy are already setup in a relaxed way:
+
+- 7 days for a known factor session
+- 2 hour session lifetime
+- Prompt Mode in "per session" choice
+
+When going through Mongo support, they requested us to change Prompt Mode from "Per Session" to "Per Device". This wouldn't be very effective, as "Per Device" relies mostly on [session cookies or device context](https://help.okta.com/en/prod/Content/Topics/Security/improved-new-device-behavior-detection.htm). Leaving the issue still present with no fix as of writing the update.
+
+So far we are waiting for this to proceed on Mongo, and have opened up a case with Okta to potentially resolve this going forward. For references if anyone else experiences similar issues:
+
+- Mongo Case is: `00693506`
+- Okta case is: `00992849`
+
+If you would like to or prefer to reach out to the vendors for potential solutions if I don't post them here. Or leave a comment below.

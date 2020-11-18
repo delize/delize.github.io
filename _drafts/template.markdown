@@ -2,7 +2,6 @@
 title: 
 excerpt: 
 link: https://andrewdoering.org/blog/2020/
-slug: 
 author: Andrew Doering
 published: false #Remove this after finishing the document
 comments: true
