@@ -4,9 +4,10 @@ excerpt: Previously MongoDB systems earlier than 4.4 versions, did not properly 
 link: https://andrewdoering.org/blog/2020/09/23/authorizing-mongodb-atlas-users-against-oktas-ldap-groups
 slug: authorizing-mongodb-atlas-users-against-oktas-ldap-groups
 author: Andrew Doering
+published: true
 comments: true
 date: 2020-09-22 06:00:00 -0700
-last_modified_at: 2020-11-17 21:00:00 -0700
+last_modified_at: 2020-11-19 21:00:00 -0700
 layout: post
 tags:
 - Okta
@@ -29,6 +30,7 @@ permalink: /blog/:year/:month/:day/:title/
 - [Issue](#issue)
 - [Solution](#solution)
 - [Update 2020/11/17](#update-20201117)
+- [Update 2020/11/19](#update-20201119)
 
 # Introduction
 
@@ -97,3 +99,18 @@ So far we are waiting for this to proceed on Mongo, and have opened up a case wi
 - Okta case is: `00992849`
 
 If you would like to or prefer to reach out to the vendors for potential solutions if I don't post them here. Or leave a comment below.
+
+# Update 2020/11/19
+
+MongoDB provided an update to us to use the following connection URI:
+
+`mongodb+srv://ldapuser:str0ngpassword@mymongo.xxx.xxx/test?authMechanism=PLAIN&maxPoolSize=1&readPreference=secondary&authSource=%24external&appname=MongoDB%20Compass&ssl=false`
+
+This does seem to work, notice the addition of `&maxPoolSize=1`, but, there are two concerns that I have with this:
+
+* `&ssl=false`
+* What limitations/implications does the addition of the value above have on the overall performance on mongo compass?
+
+Initial reactions would be that Compass may not display/return all results within the cluster, as they may not have replicated over to the connected shard instance. I tested initially with `&ssl=true` without any major issue, so it seems like that the `&ssl=false` aspect may just be an error/mistype.
+
+While I would consider this a workaround for the time being, there are definitely improvements that need to be made into the outbound LDAP requests being made on the LDAP side, or alternatively, Okta needs to implement more flexibility around the LDAP Interface itself.
