@@ -113,4 +113,4 @@ This does seem to work, notice the addition of `&maxPoolSize=1`, but, there are 
 
 Initial reactions would be that Compass may not display/return all results within the cluster, as they may not have replicated over to the connected shard instance. I tested initially with `&ssl=true` without any major issue, so it seems like that the `&ssl=false` aspect may just be an error/mistype.
 
-While I would consider this a workaround for the time being, there are definitely improvements that need to be made into the outbound LDAP requests being made on the LDAP side, or alternatively, Okta needs to implement more flexibility around the LDAP Interface itself.
+While I would consider this a workaround for the time being, there are definitely improvements that need to be made into the outbound LDAP requests being made on the Mongo side, or alternatively, Okta needs to implement more flexibility around the LDAP Interface itself.
