@@ -5,7 +5,7 @@ link: https://andrewdoering.org/blog/2020/11/20/assigning-applications-on-attrib
 author: Andrew Doering
 published: true #Remove this after finishing the document
 comments: true
-date: 2020-12-15 01:00:00 -0700
+date: 2020-11-20 01:00:00 -0700
 last_modified_at: 
 layout: post
 tags:
