@@ -22,7 +22,6 @@ img_alt: Placeholder Alt Text
 permalink: /blog/:year/:month/:day/:title/
 ---
 
-
 ## Introduction
 
 Plex is a great tool, however data/nas systems can take up a lot of space and electricity for rotating disks. To keep costs down, automate ripping and organization of legal media constantly coming in, and 
