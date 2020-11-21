@@ -1,7 +1,7 @@
 ---
-title: Tracking Github Accounts and automatically assigning the application
-excerpt: 
-link: https://andrewdoering.org/blog/2020/11/20/assigning-applications-on-attributes
+title: Using Google Drive as storage for Plex
+excerpt: How to use Google Drive Storage to have an on the fly encrypted storage system to stream data from Google Drive to Plex.
+link: https://andrewdoering.org/blog/2020/12/15/using-google-drive-for-plex
 author: Andrew Doering
 published: true #Remove this after finishing the document
 comments: true
