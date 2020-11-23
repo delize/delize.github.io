@@ -9,10 +9,11 @@ date: 2020-11-20 01:00:00 -0700
 last_modified_at: 
 layout: post
 tags:
-- list
-- all
-- tags
-- here
+- Github
+- Provisioning
+- Attributes
+- Okta
+- 
 categories:
 - random
 img_bg: /assets/blog/2020/10/
@@ -80,4 +81,4 @@ Once added to Github, without doing the previously mentioned assigning users to 
 
 You can further expand on this by creating multiple groups and checks within the rule, for instance, creating a group rule that checks against department attribute + okta username, to assign a different group and assign them the appropriate team with the URL above. However, you are still limited to five groups per team. So there needs to be careful consideration on how you apply those groups. 
 
-The other option is to do this using Okta workflows, this would do things directly against the API, and may not be limited to the five team limitation as described in the documentation.
+The other option is to do this using Okta workflows, this would do things directly against the API, and may not be limited to the five team limitation as described in the Github documentation.
