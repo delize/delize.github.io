@@ -1,6 +1,6 @@
 ---
 title: Tracking Github Accounts and automatically assigning the application
-excerpt: 
+excerpt: How to assign Github based on attribute context, while tracking information for audits and through external system logs. 
 link: https://andrewdoering.org/blog/2020/11/20/assigning-applications-on-attributes
 author: Andrew Doering
 published: true #Remove this after finishing the document
@@ -16,9 +16,9 @@ tags:
 - 
 categories:
 - random
-img_bg: /assets/blog/2020/10/
+img_bg: /assets/blog/2020/11/assign-github-on-attribute/pexels-thisisengineering-3861943.jpg
 img_bg_alt: Placeholder Alt text
-img_blog: /assets/blog/2020/10/ # Image must be 800 x 650
+img_blog: /assets/blog/2020/11/assign-github-on-attribute/pexels-negative-space-97077.jpg
 img_alt: Placeholder Alt Text
 permalink: /blog/:year/:month/:day/:title/
 ---
