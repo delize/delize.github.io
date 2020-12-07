@@ -14,7 +14,6 @@ tags:
 - LDAP Interface
 - MongoDB Atlas
 - Cloud
-- Okta
 - Authorization
 - Authentication
 categories:

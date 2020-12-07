@@ -11,8 +11,8 @@ layout: post
 tags:
 - ssh
 - ssh keys
-- okta
-- active directory
+- Okta
+- Active Directory
 categories:
 - Identity Access Management
 img_bg: /assets/blog/2020/11/push-ssh-keys/img_bg.jpg

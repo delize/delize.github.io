@@ -16,7 +16,7 @@ tags:
 - workspace_one
 - zero touch provisioning
 - windows
-- okta
+- Okta
 - DEP
 - MDM
 - device enrollment program
