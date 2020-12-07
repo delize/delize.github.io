@@ -52,7 +52,7 @@ Plex is a great tool, however data/nas systems can take up a lot of space and el
 ### Other
 * [rclone](https://rclone.org/downloads/)
 * [mergerfs](https://github.com/trapexit/mergerfs)
-* Google Workspace Enterprise account
+* Google Workspace Enterprise / G Suite account
 * Various scripts
 
 ## Rclone Configuration
