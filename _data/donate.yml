@@ -1,0 +1,13 @@
+paypal:
+- wallet_address: paypal@andrewdoering.org
+- link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=JCCSTS4YGYM8L&currency_code=USD
+- qrcode: assets/img/donate/paypal.png
+bitcoin:
+- wallet_address: 1KtFBUeqajSFmzQQ4BHkkAmwGeBmKLrz1y
+- qrcode: assets/img/donate/bitcoin.png
+litecoin:
+- wallet_address: LTbWqgpu5xx7RVm6HZLGVdQFiqwYwmuHmr
+- qrcode: assets/img/donate/litecoin.png
+ethereum:
+- wallet_address: 0x040C6263666EB102aDaE63eC1a548568211f5585
+- qrcode: assets/img/donate/ethereum.png
