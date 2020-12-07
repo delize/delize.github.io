@@ -22,6 +22,8 @@
                     <a class="text-white" href="{{ site.url }}">Home</a>
                     /
                     <a class="text-white" href="{{ absolute_url }}/blog">Blog</a>
+                    /
+                    <a class="text-white" href="{{ absolute_url }}/blog/categories">Categories & Tags</a>
                 </p>
             </div>
         </section>
@@ -40,8 +42,8 @@
                 <div class="row mb-5">
                     <div class="col-lg-12">
                         <div>
-                            <h2 class="text-dark mb-3">Latest <span class="base-color">News</span></h2>
-                            <p class="text-muted">Apologies for the mess, I am in the middle of transitioning my site from a jumbled mess to a less jumbled mess (IE: Jekyll). Please let me know if there are any <a href="https://github.com/delize/delize.github.io/issues">issues</a> with any part of the site!</p>
+                            <!-- <h2 class="text-dark mb-3">Latest <span class="base-color">News</span></h2>
+                            <p class="text-muted">Apologies for the mess, I am in the middle of transitioning my site from a jumbled mess to a less jumbled mess (IE: Jekyll). Please let me know if there are any <a href="https://github.com/delize/delize.github.io/issues">issues</a> with any part of the site!</p> -->
                         </div>
                     </div>
                 </div>
@@ -66,7 +68,7 @@
                     <div>
                       {% for item in (0..site.categories.size) %}{% unless forloop.last %}
                         {% capture this_word %}{{ category_words[item] }}{% endcapture %}
-                        <h2 id="{{ this_word | cgi_escape }}">{{ this_word }}</h2>
+                        <h3 id="{{ this_word | cgi_escape }}">{{ this_word }}</h3>
                         {% for post in site.categories[this_word] %}{% if post.title != null %}
                           <div>
                             <span style="float: left;">
