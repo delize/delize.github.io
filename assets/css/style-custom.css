@@ -1084,3 +1084,19 @@ ul.timeline-non-chrono {
 .link-hover:hover {
   color: #d23e50 !important;
 }
+
+.text-wrap-break {
+  text-wrap: break-word; 
+}
+
+.overflow-wrap-break {
+  overflow-wrap: break-word;
+}
+
+.align-center {
+  text-align: center;
+}
+
+.align-left {
+  text-align: left;
+}

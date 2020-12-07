@@ -17,7 +17,8 @@
                     <li class="nav-item">
                         {% if page.url != "/blog/categories/" %}<li><a class="nav-link text-dark" href="{{ '/blog/categories' | relative_url }}">Categories & Tags</a></li>{% endif %}
                         {% if page.url != "/blog/" %} <li><a class="nav-link text-dark" href="{{ '/blog' | relative_url }}">Back to Blog</a></li>
-                        {% elsif page.url == "/blog/" %} <li><a class="nav-link text-dark" href="{{ '/' | absolute_url }}">Back to Site</a></li>
+                        {% elsif page.url == "/blog/" %} <li><a class="nav-link text-dark" href="{{ '/' | absolute_url }}">Back to Site</a></li>{% else %} <span>You uncovered a secret, something went wrong. Please report it on Github!</span>{% endif %}
+                        {% if page.url == "/donate/" %} <li><a class="nav-link text-dark" href="{{ '/' | relative_url }}">Back to Site</a></li>{% elsif page.url != "/donate" %}
                         {% else %} <span>You uncovered a secret, something went wrong. Please report it on Github!</span>
                         {% endif %}
                     </li>

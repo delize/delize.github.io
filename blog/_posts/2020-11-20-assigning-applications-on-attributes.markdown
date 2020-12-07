@@ -13,9 +13,8 @@ tags:
 - Provisioning
 - Attributes
 - Okta
-- 
 categories:
-- random
+- Identity Access Management
 img_bg: /assets/blog/2020/11/assign-github-on-attribute/pexels-thisisengineering-3861943.jpg
 img_bg_alt: Placeholder Alt text
 img_blog: /assets/blog/2020/11/assign-github-on-attribute/pexels-negative-space-97077.jpg

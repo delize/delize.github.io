@@ -72,6 +72,7 @@ DEPENDENCIES
   jekyll-seo-tag
   jekyll-sitemap
   kramdown-parser-gfm
+  liquid
 
 BUNDLED WITH
    2.1.4
