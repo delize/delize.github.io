@@ -41,7 +41,44 @@
             </div>
         </div>
     </div>
-    <div class="container pt-4">
+
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col-lg-6">
+                <h3 class="text-dark mb-4">{{ site.data.resume.educationheader }}</h3>
+                <ul class="timeline">
+                    {% assign previousedu = site.data.resume.education | where_exp:"entry", "entry.enddate != nil and entry.enddate != blank and entry.enddate != ''" |  sort: 'enddate' | reverse %}
+                    {% assign currentedu = site.data.resume.education | where_exp:"entry", "entry.enddate == nil or entry.enddate == blank or entry.enddate == ''" |  sort: 'startdate' | reverse %}
+                    {% assign education = currentedu | concat: previousedu %}
+                    {% for university in education %}
+                    <li>
+                        <h6 class="base-color mb-0">{{ university.university}}</h6>
+                        <h7 class="base-color mb-0">{{ university.degree }}  {% if university.major %} - {{university.major}}{% endif %}</h7>
+                        <div>
+                            <small class="text-muted "> {{ university.startdate | date: "%B, %Y" }} - {% if university.enddate == nil or university.enddate == "" or university.enddate == blank %} Present {% else %} {{ university.enddate | date: "%B, %Y"}} {% endif %}
+                               </small>
+                        </div>
+                        <p class="text-dark py-3"> {{ university.description }} </p>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="col-lg-6">
+                <h3 class="text-dark mb-4 mt-5 mt-lg-0">{{ site.data.resume.eventsheader }}</h3>
+                <ul class="timeline">
+                    {% assign events = site.data.resume.events | sort: 'date' | reverse %}
+                    {% for event in events %}
+                    <li>
+                        <h6 class="base-color mb-0"><a class="link-hover base-color" href="{{ event.link}}">{{ event.title }}</a></h6>
+                        <h7 class="base-color mb-0">{{ event.host }}, {{ event.date | date: "%B, %Y" }}</h7>
+                        <p class="text-dark py-3"> {{ event.description }} </p>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="container pt-4">
         <div>
             <h3 class="text-dark mb-4 text-center">{{ site.data.resume.educationheader }}</h3>
             <div class="row">
@@ -65,6 +102,6 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 </section>
 <!--   Resume End   -->

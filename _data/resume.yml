@@ -156,3 +156,13 @@ volunteer:
     description: Interviewed for the role to write documentation and publications
                         related to networking content for the website on overclock.net under the username "GH0" or "Lige", an example of
                         writing can be <a class="text-dark link-hover" href="https://www.overclock.net/forum/45-networking-security/684875-guide-interworkings-internet.html#post7409055">found here</a>.
+
+
+
+eventsheader: Guest Speaker
+events:
+  - title: Rethink Active Directory, User Group Session
+    link: https://oktausergrouprethinkingad.splashthat.com/
+    host: Okta
+    date: 2021-01-08 00:00 -00:00
+    description: Coming soon!
