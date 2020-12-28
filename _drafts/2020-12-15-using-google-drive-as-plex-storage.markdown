@@ -24,7 +24,7 @@ permalink: /blog/:year/:month/:day/:title/
 
 ## Introduction
 
-Plex is a great tool, however data/nas systems can take up a lot of space and electricity for rotating disks. To keep costs down, automate ripping and organization of legal media constantly coming in, and 
+Plex is a great tool, however data/nas systems can take up a lot of space and electricity for rotating disks. To keep costs down and to not have a lot of 
 
 ## Requirements
 
@@ -52,8 +52,12 @@ Plex is a great tool, however data/nas systems can take up a lot of space and el
 ### Other
 * [rclone](https://rclone.org/downloads/)
 * [mergerfs](https://github.com/trapexit/mergerfs)
+* [youtube-dl](https://github.com/ytdl-org/youtube-dl)
 * Google Workspace Enterprise / G Suite account
 * Various scripts
 
-## Rclone Configuration
+## Configuration
 
+I have two different systems in place, one to upload content, and a mini player machine - because streaming 4K content ain't easy (or fun when transcoding & transmitting over an ocean). 
+
+Without getting too much into the configuration of *arr's, I will focus more on the rclone and plex configuration. My home network configuration 
