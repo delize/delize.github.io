@@ -159,9 +159,10 @@ volunteer:
 
 
 
-eventsheader: Guest Speaker
+eventsheader: Events / Conferences
 events:
   - title: Rethink Active Directory, User Group Session
+    role: Guest Speaker
     link: https://oktausergrouprethinkingad.splashthat.com/
     host: Okta
     date: 2021-01-08 00:00 -00:00
