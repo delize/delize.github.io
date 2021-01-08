@@ -166,4 +166,4 @@ events:
     link: https://oktausergrouprethinkingad.splashthat.com/
     host: Okta
     date: 2021-01-08 00:00 -00:00
-    description: Coming soon!
+    description: Guest speaker for ~50 professionals (ranging from Entry to C-Level title) regarding the transition off of our Active Directory environment to using Okta as our main profile source and the planned deprecation of Active Directory at an unmentioned company. In addition also described some of the issues and constraints we had around the LDAP interface, Group Management, Device Management, HR mastering, etc. Also discussed where identity management was heading in the future.
