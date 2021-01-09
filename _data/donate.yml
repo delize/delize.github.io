@@ -6,13 +6,14 @@
   wallet_address: 1KtFBUeqajSFmzQQ4BHkkAmwGeBmKLrz1y
   link:
   qrcode: /assets/img/donate/bitcoin.png
-- donate_portal: Litecoin
-  wallet_address: LTbWqgpu5xx7RVm6HZLGVdQFiqwYwmuHmr
-  link:
-  qrcode: /assets/img/donate/litecoin.png
 - donate_portal: Ethereum
   wallet_address: '0x040C6263666EB102aDaE63eC1a548568211f5585'
   link:
   qrcode: /assets/img/donate/ethereum.png
+- donate_portal: Litecoin
+  wallet_address: LTbWqgpu5xx7RVm6HZLGVdQFiqwYwmuHmr
+  link:
+  qrcode: /assets/img/donate/litecoin.png
+
   
   
