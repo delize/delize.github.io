@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>How we deployed MDM (Workspace One) to hundreds of devices</title>
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<meta name="author" content="Andrew Doering" />
+<meta name="ROBOTS" content="">
+        <!--  Custom Style CSS  -->
+<link rel="stylesheet" href=https://andrewdoering.org/assets/css/style-post.css>
+        <!--  Custom Style CSS  -->
+<link rel="stylesheet" href=https://andrewdoering.org/assets/css/style-blog.css>
+        <!--  FavIcon  -->
+<link rel="apple-touch-icon" sizes="180x180" href="https://andrewdoering.org/assets/favicon//apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="https://andrewdoering.org/assets/favicon//favicon-32x32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="https://andrewdoering.org/assets/favicon//favicon-16x16.png" />
+<link rel="manifest" href="https://andrewdoering.org/assets/favicon/site.webmanifest">
+
+<!-- Google Fonts -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli:300,400,600%7CPoppins:400,500,600,700" />
+
+<!--  Bootstrap CSS  -->
+<!-- <link rel="stylesheet" href="https://andrewdoering.org/assets/css/bootstrap.css" /> -->
+<link rel="stylesheet" href="https://andrewdoering.org/assets/css/bootstrap.min.css" />
+<!--  Line Icon CSS  -->
+<link rel="stylesheet" href="https://andrewdoering.org/assets/css/LineIcons.css" />
+<!--  Font Awesome CSS  -->
+<link rel="stylesheet" href="https://andrewdoering.org/assets/css/all.min.css" />
+<!-- <link rel="stylesheet" href="https://andrewdoering.org/assets/css/font-awesome.min.css" /> -->
+<!--  Animate CSS  -->
+<link rel="stylesheet" href="https://andrewdoering.org/assets/css/animate.css" /> 
+<!--  Magnific Popup CSS  -->
+<link rel="stylesheet" href="https://andrewdoering.org/assets/css/magnific-popup.css" />
+<!--  Owl-carousel CSS  -->
+<link rel="stylesheet" href="https://andrewdoering.org/assets/css/owl.carousel.min.css" />
+<!--  Custom Style CSS  -->
+<link rel="stylesheet" href="https://andrewdoering.org/assets/css/style-custom.css" />
+
+        
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-66440601-3"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'UA-66440601-3');
+</script>
+        
+        <style>
+            .hero-bg {
+              background-image: url("/assets/blog/2020/10/mdm/background.webp")
+            }
+        </style>
+    </head>
+
+    <body data-spy="scroll" data-target="#scrollspy" data-offset="61" class="pt-hero">
+        <!--    Header Start    -->
+<header id="header" class="header page-header bg-white fixed-top">
+    <nav id="scrollspy" class="navbar navbar-expand-lg header-nav">
+        <div class="container">
+            <a class="navbar-brand font-weight-bold text-dark" href="https://andrewdoering.org/">
+                <span>Andrew Doering</span>
+            </a>
+            
+            <!--  Navbar Toggler Button Start -->
+            <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#toggle-menu" aria-controls="toggle-menu" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="lni-menu size-md"></span>
+            </button>
+            
+            <!--  Navbar Toggler Button End -->
+            <div class="collapse navbar-collapse" id="toggle-menu">
+                <ul class="navbar-nav nav-pills ml-auto">
+                    <li class="nav-item">
+                        <li><a class="nav-link text-dark" href="/blog/categories">Categories & Tags</a></li>
+                         <li><a class="nav-link text-dark" href="/blog">Back to Blog</a></li>
+                        
+                        
+                        
+                    </li>
+                </ul>
+            </div> 
+        </div>
+    </nav>
+</header>
+<!--    Header End    -->
+
+        <!--    Header End    -->
+
+        <!--    Hero Start    -->
+        <a class="color-scheme text-white bg-base-color d-inline-block" href="javascript:void(0)"><i class="lni-night text-white"></i><span class="text-white">Dark</span></a>
+<a class="color-scheme color-scheme-light text-white bg-base-color d-none" href="javascript:void(0)"><i class="lni-sun text-white"></i><span class="text-white">Light</span></a>
+        <section class="hero hero-bg page-hero py-6" id="hero">
+            <div class="text-center hero-content mx-auto">
+                <h1 class="text-white center mb-4 col-lg-8" style="margin=4px">How we deployed MDM (Workspace One) to hundreds of devices</h1>
+                <p class="mx-auto text-white">
+                    <a href="/" class="text-white">Home</a>
+                    /
+                    <a href="/blog" class="text-white">Blog</a>
+                    /
+                    <a href="/blog/2020/10/21/deploying-mdm-to-hundreds-of-devices/" class="text-white">How we deployed MDM (Workspace One) to hundreds of devices</a>
+                </p>
+            </div>
+        </section>
+        <!--    Hero End    -->
+
+        <!--   Blog-single   Start -->
+        <section class="py-6">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 blog">
+                        <div class="rounded px-lg-1">
+                            <div class="text-md-left">
+                                <h4 class="mb-4 text-centered" >How we deployed MDM (Workspace One) to hundreds of devices</h4>
+                                <img src="/assets/blog/2020/10/mdm/background.webp" alt="" class="img-fluid w-100 rounded">
+                                <span class="d-inline-block py-4"> Published: Oct 21, 2020 
+                                        
+                                        / By <span class="purple-color text-right"> Andrew Doering. </span>
+                                        </span>
+                                <p class="link-"><ul>
+  <li><a href="#initial-deployment-process">Initial Deployment Process</a>
+    <ul>
+      <li><a href="#what-we-used-on-macos">What we used on macOS</a></li>
+      <li><a href="#what-we-used-on-windows">What we used on Windows</a></li>
+    </ul>
+  </li>
+  <li><a href="#mdm-deployment-phase">MDM Deployment Phase</a>
+    <ul>
+      <li><a href="#prerequisites">Prerequisites</a>
+        <ul>
+          <li><a href="#what-we-used-on-macos-1">What we used on macOS</a></li>
+          <li><a href="#what-we-used-on-windows-1">What we used on Windows</a></li>
+          <li><a href="#registering-devices-from-our-vendor-with-apple-business-manager">Registering devices from our Vendor with Apple Business Manager</a>
+            <ul>
+              <li><a href="#apple-ecommerce-websites">Apple ECommerce Websites</a></li>
+              <li><a href="#cdw">CDW</a></li>
+              <li><a href="#shi">SHI</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li><a href="#workspace-one-configuration--workflow">Workspace One Configuration &amp; Workflow</a>
+        <ul>
+          <li><a href="#scope-of-devices-for-enrollmentmanagement">Scope of devices for enrollment/management</a></li>
+          <li><a href="#existing-devices">Existing devices</a>
+            <ul>
+              <li><a href="#macos">macOS</a></li>
+              <li><a href="#windows">Windows</a></li>
+            </ul>
+          </li>
+          <li><a href="#zero-touch-provisioning-system">Zero Touch Provisioning System</a>
+            <ul>
+              <li><a href="#macos-1">macOS</a>
+                <ul>
+                  <li><a href="#installapplications">installapplications</a></li>
+                  <li><a href="#how-we-deployed-munki">How we deployed Munki</a></li>
+                  <li><a href="#how-new-employees-gain-admin-access">How new employees gain admin access</a></li>
+                  <li><a href="#user-experience">User Experience</a></li>
+                </ul>
+              </li>
+              <li><a href="#windows-1">Windows</a>
+                <ul>
+                  <li><a href="#autopilot--oobe">Autopilot / OOBE</a></li>
+                  <li><a href="#deployment-process--2-years-later">Deployment Process ( ~2 Years Later)</a></li>
+                  <li><a href="#chef-and-chocolatey">Chef and Chocolatey</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li><a href="#summary">Summary</a></li>
+    </ul>
+  </li>
+  <li><a href="#moving-forward">Moving forward</a>
+    <ul>
+      <li><a href="#outside-of-currentcompany">Outside of $currentcompany</a></li>
+      <li><a href="#within-currentcompany">Within $currentcompany</a></li>
+    </ul>
+  </li>
+  <li><a href="#supporting-documents">Supporting Documents</a></li>
+</ul>
+
+<p>At <a href="https://andrewdoering.org/#resume">$previouscompany</a> we had gone through a long struggle of managing devices properly. When I was hired in 2016, we had nothing in place for our entire company and everything was done manually. Our initial provisioning system focused on macOS as that was the most widely used OS within the company. It worked (slowly and barely) for two years (from 2016 - ~2018), and admittedly, we were still a small company at this point, roughly 250 max, however, the mistake had already been made as our biggest two years of growth were during this time period. However to continue to scale the companies operations, we needed to get an efficient and flexible system that incorporated both macOS and Windows.</p>
+
+<p>After an uphill battle, countless research documents, proposals, and explanations, we finally reached a point where it was agreed on that we would obtain an MDM solution. This will detail exactly what we went through in terms of deployments before MDM, during/after MDM, and going forward (with Windows 10 and Big Sur).</p>
+
+<p>This blog post has been written post-acquisition and about a year after our deployment of this process, this is not a summary of what have in active use, but the fundamentals we have used in the past. I attempted to make this with as less ranting and going on a tangent as possible. We will no longer be using this deployment method due to the acquisition.</p>
+
+<h2 id="initial-deployment-process">Initial Deployment Process</h2>
+
+<p>This is for the time period between 2016 and the end of 2017.</p>
+
+<h3 id="what-we-used-on-macos">What we used on macOS</h3>
+
+<ul>
+  <li><a href="https://www.deploystudio.com/">DeployStudio</a></li>
+  <li><a href="https://github.com/MagerValp/AutoDMG">AutoDMG</a></li>
+  <li><a href="https://www.munki.org/">Munki</a></li>
+  <li><a href="https://github.com/salopensource">Sal</a></li>
+  <li><a href="https://github.com/grahamgilbert/crypt">Crypt Client</a></li>
+  <li><a href="https://github.com/grahamgilbert/Crypt-Server">Crypt Server</a></li>
+  <li><a href="https://github.com/delize/local-LAPS-python">Local LAPSmac</a></li>
+</ul>
+
+<p>To go into detail on this, we would create a prepared image from AutoDMG with the latest updates. We would go the “Golden Image” route. Once the golden image was prepared (which was a thin image, not a monolithic image), we would then drop it on our DeployStudio system and began the deployment process.</p>
+
+<p>We had several different workflows for each department and team, pre-installing the necessary software for them ahead of their onboarding (or at least what IT was told about). These would be installed after the image was installed on each machine.</p>
+
+<p>There were a few issues here that came out of this, the largest one was the ability to support macOS images that would become branched due to hardware revisions. The other was once the T2 chips were released, we couldn’t really use DeployStudio anymore, and finally manual builds were just overall time consuming and not worth it in the long run. No one should be manually building laptops at this point of device lifecycles (looking at you $currentcompany).</p>
+
+<h3 id="what-we-used-on-windows">What we used on Windows</h3>
+
+<ul>
+  <li>OEM Windows 10 Image</li>
+  <li><a href="https://github.com/johnnyramos/bitlocker2crypt">Crypt Client</a></li>
+  <li>Group Policy Scripts</li>
+</ul>
+
+<p>For our Windows deployment, there was minimal work needed, as we scripted up most of our onboarding processes, we definitely had some improvements to be made here, however Windows was always considered a lower priority compared to macOS - even tough about ~25% of our workforce was Windows based clients, and we have several build machines, and servers that were Windows based.</p>
+
+<p>We were also told that trying to get statistical and reporting on our Windows environment, to assist with evidence and provide data that we needed to improve our Windows environment, was not currently relevant when we went through this project (much to my disagreement, we abided by this and didn’t capture details). Even historical data to provide future projections were ignored. My reaction to these conversations is summed up by the following meme:</p>
+
+<p><img src="/assets/blog/2020/10/mdm/giphy.gif" alt="Ryan Reynolds" /></p>
+
+<h2 id="mdm-deployment-phase">MDM Deployment Phase</h2>
+
+<p>This project was initiated at the beginning of 2018 and completed by mid-2018, the fundamental pieces of this workflow was used during and up to the acquisition.</p>
+
+<h3 id="prerequisites">Prerequisites</h3>
+
+<h4 id="what-we-used-on-macos-1">What we used on macOS</h4>
+
+<ul>
+  <li><a href="https://www.munki.org/">Munki</a></li>
+  <li><a href="https://github.com/salopensource">Sal</a></li>
+  <li><a href="https://github.com/grahamgilbert/crypt">Crypt Client</a></li>
+  <li><a href="https://github.com/grahamgilbert/Crypt-Server">Crypt Server</a></li>
+  <li><a href="https://github.com/SAP/macOS-enterprise-privileges">Privileges</a></li>
+  <li><a href="https://github.com/macadmins/umad">umad</a></li>
+  <li><a href="https://github.com/macadmins/nudge">nudge</a> (and a more <a href="https://github.com/LcTrKiD/nudge">feature rich fork exists</a>)</li>
+  <li><a href="https://github.com/macadmins/installapplications">installapplications</a></li>
+  <li><a href="https://gitlab.com/Mactroll/DEPNotify">DEPNotify</a></li>
+  <li><a href="https://github.com/chilcote/outset">outset</a></li>
+  <li><a href="https://developer.apple.com/support/certificates/">Developer ID Installer Certificate</a></li>
+  <li><a href="https://business.apple.com/">Apple Business Manager</a></li>
+</ul>
+
+<p>Since we previously using Munki throughout our fleet, this made the MDM enrollment a lot easier.</p>
+
+<h4 id="what-we-used-on-windows-1">What we used on Windows</h4>
+
+<ul>
+  <li><a href="https://www.microsoft.com/en-us/microsoft-365/windows/windows-autopilot">Windows Autopilot</a> / <a href="https://docs.vmware.com/en/VMware-Workspace-ONE-UEM/1903/Windows_Desktop_Device_Management/GUID-AWT-ENROLL-OOBE.html">OOBE</a></li>
+  <li><a href="https://www.chef.io/">Chef</a></li>
+  <li><a href="https://chocolatey.org/products/chocolatey-for-business">Chocolatey</a></li>
+  <li><a href="https://github.com/johnnyramos/bitlocker2crypt">Crypt Client</a></li>
+</ul>
+
+<h4 id="registering-devices-from-our-vendor-with-apple-business-manager">Registering devices from our Vendor with Apple Business Manager</h4>
+
+<p>We generally purchased all devices through CDW, SHI, or directly through an Apple Business Account based on location. For Apple, each reseller company has a DEP Reseller ID, and adding that DEP Reseller ID to your Business Account allows them to automatically register devices back into your MDM workflow.</p>
+
+<h5 id="apple-ecommerce-websites">Apple ECommerce Websites</h5>
+
+<p>We had apple business accounts in all of the regions that provide a business platform, for our business location registrations. <a href="https://ecommerce.apple.com/content/b2b/static/en/us/flags.html">This</a> was very helpful, however there were limitations. The main limitation was a lack of automation around pulling assets into an asset management system.</p>
+
+<h5 id="cdw">CDW</h5>
+
+<p>We utilized a script that I wrote <a href="https://github.com/delize/snipeit_cdw_automation">here</a> to upload data into SnipeIT. From there, we allowed CDW access to our environment for Apple Business Manager to upload device data. After initially looking at <a href="https://www.microsoft.com/en-us/microsoft-365/windows/windows-autopilot">Autopilot</a>, <a href="https://www.reddit.com/r/sysadmin/comments/8hpqoe/anybody_using_windows_10_autopilot/">due to cost</a> however, the same reasons in this reddit thread, we opted to go a different route. This is no fault to CDW, but the cost of Autopilot is absurd when similar services in other vendors are free and Microsoft offers it for free on Surface devices. If we were to deploy 1000 machines, at the cost of $10.00 per machine, $10,000.00 in addition to the laptop amount purchased.</p>
+
+<h5 id="shi">SHI</h5>
+
+<p>Generally we don’t purchase many EUC devices through SHI, but we added the DEP Reseller IDs to our ABM account anyways. We did not setup an integration for AzureAD/Windows Devices.</p>
+
+<h3 id="workspace-one-configuration--workflow">Workspace One Configuration &amp; Workflow</h3>
+
+<p>I have already written up on our <a href="https://andrewdoering.org/blog/2019/12/23/workspace-one-okta-users-and-groups-working-with-dep-enrollment/">SAML and Directory Services deployment of Workspace One</a>, however I have not described our existing setup.</p>
+
+<h4 id="scope-of-devices-for-enrollmentmanagement">Scope of devices for enrollment/management</h4>
+
+<p>The requirements we wanted to roll out:</p>
+
+<ol>
+  <li>Enroll existing devices</li>
+  <li>Enroll all new devices via Zero Touch Provisioning Scheme</li>
+  <li>Allow users to enroll their mobile phone(s), tablets, and personal devices</li>
+</ol>
+
+<p>The requirements we ended up with were:</p>
+
+<ol>
+  <li>Enroll existing devices</li>
+  <li>Enroll all new devices via Zero Touch Provisioning Scheme</li>
+  <li>Do nothing for mobile phones (BYOD)</li>
+  <li>Do nothing for Employee Owned / Personal Computing Devices (EOPD / BYOD)</li>
+</ol>
+
+<p>Internally we did want to create programs for the bottom two items, we were not able to get anything green lit internally. Within IT, we saw the bottom two as potential risks, and the long term effort was to enable device trust and context based access via Okta to minimize data loss and that risk. We do not distribute phones from a company owned mobile plan. However there were issues at play from above that did not allow us to execute 3 or 4.</p>
+
+<p>With the scope settled, we took two different paths for existing vs new devices.</p>
+
+<h4 id="existing-devices">Existing devices</h4>
+
+<h5 id="macos">macOS</h5>
+
+<p>We created an organizational group specifically within Workspace One for previous devices within the company. Here we utilized <a href="https://github.com/macadmins/umad">umad</a> a tool written by <a href="https://blog.eriknicolasgomez.com/">Erik Gomez</a> and had two routes that would be taken:</p>
+
+<ul>
+  <li>umad + DEP</li>
+  <li>umad + manual</li>
+</ul>
+
+<p>The bulk of our devices were DEP capable directly after deploying umad, and the majority of our team enrolled smoothly.</p>
+
+<p>From there, our first line support team (who were also our IT engineering team, yay for teams of 2!) would follow up on devices after about a week or two of deployment time. This was enough time for employees to enroll themselves, and in addition for the timer to kick in with umad to the point where it would become annoying enough for employees that did not enroll (to require an incident to be opened to either stop the pop ups or enroll into MDM).</p>
+
+<h5 id="windows">Windows</h5>
+
+<p>Windows has a self registration portal for enrolling devices into an MDM, located under the “Access work or school” in system settings, on the right side pane labeled <code class="language-plaintext highlighter-rouge">Enroll only in Device Management</code>. Utilizing this, users could self-enroll their devices as long as they had administrator access and secondary/additional software was not needed like it was for macOS.</p>
+
+<h4 id="zero-touch-provisioning-system">Zero Touch Provisioning System</h4>
+
+<p>Again, we created an organizational group specifically for new devices. This was meant to be a way that we could easily monitor devices being registered on a weekly basis for new employees. We had several other methods of doing this (eg: Sal), but this way, our IT team, InfoSec teams, and other teams could pull data out of Workspace One for all new devices rather than have the entire list of all previous devices.</p>
+
+<h5 id="macos-1">macOS</h5>
+
+<h6 id="installapplications">installapplications</h6>
+
+<p>We started development of this workflow with installapplications with version 1.0 and ended up finalizing the original deployment using 1.2.1. There is a <a href="https://github.com/erikng/installapplicationsdemo">great example repository here</a>. We used this as our base example, but removed a substantial amount of scripts that were not relevant to us.</p>
+
+<h6 id="how-we-deployed-munki">How we deployed Munki</h6>
+
+<p>We compiled a smaller/custom version of Munki that allows us to do a single run of Munki against our web server hosting our manifests. With this single run, we implement a bootstrap manifest that runs once, and then our custom auto enroll kicks in and allows us to use the serial number subsequent Munki runs.</p>
+
+<p>Rolling our own:</p>
+
+<p>There is some documentation and several blog posts on how to compile Munki, rather than going in depth on how we did this and due to the length since we did this, I would prefer to <a href="https://blog.eriknicolasgomez.com/2017/03/08/Custom-DEP-Part-2-Creating-a-custom-package-and-deploying-Munki/">link</a> <a href="https://tombridge.com/2017/04/27/getting-started-with-installapplication-depnotify-and-simplemdm/">different</a> <a href="https://therestoftheowl.com/blog/2018/11/09/installapplications-for-dummies-part-1/">posts</a> here.</p>
+
+<p>Manifests:</p>
+
+<p>We use a similar Munki deployment that follows the same principles as <a href="https://github.com/edingc/munki-enroll">Munki Enroll</a> and <a href="https://github.com/aysiu/munki-serial-enroll">Munki Serial Enroll</a>. However, our tool was internally developed and has not been released - namely our service does not rely on PHP. Our structure of our repos is described below:</p>
+
+<p><img src="/assets/blog/2020/10/mdm/structure.png" alt="Structure Diagram" /></p>
+
+<p>This way, we had the flexibility to deploy to a device, to a team/department, to a region, and globally across the domain.</p>
+
+<h6 id="how-new-employees-gain-admin-access">How new employees gain admin access</h6>
+
+<p>Before our acquisition, we did not grant admin access across the board to the company (due to InfoSec requirements), we only allowed a few departments (namely: engineering, InfoSec, customer success, and pre-sales solution engineers). Due to the flexibility of our Munki enrollments, it was quite easy to accomplish in this way.</p>
+
+<p><a href="https://derflounder.wordpress.com/">Rich Trouton</a> at SAP has published <a href="https://github.com/SAP/macOS-enterprise-privileges/">Privileges.app</a>. We use this in certain Munki manifests to automatically install and grant access, while also setting up a post install script to automatically run and enable admin access after Munki installed the application. We could do this natively <a href="https://github.com/munki/munki/wiki/Managing-Admin-Rights-With-Munki">with Munki</a>, however we wanted to provide the opportunity for our engineers to dynamically switch admin context on the fly, and SAP’s tool allows us to do this.</p>
+
+<h6 id="user-experience">User Experience</h6>
+
+<p>We heavily utilized <a href="https://gitlab.com/Mactroll/DEPNotify">DEPNotify</a> to inform our employees of the current status of their new device. A very generic image of our initial deployment (which can be seen by many other blogs) can be found below, however, we customized this a bit with stories on how ThousandEyes operates, our culture, and our history.</p>
+
+<p><img src="/assets/blog/2020/10/mdm/macOS%20New%20Hire%20Guide_Page_6_Image_0002.png" alt="DEPNotify experience" /></p>
+
+<p>After this, we would then reset the dock in place to set our generally most used services. This would consist of actual applications, or links/shortcuts to web applications (mainly G Suite services).</p>
+
+<p>We wanted to minimize the deployment time, configuration of a device shouldn’t take more than 15 to 20 minutes, any longer (in our mind, 30 minutes or more) and not only does it ruin the experience, it also is detrimental to the new employee as more could go wrong with the deployment. To make sure our intended deployment was less than 20 minutes we simulated a few environments. A 1 Megabit connection (worst case scenario), 1 Megabyte, 5 Megabytes, and Full Speed (in my testing - that is a 1 Gigabyte downstream on a home ISP). In testing the worst case scenario ended up being 23 minutes where the best case scenario ended up being between 10 - 15 minutes in a virtualized ESXi machine. We considered this successful.</p>
+
+<p>If something does go wrong with the deployment, we also created a package that would fire off a stand alone setup package that would install all the necessary tools that would have been installed during the first experience.</p>
+
+<p>Once their initial installation was finished, we would run JAMF Connect Sync on reboot logins to prompt the user to sync their password down from Okta to their local device.</p>
+
+<p><img src="/assets/blog/2020/10/mdm/macOS%20New%20Hire%20Guide_Page_8_Image_0001.png" alt="JAMF Connect Sync" /></p>
+
+<h5 id="windows-1">Windows</h5>
+
+<p>The forgotten step-child, as I mentioned, trying to get anything done within our environment on Windows was difficult as management deemed it unnecessary. All the while our fleet deployment of windows was ~25% of our total systems. Fortunately, the improvements we made with macOS (and MDM in general) also were baked into (to a minimal degree) for Windows as well. Meaning, that remote employees and workforces could be rolled out without someone sitting next to the computer for 30 to 60 minutes configuring a PC. Unfortunately, we couldn’t use it in the provisioning process due to upper management.</p>
+
+<p>However, once covid happened, we had sudden approval to initiate Windows improvements.</p>
+
+<h6 id="autopilot--oobe">Autopilot / OOBE</h6>
+
+<p>Workspace One has a nice guide on how to setup both AutoPilot and OOBE that can be <a href="https://techzone.vmware.com/enrolling-windows-10-devices-using-azure-ad-vmware-workspace-one-uem-operational-tutorial#1108817">found here</a>. This was the base we used to get our configuration off the ground and running. We did run into a hitch that I will describe a little later on.</p>
+
+<h6 id="deployment-process--2-years-later">Deployment Process ( ~2 Years Later)</h6>
+
+<p>For the Windows side, we configured <a href="https://docs.vmware.com/en/VMware-Workspace-ONE-UEM/services/System_Settings_On_Prem/GUID-AWT-DEVICESUSERS-WINDOWS-WADS.html">auto-discovery</a> feature that Workspace One supports. This (minimally) shortens manual process by 2 to 3 steps. For automatic steps, it generally can help automate the entire process where end users do not have to fill in server configurations.</p>
+
+<p><img src="/assets/blog/2020/10/mdm/Screen%20Shot%202020-10-17%20at%207.49.48%20PM.png" alt="Workspace One Auto Discovery" /></p>
+
+<p>While rolling this out for zero-touch, we did run into a single issue which unfortunately was a show stopper for zero-touch only. That is, when you have Active Directory previously hooked up to Okta, it causes issues when mapping <code class="language-plaintext highlighter-rouge">uniqueidentifiers</code> vs <code class="language-plaintext highlighter-rouge">ObjectGUID</code>. We ultimately had to open up a support case to attempt to resolve this, and then were redirected to ProServices to fix the problem. By the time we got approval for ProServices, the announcement of an acquisition was announced the next day. The annoying part about this issue, is that it ONLY presented itself when utilizing AzureAD’s Workspace One VMware app during OOBE experience. If manual sign up using AzureAD Domain Join and manual enrollment into Workspace One MDM, it was not present.</p>
+
+<p><img src="/assets/blog/2020/10/mdm/Screen%20Shot%202020-10-17%20at%208.27.16%20PM.png" alt="External ID Error" /></p>
+
+<p>However, because we already have 400+ accounts in O365, and an immutableID is well, immutable, we were not sure how to go through with this without causing massive issues. Unfortunately, this was never brought up to us until far after, and while writing this, I realized that there was some misconfigurations when going through our Professional Services with Workspace One that did not take into account this configuration in Okta and AzureAD.</p>
+
+<p>While Okta being federated does imitate ADSync, our federated configuration does not actually show up as an External Identity in AzureAD’s configuration.</p>
+
+<p>It does seem that Microsoft has finally allowed the ability to <a href="https://docs.microsoft.com/en-us/azure/active-directory/external-identities/user-flow-add-custom-attributes">create custom attributes in AzureAD</a>. This could have helped us with a workaround. However, if anyone <strong>does</strong> know of a way to fix this issue, I would honestly love to hear it. There is <a href="https://support.okta.com/help/servlet/fileField?id=0BE2A00000004Sj">a lot</a> of <a href="https://www.okta.com/sites/default/files/Okta-3rd-Party-UEM-Interop_Workspace-ONE.pdf">documentation</a> <a href="https://help.okta.com/en/prod/Content/Topics/Apps/Office365-Deployment/provision-users.htm">I have</a> read in the past, however even if we can’t/don’t use it going forward, just for completion and a way to close a loop here.</p>
+
+<p>We unfortunately went the manual route. Requiring users to sign in manually to Azure AD, and then manually sign into the MDM.</p>
+
+<h6 id="chef-and-chocolatey">Chef and Chocolatey</h6>
+
+<p>Once this was done, we setup the remaining equivalent scripts, and deployed our required applications for a short term roll out.</p>
+
+<p>Long term, the plan was to deploy <a href="https://docs.chef.io/windows/">Chef on Windows</a>. With that, we would deploy <a href="tey.org/products/chocolatey-for-business">chocolatey</a> and allow for a self service deployment of software similar to SCCM, but with far less expense.</p>
+
+<p>While we had a high level plan on the end states, we did not have a low level plan, and one of my peers wanted to take that over to get a better understanding of the NuGet framework. The idea here was that we would have Chef managing devices similar to Munki but utilizing the cookbooks of other companies like Facebook, Uber, and others. Once we got a baseline we would then start developing our own to utilize it more to our needs.</p>
+
+<h3 id="summary">Summary</h3>
+
+<p>As a reminder, these photos were taken during our initial deployments (and our documentation) and are not a current status of what we do, a lot of continual improvements have been performed throughout our initial deployment, and revamps have been made to customize this to exactly the way we want our users to experience deployments.</p>
+
+<p>Minimal to no input, while still having a great deal of flexibility in the deployment process. People should not have to question where to find details like Asset Tags, Serial Numbers, etc. However they should have the ability to fully customize their device.</p>
+
+<p>With all this setup and configured, it worked well and allowed a lot more time for our IT team that focused on engineering to take up new challenges, and allow our support team to have more time to focus on other services and functions that they need to worry about.</p>
+
+<h2 id="moving-forward">Moving forward</h2>
+
+<h3 id="outside-of-currentcompany">Outside of $currentcompany</h3>
+
+<p>Now that we are being acquired, all of our device management plan has been scrapped. However, with that said, I do want to make some comments on the direction of Big Sur and how the zero-touch provisioning system is changing.</p>
+
+<p>First and foremost, Python is getting removed in Big Sur. Meaning that you have to have roll your own in the deployment process. With <code class="language-plaintext highlighter-rouge">installapplications</code>, this is no longer a problem as there is a version released with compatible python, however, this leads to other potential issues. The <code class="language-plaintext highlighter-rouge">mdmclient</code> on macOS is rather finicky and not entirely reliable. Since we now have to bundle python and <code class="language-plaintext highlighter-rouge">installapplications</code>, it raises the size from ~25 kilobytes to ~25 megabytes.</p>
+
+<p>A huge component of <code class="language-plaintext highlighter-rouge">installapplications</code> use cases come from the ability to display and load user land context for the user once they hit the desktop environment. However, there have been <a href="https://macadmins.slack.com/archives/C54N3AT2B/p1601644844008600">reports</a> of this <a href="https://macadmins.slack.com/archives/C54N3AT2B/p1601408174001500">failing</a> or not working as expected with macOS 11.0 Beta / Big Sur. Granted that due to Big Sur being in beta, there may be some unexpected behavior, but it seems the best route going forward is to no longer use DEP Notify directly launched from <code class="language-plaintext highlighter-rouge">installapplications</code>. Rather, use outset on first boot and set a flag to signify if DEPNotify had been run, and if not run it.</p>
+
+<p>Due to our deprecation of services, I am interested to see what comes out of Big Sur and Windows 10, and have been closely following both the <a href="https://discord.me/winadmins">Windows discord</a> as well as the <a href="https://www.macadmins.org/">MacAdmins Slack</a>.</p>
+
+<h3 id="within-currentcompany">Within $currentcompany</h3>
+
+<p>It will be interesting to see how a large legacy centric company attempts to convert to a cloud centric company with “traditional management” frameworks. The lack of use of Chef or Puppet on EUC devices, while not a limiting factor, does limit a lot of imagination and expansion room.</p>
+
+<h2 id="supporting-documents">Supporting Documents</h2>
+
+<p>While I don’t feel comfortable publishing our documentations around our processes, happy to distribute them privately if anyone may potentially need them or want to look at them. Feel free to comment below, and/or send me an <a href="mailto:contact@andrewdoering.org">email</a>.</p>
+</p>
+                                
+                                    
+                                        <div id="disqus_thread"></div>
+<script>
+
+var disqus_config = function () {
+this.page.url = "https://andrewdoering.org/blog/2020/10/21/deploying-mdm-to-hundreds-of-devices";  
+this.page.identifier = "deploying-mdm-to-hundreds-of-devices"; 
+};
+
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://andrewdoering-org.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                            
+                                    
+                                
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                
+        </section>
+        
+        <!--   Blog-Single End  -->
+
+
+        <!--   Footer Start  -->
+<footer class="bg-dark">
+    <div class="container">
+        <div class="row py-5">
+            <div class="col-lg-4">
+                <h4 class="text-white mt-3 mt-lg-0">About <span class="base-color"> Me</span></h4>
+                <p class="text-white pt-3 mb-0">Andrew Doering resides in San Francisco, and currently maintains a position at
+                    ThousandEyes as a Senior IT Engineer. </p>
+            </div>
+            <div class="col-lg-4">
+                <h4 class="text-white mt-3 mt-lg-0">Contact <span class="base-color">Me</span></h4>
+                <ul class="list-unstyled text-white pt-2 mb-0">
+                    <li class="py-1"><i class="fas fa-map-marker-alt pr-2"></i> San Francisco, CA, USA</li>
+                    <li class="py-1"><a class="text-white link-hover" href="tel:+1 919 904 4396"><i class="fas fa-phone-square-alt pr-2" aria-hidden="true"></i>
+                        +1 919 904 4396</a></li>
+                    <li class="py-1"><a class="text-white link-hover" href="mailto:contact@andrewdoering.org"><i class="fas fa-envelope pr-2 pr-2" aria-hidden="true"></i>
+                        contact@andrewdoering.org</a></li>        
+                </ul>
+            </div>
+            <div class="col-lg-4">
+                <h4 class="text-white mt-3 mt-lg-0">My <span class="base-color">Socials</span></h4>
+                <ul class="list-unstyled text-white socials pt-2 mb-0">
+                    <li class="py-1"><a class="text-white link-hover" href="https://www.facebook.com/and.doe"><i class="fab fa-facebook-f pr-2" aria-hidden="true"></i>
+                            Facebook</a></li>
+                    <li class="py-1"><a class="text-white link-hover" href="https://www.linkedin.com/in/andrewdoering"><i class="fab fa-linkedin pr-2"
+                                aria-hidden="true"></i> LinkedIn</a></li>
+                    <li class="py-1"><a class="text-white link-hover" href="https://www.github.com/delize"><i class="fab fa-github pr-1" aria-hidden="true"></i>
+                            Github</a></li>
+                    <li class="py-1"><a class="text-white link-hover" href="https://www.instagram.com/dolos01"><i class="fab fa-instagram pr-2" aria-hidden="true"></i>
+                            Instagram</a></li>
+                    <li class="py-1"><a class="text-white link-hover" href="skype:andrew-doering"><i class="fab fa-skype pr-2" aria-hidden="true"></i> andrew-doering</a>
+                    </li>
+                    <li class="py-1"><a class="text-white link-hover" href="https://www.macadmins.org/"><i class="fab fa-slack pr-2" aria-hidden="true"></i> @heimdall</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+                <div class="col-lg-12 border-top pb-5 align-center">
+                    <a class="text-white link-hover" href="https://www.github.com/delize/delize.github.io"><span class="mt-3 mb-0 d-lg-inline-block align-left text-center text-white link-hover d-block d-lg-inline-block float-lg-left">See me on Github © 2021</span></a>
+                    <a class="text-white link-hover" href="/donate"><span class="mt-3 mb-0 d-lg-inline-block align-center d-block text-white link-hover">Donate!</span></a>
+                <a class="mt-4 mt-lg-3 mb-0 text-white back-to-top d-block d-lg-inline-block float-lg-right text-center" href="javascript:void(0);">Back To Top</a>
+            </div>
+        </div>
+    </div>
+</footer>
+<!--   Footer End  -->
+        <!--  JavaScripts  -->
+<script src=https://andrewdoering.org/assets/js/jquery-3.4.1.min.js></script>
+<!--  Bootstrap Js  -->
+<!-- <script src="assets/js/bootstrap.js"></script> -->
+<script src=https://andrewdoering.org/assets/js/bootstrap.min.js></script>
+<!--  Easing Js  -->
+<script src=https://andrewdoering.org/assets/js/jquery.easing.min.js></script>
+<!--  Isotope Js  -->
+<script src=https://andrewdoering.org/assets/js/slyslider.js></script>
+<!--  Pop UP JS Js  -->
+<script src=https://andrewdoering.org/assets/js/jquery.magnific-popup.min.js></script>
+<!--  Owl carousel Js  -->
+<script src=https://andrewdoering.org/assets/js/owl.carousel.min.js></script>
+<!--  Wow Js  -->
+<script src=https://andrewdoering.org/assets/js/wow.min.js></script>
+<!--  Typed Js  -->
+<script src=https://andrewdoering.org/assets/js/typed.js></script>
+<!--  Custom JS  -->
+<script src=https://andrewdoering.org/assets/js/uone.js></script>
+
+
+    </body>
+</html>

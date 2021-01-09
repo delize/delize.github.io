@@ -1,0 +1,2532 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Infrastructure Engineer Deployment - Example</title>
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<meta name="author" content="Andrew Doering" />
+<meta name="ROBOTS" content="">
+        <!--  Custom Style CSS  -->
+<link rel="stylesheet" href=https://andrewdoering.org/assets/css/style-post.css>
+        <!--  Custom Style CSS  -->
+<link rel="stylesheet" href=https://andrewdoering.org/assets/css/style-blog.css>
+        <!--  FavIcon  -->
+<link rel="apple-touch-icon" sizes="180x180" href="https://andrewdoering.org/assets/favicon//apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="https://andrewdoering.org/assets/favicon//favicon-32x32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="https://andrewdoering.org/assets/favicon//favicon-16x16.png" />
+<link rel="manifest" href="https://andrewdoering.org/assets/favicon/site.webmanifest">
+
+<!-- Google Fonts -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli:300,400,600%7CPoppins:400,500,600,700" />
+
+<!--  Bootstrap CSS  -->
+<!-- <link rel="stylesheet" href="https://andrewdoering.org/assets/css/bootstrap.css" /> -->
+<link rel="stylesheet" href="https://andrewdoering.org/assets/css/bootstrap.min.css" />
+<!--  Line Icon CSS  -->
+<link rel="stylesheet" href="https://andrewdoering.org/assets/css/LineIcons.css" />
+<!--  Font Awesome CSS  -->
+<link rel="stylesheet" href="https://andrewdoering.org/assets/css/all.min.css" />
+<!-- <link rel="stylesheet" href="https://andrewdoering.org/assets/css/font-awesome.min.css" /> -->
+<!--  Animate CSS  -->
+<link rel="stylesheet" href="https://andrewdoering.org/assets/css/animate.css" /> 
+<!--  Magnific Popup CSS  -->
+<link rel="stylesheet" href="https://andrewdoering.org/assets/css/magnific-popup.css" />
+<!--  Owl-carousel CSS  -->
+<link rel="stylesheet" href="https://andrewdoering.org/assets/css/owl.carousel.min.css" />
+<!--  Custom Style CSS  -->
+<link rel="stylesheet" href="https://andrewdoering.org/assets/css/style-custom.css" />
+
+        
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-66440601-3"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'UA-66440601-3');
+</script>
+        
+        <style>
+            .hero-bg {
+              background-image: url("/assets/blog/2020/09/eg-infra-engg/infra-engg-bg.jpg")
+            }
+        </style>
+    </head>
+
+    <body data-spy="scroll" data-target="#scrollspy" data-offset="61" class="pt-hero">
+        <!--    Header Start    -->
+<header id="header" class="header page-header bg-white fixed-top">
+    <nav id="scrollspy" class="navbar navbar-expand-lg header-nav">
+        <div class="container">
+            <a class="navbar-brand font-weight-bold text-dark" href="https://andrewdoering.org/">
+                <span>Andrew Doering</span>
+            </a>
+            
+            <!--  Navbar Toggler Button Start -->
+            <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#toggle-menu" aria-controls="toggle-menu" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="lni-menu size-md"></span>
+            </button>
+            
+            <!--  Navbar Toggler Button End -->
+            <div class="collapse navbar-collapse" id="toggle-menu">
+                <ul class="navbar-nav nav-pills ml-auto">
+                    <li class="nav-item">
+                        <li><a class="nav-link text-dark" href="/blog/categories">Categories & Tags</a></li>
+                         <li><a class="nav-link text-dark" href="/blog">Back to Blog</a></li>
+                        
+                        
+                        
+                    </li>
+                </ul>
+            </div> 
+        </div>
+    </nav>
+</header>
+<!--    Header End    -->
+
+        <!--    Header End    -->
+
+        <!--    Hero Start    -->
+        <a class="color-scheme text-white bg-base-color d-inline-block" href="javascript:void(0)"><i class="lni-night text-white"></i><span class="text-white">Dark</span></a>
+<a class="color-scheme color-scheme-light text-white bg-base-color d-none" href="javascript:void(0)"><i class="lni-sun text-white"></i><span class="text-white">Light</span></a>
+        <section class="hero hero-bg page-hero py-6" id="hero">
+            <div class="text-center hero-content mx-auto">
+                <h1 class="text-white center mb-4 col-lg-8" style="margin=4px">Infrastructure Engineer Deployment - Example</h1>
+                <p class="mx-auto text-white">
+                    <a href="/" class="text-white">Home</a>
+                    /
+                    <a href="/blog" class="text-white">Blog</a>
+                    /
+                    <a href="/blog/2020/09/02/infrastructure-engineer-deployment-example/" class="text-white">Infrastructure Engineer Deployment - Example</a>
+                </p>
+            </div>
+        </section>
+        <!--    Hero End    -->
+
+        <!--   Blog-single   Start -->
+        <section class="py-6">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 blog">
+                        <div class="rounded px-lg-1">
+                            <div class="text-md-left">
+                                <h4 class="mb-4 text-centered" >Infrastructure Engineer Deployment - Example</h4>
+                                <img src="/assets/blog/2020/09/eg-infra-engg/infra-engg-bg.jpg" alt="" class="img-fluid w-100 rounded">
+                                <span class="d-inline-block py-4"> Published: Sep 2, 2020 
+                                        
+                                        / By <span class="purple-color text-right"> Andrew Doering. </span>
+                                        </span>
+                                <p class="link-"><h1 id="introduction">Introduction</h1>
+
+<p>I created the following document as part of a challenge for an interview for an Infrastructure Engineer position located in another country, and while I ultimately didn’t get the position due to extenuating circumstances (namely due to the current Pandemic and Visa/Work Permits), I spent a lot of time on this document, and would like to publish it for others - maybe it could give them some ideas going forward. This is intended as high level work, not as a detailed document or 100% accurate in terms of deployment.</p>
+
+<p>This is nearly verbatim to the document that was sent in for the homework assignment, with some minor wording and documentation edits.</p>
+
+<ul>
+  <li><a href="#introduction">Introduction</a></li>
+  <li><a href="#assignment--request">Assignment / Request</a>
+    <ul>
+      <li><a href="#assumptions">Assumptions</a></li>
+    </ul>
+  </li>
+  <li><a href="#deployment">Deployment</a>
+    <ul>
+      <li><a href="#options-for-services">Options for Services</a></li>
+      <li><a href="#hardware">Hardware</a></li>
+      <li><a href="#services-infrastructure-deployment">Services infrastructure deployment</a></li>
+    </ul>
+  </li>
+  <li><a href="#network-logistics">Network Logistics</a>
+    <ul>
+      <li><a href="#subnetting">Subnetting</a>
+        <ul>
+          <li><a href="#corp">Corp</a></li>
+          <li><a href="#cloud">Cloud</a></li>
+        </ul>
+      </li>
+      <li><a href="#corporate-network">Corporate Network</a>
+        <ul>
+          <li><a href="#initial-deployment">Initial Deployment</a></li>
+          <li><a href="#future-improvements">Future Improvements</a></li>
+          <li><a href="#firewall">Firewall</a></li>
+          <li><a href="#qos">QoS</a></li>
+          <li><a href="#guest-network">Guest Network</a></li>
+          <li><a href="#cloud-network">Cloud Network</a></li>
+          <li><a href="#vpn">VPN</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#cloud-infrastructure">Cloud Infrastructure</a>
+    <ul>
+      <li><a href="#asset-management-cloud-and-ipam-cloud">Asset Management (Cloud) and IPAM (Cloud)</a>
+        <ul>
+          <li><a href="#asset-management">Asset Management</a></li>
+          <li><a href="#ipam">IPAM</a></li>
+          <li><a href="#deployment-steps">Deployment Steps</a>
+            <ul>
+              <li><a href="#asset-management-1">Asset Management</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li><a href="#cicd-system">CI/CD System</a></li>
+      <li><a href="#identity-management-infrastructure">Identity Management Infrastructure</a></li>
+      <li><a href="#task-management">Task Management</a>
+        <ul>
+          <li><a href="#jira-cloud-vs-jira-server">Jira Cloud vs Jira Server</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#future-plans">Future Plans</a></li>
+  <li><a href="#summarization">Summarization</a></li>
+  <li><a href="#appendix">Appendix:</a>
+    <ul>
+      <li><a href="#supporting-files">Supporting Files</a></li>
+      <li><a href="#list-of-infrastructure-services-to-deploy">List of Infrastructure Services to Deploy</a></li>
+      <li><a href="#example-docker-compose-for-snipeit-hosted-in-gcp">Example docker-compose for SnipeIT hosted in GCP</a></li>
+      <li><a href="#gcloud-compute-scripts-for-an-active-directory-deployment">GCloud Compute Scripts for an Active Directory Deployment</a></li>
+      <li><a href="#networking-and-software-equipment">Networking and Software Equipment</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="assignment--request">Assignment / Request</h1>
+<p>Our team would like for you to create a plan for deploying a network infrastructure plan for a new company.
+At the moment, the company does not have any existing infrastructure so it’s up to you to create one!</p>
+
+<p>The requirements and technical limitations are as follows:</p>
+<ul>
+  <li>There are three offices, one office will be the headquarters and the other two will be satellite offices. The headquarters will have both R&amp;D and support staff (ie. finances) the remote offices will consist of just R&amp;D.</li>
+  <li>The work from home employees will need to connect via a VPN.</li>
+  <li>The headquarters will have some infrastructure as well as one of the satellite offices. The other satellite office will not.</li>
+  <li>To reduce operational costs; the R&amp;D department would like to deploy some infrastructure in the cloud.</li>
+</ul>
+
+<p>The plan should include; but not necessarily be limited to; the following topics:</p>
+<ul>
+  <li>Hardware and software to use (the company is keen on virtual infrastructure or cloud where possible), and the reasons why.</li>
+  <li>Requirements for subnets, routing, security, connectivity, etc.</li>
+  <li>Abstract configuration for the software (in broad terms - we don’t need every field detailed!).</li>
+  <li>A brief sketch of any processes the company may wish to consider deploying in the future to aid in network and data management.</li>
+  <li>Some scripting examples of compute resource deployment in the cloud.</li>
+</ul>
+
+<p>We’re not looking for a huge report here; this is primarily an exercise in research and reasoning, along with a demonstration of knowledge of infrastructure requirements.</p>
+
+<h2 id="assumptions">Assumptions</h2>
+<ul>
+  <li>As employee size is not defined, I will assume 200 current employees scaling to 500 employees. Update 2020/06/22, Recruiter mentioned that employee size was ~300.</li>
+  <li>As office infrastructure is not defined or categorized as corporate, platform, or both, I assume corporate infrastructure will be deployed in offices only, as hosting elements of platform infrastructure in an office environment is not a best practice. Update 2020/06/22, Recruiter confirmed.</li>
+  <li>Cloud infrastructure will also have parts of corporate infrastructure for scalability purposes.</li>
+  <li>Non essential network services (dhcp, dns, etc) should be located in the cloud to allow for accessibility and modularity to offices and remote employees. However, the ability to deploy into office infrastructures should be available</li>
+  <li>Services that operate in the cloud have volatility. Office and cloud infrastructure should be able to handle volatile availability.</li>
+  <li>I am unaware if End User Device infrastructure is a part of this configuration. I have included my past experience with it as a way to complete the infrastructure trifecta (corp, euc, platform). However I will not go into detail here outside of listing the services needed.</li>
+  <li>Laptop Infrastructure (macOS and Windows) images are considered satisfactory from the OEM and no “golden image” is required.</li>
+  <li>Infrastructure Rack is provided by building management</li>
+</ul>
+
+<h1 id="deployment">Deployment</h1>
+
+<p>These are options to deploy the new infrastructure. These are based on two factors:</p>
+<ul>
+  <li>personal experience with each service</li>
+  <li>the flexibility provided by each one</li>
+</ul>
+
+<h2 id="options-for-services">Options for Services</h2>
+
+<p>For a list of infrastructure options for deployment, and to reduce space in this document, please see <a href="#list-of-infrastructure-services-to-deploy">the appendix</a> for an extended list of Cloud and SaaS based services.</p>
+
+<h2 id="hardware">Hardware</h2>
+
+<p>Please see the <a href="#networking-and-software-equipment">Appendix</a> for a complete list of hardware to buy per office. I really appreciate the Meraki Stack. However, I have not deployed their switches in a production environment; I have only deployed their Access Points. I would need to research more about the benefits and cons of the MS lineup; however, I would highly look into that platform before deploying the switches. As long as the switches can support teaming/bonding, Spanning Tree Protocol, at a minimum, the network configuration should be suitable.</p>
+
+<h2 id="services-infrastructure-deployment">Services infrastructure deployment</h2>
+
+<p>The sections below are based on the options above and my recommendations for deployment of the company’s new infrastructure for each office and remote location. Cloud infrastructure will be deployed in GCP. Diagrams will be provided where I find it adds relevance or workflow assistance. Since we won’t be repeatedly building this for a platform infrastructure, we will be using Kubernetes where possible. If we were deploying for the product or platform, we could use the App Engine platform within GCP. This is not a comprehensive list of all configurations, but, it is extensive enough for a homework lab assignment.</p>
+
+<h1 id="network-logistics">Network Logistics</h1>
+
+<h2 id="subnetting">Subnetting</h2>
+
+<h3 id="corp">Corp</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">Office</th>
+      <th style="text-align: center">Level</th>
+      <th style="text-align: center">Use</th>
+      <th style="text-align: center">IP Prefix</th>
+      <th style="text-align: center">Floor ID</th>
+      <th style="text-align: center">VLAN ID</th>
+      <th>Client Address</th>
+      <th style="text-align: center">CIDR Mask</th>
+      <th>IP Network</th>
+      <th>Office Domain</th>
+      <th> </th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">HQ</td>
+      <td style="text-align: center">1st</td>
+      <td style="text-align: center">DMZ</td>
+      <td style="text-align: center">10</td>
+      <td style="text-align: center">201</td>
+      <td style="text-align: center">5</td>
+      <td>X</td>
+      <td style="text-align: center">/24</td>
+      <td>10.201.5.X/24</td>
+      <td>osl1.o.company.com</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">HQ</td>
+      <td style="text-align: center">1st</td>
+      <td style="text-align: center">General</td>
+      <td style="text-align: center">10</td>
+      <td style="text-align: center">201</td>
+      <td style="text-align: center">100</td>
+      <td>X</td>
+      <td style="text-align: center">/24</td>
+      <td>10.201.100.X/24</td>
+      <td>osl1.o.company.com</td>
+      <td> </td>
+      <td>Will use closest three letter IATA code for domain</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">HQ</td>
+      <td style="text-align: center">1st</td>
+      <td style="text-align: center">Engineering</td>
+      <td style="text-align: center">10</td>
+      <td style="text-align: center">201</td>
+      <td style="text-align: center">110</td>
+      <td>X</td>
+      <td style="text-align: center">/24</td>
+      <td>10.201.110.X/24</td>
+      <td>osl1.o.company.com</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">HQ</td>
+      <td style="text-align: center">1st</td>
+      <td style="text-align: center">Operations</td>
+      <td style="text-align: center">10</td>
+      <td style="text-align: center">201</td>
+      <td style="text-align: center">99</td>
+      <td>X</td>
+      <td style="text-align: center">/24</td>
+      <td>10.201.99.X/24</td>
+      <td>osl1.o.company.com</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">HQ</td>
+      <td style="text-align: center">1st</td>
+      <td style="text-align: center">VoIP/Conferencing</td>
+      <td style="text-align: center">10</td>
+      <td style="text-align: center">201</td>
+      <td style="text-align: center">50</td>
+      <td>X</td>
+      <td style="text-align: center">/24</td>
+      <td>10.201.50.X/24</td>
+      <td>osl1.o.company.com</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">HQ</td>
+      <td style="text-align: center">1st</td>
+      <td style="text-align: center">Printers</td>
+      <td style="text-align: center">10</td>
+      <td style="text-align: center">201</td>
+      <td style="text-align: center">60</td>
+      <td>X</td>
+      <td style="text-align: center">/24</td>
+      <td>10.201.60.X/24</td>
+      <td>osl1.o.company.com</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">HQ</td>
+      <td style="text-align: center">1st</td>
+      <td style="text-align: center">Servers</td>
+      <td style="text-align: center">10</td>
+      <td style="text-align: center">201</td>
+      <td style="text-align: center">70</td>
+      <td>X</td>
+      <td style="text-align: center">/24</td>
+      <td>10.201.70.X/24</td>
+      <td>osl1.o.company.com</td>
+      <td> </td>
+      <td>DHCP, Windows, etc (Services being run from esxi servers)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">HQ</td>
+      <td style="text-align: center">1st</td>
+      <td style="text-align: center">mgmt</td>
+      <td style="text-align: center">10</td>
+      <td style="text-align: center">201</td>
+      <td style="text-align: center">80</td>
+      <td>X</td>
+      <td style="text-align: center">/24</td>
+      <td>10.201.80.X/24</td>
+      <td>osl1.o.company.com</td>
+      <td> </td>
+      <td>Access Points, ESXi servers</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">HQ</td>
+      <td style="text-align: center">1st</td>
+      <td style="text-align: center">GUEST</td>
+      <td style="text-align: center">10</td>
+      <td style="text-align: center">201</td>
+      <td style="text-align: center">192</td>
+      <td>X</td>
+      <td style="text-align: center">/24</td>
+      <td>10.201.192.X/24</td>
+      <td>osl1.o.company.com</td>
+      <td> </td>
+      <td>Guest ONLY VLAN</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">BO1</td>
+      <td style="text-align: center">1st</td>
+      <td style="text-align: center">General</td>
+      <td style="text-align: center">10</td>
+      <td style="text-align: center">202</td>
+      <td style="text-align: center">100</td>
+      <td>X</td>
+      <td style="text-align: center">/24</td>
+      <td>10.202.100.X/24</td>
+      <td>hrw1.o.company.com</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">BO1</td>
+      <td style="text-align: center">1st</td>
+      <td style="text-align: center">Engineering</td>
+      <td style="text-align: center">10</td>
+      <td style="text-align: center">202</td>
+      <td style="text-align: center">110</td>
+      <td>X</td>
+      <td style="text-align: center">/24</td>
+      <td>10.202.110.X/24</td>
+      <td>hrw1.o.company.com</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">BO2</td>
+      <td style="text-align: center">1st</td>
+      <td style="text-align: center">Engineering</td>
+      <td style="text-align: center">10</td>
+      <td style="text-align: center">203</td>
+      <td style="text-align: center">110</td>
+      <td>X</td>
+      <td style="text-align: center">/24</td>
+      <td>10.203.110.X/24</td>
+      <td>osl2.o.company.com</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+      <td> </td>
+      <td style="text-align: center"> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+      <td> </td>
+      <td style="text-align: center"> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p>This is a simple configuration and can be more complex if needed. This also leaves plenty of room to grow as the department grows. It also allows you to specify VLAN IDs to be based on department groups. This does create a problem where you may run into more than 50 combined office locations or floors. If this is the case, removing the N+1 function of the floors in FloorID and changing to Building ID could resolve any capacity issues. If this is still a problem, you could expand on the VLAN ID as a VLAN+Floor ID. Though this could ultimately cause confusion and something I don’t recommend.</p>
+
+<h3 id="cloud">Cloud</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Use Case</th>
+      <th>IP Start</th>
+      <th>IP End</th>
+      <th>CIDR</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Platform</td>
+      <td>10.0.0.0</td>
+      <td>10.99.255.254</td>
+      <td>16</td>
+      <td>This is a total of 6553400 IPs for the platform, from here engineers can then divide the network up as needed for their own services. This would be split out individually, but for the sake of time, I have lumped the whole range together here, and denoted that it has a 16 for each subnet.</td>
+    </tr>
+    <tr>
+      <td>Staging-Platform</td>
+      <td>10.100.0.0</td>
+      <td>10.100.255.254</td>
+      <td>16</td>
+      <td>Within this range, there should be a sufficient amount of IP Addresses for a Staging Network as well.</td>
+    </tr>
+    <tr>
+      <td>Staging-Platform</td>
+      <td>10.101.0.0</td>
+      <td>10.101.255.254</td>
+      <td>16</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Staging-Platform</td>
+      <td>10.102.0.0</td>
+      <td>10.102.255.254</td>
+      <td>16</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Staging-Platform</td>
+      <td>10.103.0.0</td>
+      <td>10.103.255.254</td>
+      <td>16</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Reserved</td>
+      <td>10.104.0.0</td>
+      <td>10.127.255.254</td>
+      <td>16</td>
+      <td>Reserved for future uses for the engineering and product</td>
+    </tr>
+    <tr>
+      <td>Infrastructure</td>
+      <td>10.128.0.0</td>
+      <td>10.128.255.254</td>
+      <td>16</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Infrastructure</td>
+      <td>10.129.0.0</td>
+      <td>10.129.255.254</td>
+      <td>16</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Infrastructure</td>
+      <td>10.130.0.0</td>
+      <td>10.130.255.254</td>
+      <td>16</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Infrastructure</td>
+      <td>10.131.0.0</td>
+      <td>10.131.255.254</td>
+      <td>16</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Infrastructure</td>
+      <td>10.132.0.0</td>
+      <td>10.132.255.254</td>
+      <td>16</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Infrastructure</td>
+      <td>10.133.0.0</td>
+      <td>10.133.255.254</td>
+      <td>16</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Infrastructure</td>
+      <td>10.134.0.0</td>
+      <td>10.134.255.254</td>
+      <td>16</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Infrastructure</td>
+      <td>10.135.0.0</td>
+      <td>10.135.255.254</td>
+      <td>16</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Infrastructure</td>
+      <td>10.136.0.0</td>
+      <td>10.136.255.254</td>
+      <td>16</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Infrastructure</td>
+      <td>10.137.0.0</td>
+      <td>10.137.255.254</td>
+      <td>16</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Staging-Infrastructure</td>
+      <td>10.138.0.0</td>
+      <td>10.138.255.254</td>
+      <td>16</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Staging-Infrastructure</td>
+      <td>10.139.0.0</td>
+      <td>10.139.255.254</td>
+      <td>16</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="corporate-network">Corporate Network</h2>
+
+<h3 id="initial-deployment">Initial Deployment</h3>
+
+<p><strong><a href="/assets/blog/2020/09/eg-infra-engg/Company_XYZ-Office-Physical_Topology_v1.png">Physical Topology Diagram Link</a></strong>:
+<img src="/assets/blog/2020/09/eg-infra-engg/Company_XYZ-Office-Physical_Topology_v1.png" alt="Physical Topology Diagram Link" /></p>
+
+<p><strong><a href="/assets/blog/2020/09/eg-infra-engg/Company_XYZ-Office-Logical_Topology_(Simplified)_v1.png">Logical Topology Diagram Link</a></strong>
+<img src="/assets/blog/2020/09/eg-infra-engg/Company_XYZ-Office-Logical_Topology_(Simplified)_v1.png" alt="Logical Topology Diagram Link" /></p>
+
+<p>As core/distribution switches have much higher failure rates compared to access switches (due to the amount of services running on the core switches), we would be routing traffic via layer 2 mechanisms rather than layer 2 and taking advantage of layer 3 services in the firewall to deal with routing. We would utilize vlans broadcast at specific ports to be able to achieve this. This results in a less expensive network overall.</p>
+
+<p>Ideally, through the use of the IAM tools we will be using later on in the document, we can utilize a full cloud stack for RADIUS for end user wifi authentication. The reasoning behind cloud RADIUS is that if your ISP(s) are down, you will not have much use of the on premise system since you won’t be able to access most of the remote services anyways due to the down(ed) ISP(s). With the RADIUS instances locally, you would be able to authenticate locally to the network and access any services though. While the most secure method is EAP-TLS, it is highly inconvenient. Due to that, my recommendation would be to use EAP-TTLS.</p>
+
+<p>Keeping the DHCP and DNS configurations (zones, static addresses, etc files if required) into a revision control tool (such as Github) would be a good first step if required. We can later automate and make improvements on the deployment of DHCP and DNS configuration files. While using embedded software in the Firewall would be possible, it’s difficult for people to look at the services if they don’t have access to the Firewalls. However for simplicity sake, using the firewall’s DHCP server should be sufficient if there is not a requirement where the firewall would not be able to perform.</p>
+
+<p>Based on the number of employees per office, 500 Mbps lines as a minimum would be required, and 1 Gbps lines would be highly recommended. A backup line with a separate ISP would be required in case the first line goes down or switch goes down, but the speed does not need to be the same as the primary line - 100 to 250 Mbps should be fine. Especially with people in the office streaming music, high quality video, and other things.</p>
+
+<h3 id="future-improvements">Future Improvements</h3>
+
+<p>Deployment of SDN/SD-Wan using VeloCloud, Meraki, or Juniper Sky, to streamline the deployment, management,inter-office communication, and/or the cloud infrastructure data center connection.   Based on the build process, this could be accomplished two ways:</p>
+
+<ol>
+  <li>Physical device that sits in front of the firewall</li>
+  <li>Virtualized SD-WAN appliance that exists in the hypervisor</li>
+</ol>
+
+<p>If going with step two, the best decision to converge all services where they are most compatible, so choosing ESXi/VSphere now for the Hypervisor with a velocloud virtual device makes sense so that you could have finer control over the networking plane.</p>
+
+<p>In addition to the above, if we want to keep the dhcp server and dns server configuration (and address leases) in a change management and revision service (IE: Github Cloud), we could eventually hook the repository into a CI/CD system to automate the deployment of DHCP and DNS packages to each corporate office through a package repository system. However longer term, the plan should be to move off managed DHCP/DNS internally to minimize complexity to the infrastructure. In this way, your managed network stack boils down to just Firewall, Switch, IDS/IPS, and Access Points.</p>
+
+<p>Before automation tools and the like are installed, you would want to implement logging, monitoring, and alerting to be aware of issues that are brought up across the network. The tools mentioned in LAMES are good for that, specifically when it comes to host monitoring, and using APIs and other sources. These can generate several graphs to determine baselines.</p>
+
+<p>To implement network monitoring, not considering my current employer, a good place to consult are Gartner reports as a source of information. Gartner has also sunsetted their Magic Quadrant NPM reports for <a href="https://www.gartner.com/en/documents/3981838/market-guide-for-network-performance-monitoring-and-diag">Market Guides</a>, and more companies are moving into the <a href="https://www.gartner.com/en/documents/3956998/market-guide-for-digital-experience-monitoring">Digital Experience Monitoring</a> space. However, from an internal network perspective and focusing on open source tools, using a combination of ElasticSearch, Logstash, Kibana, Grafana, and open source forwarders (osquery, telegraf, etc.), you can accumulate decent network monitoring tools. I previously had experience with Nagios, but it had deficiencies compared to the set of tools above. In addition, using Network Performance Monitoring tools is becoming increasingly hard due to increased security around packets - overall a good thing.</p>
+
+<p>Lastly, short of keeping and manually exporting the configuration set of the switch or firewall, a tool that can automate the backups of the switch and firewall directly into a datastore would be required.</p>
+
+<h3 id="firewall">Firewall</h3>
+
+<p>I find that firewalls that set a “drop all rule” rather than a “drop specific/known malicious services” can be too restrictive. I would say that continually monitoring the firewall for the first few weeks of a new deployment would be a better part of the deployment process. That said, the initial process should be to get a list of known services to implement and run (for instance, Active Directory on premise, Video Conferencing, SIP, etc) and then be sure to specify port rules closely. If the rules are too vague, reach out to the vendor to collect that information. In addition, make sure to follow guidelines based on <a href="https://tsapps.nist.gov/publication/get_pdf.cfm?pub_id=901083">NIST</a> and alternatives.</p>
+
+<p>Since we are using Palo Alto firewalls and they have the ability to firewall services (IE: Applications) as well as specific ports, we can be very dynamic when it comes to firewall allowance. A (very rudimentary) example can be found below, as well:</p>
+
+<p><strong>Ingress (inbound)</strong></p>
+<ol>
+  <li>VPN Protocols</li>
+  <li>Block all traffic</li>
+</ol>
+
+<p><strong>Egress (outside)</strong></p>
+<ol>
+  <li>HTTP</li>
+  <li>HTTPS</li>
+  <li>DNS</li>
+  <li>IMAP</li>
+  <li>POP</li>
+  <li>SMTP</li>
+  <li>ssh</li>
+  <li>SIP</li>
+  <li>Zoom / WebEx / PEXIP</li>
+  <li>Other required services</li>
+  <li>Block all</li>
+</ol>
+
+<p><strong>Inside (intra-vlan)</strong></p>
+<ol>
+  <li>ping</li>
+  <li>Telnet / netcat</li>
+  <li>Multicast</li>
+  <li>ssh</li>
+  <li>Block other traffic</li>
+</ol>
+
+<h3 id="qos">QoS</h3>
+<p>Splitting out the single lane of QoS into multiple lanes, and transmitting Real Time Packets (Video, Audio, Multimedia streaming, etc) and non real time packets (http, messaging services, imap/pop, smtp, etc) is beneficial. There are multiple ways to configure QoS in Palo Alto devices. It would be helpful. As the Pexip platform supports <a href="https://docs.pexip.com/admin/infinity_features.htm">DSCP marking</a>, in addition so does <a href="https://support.zoom.us/hc/en-us/articles/207368756-QoS-DSCP-Marking">Zoom</a>, and <a href="https://help.webex.com/en-us/WBX83779/What-are-the-System-Requirements-for-Cisco-Webex-Video-Platform">WebEx</a> <a href="https://help.webex.com/en-us/WBX83779/What-are-the-System-Requirements-for-Cisco-Webex-Video-Platform">does as well</a> we can also <a href="https://docs.paloaltonetworks.com/pan-os/9-0/pan-os-admin/quality-of-service/enforce-qos-based-on-dscp-classification.html">configure Palo Alto</a> to recognize the markings as well.</p>
+
+<h3 id="guest-network">Guest Network</h3>
+
+<p>The guest network would be firewalled off from the rest of the network, running under 192.168.1.0/24 subnet. Traffic would only be confined to this network, and would not be able to traverse outside the 192.168.1.0/24 subnet.</p>
+
+<h3 id="cloud-network">Cloud Network</h3>
+
+<p>The de facto way to connect branch offices to the cloud, is using IPSec tunnels. The IPSec tunnel can be configured in the same subnet space as 172.168.0.0/18 space described in the next space, after the Operations subnet space. 
+Future Improvements</p>
+
+<p>The other consideration could be a zero-trust/beyondcorp model. The idea behind this is using certificates and other device state facts, that can be incorporated into the use of trusted devices on untrusted networks, without the use of VPN. This would make remote employees’ lives much easier when it comes to management of infrastructure, access to infrastructure, and flexibility on access to services. The idea behind this is making tons of contextually aware identity proxies that allow access to services around the network. This is similar to Google’s Cloud Identity Access systems.</p>
+
+<p>The same method of Office Networks, incorporating SD-WAN here, could be beneficial to help ease the pain of manually creating IPSec tunnels between the environments.</p>
+
+<h3 id="vpn">VPN</h3>
+
+<p>The VPN should be hosted in the cloud, and run off a 172.16.0.0/18 Subnet for maximum compatibility to both the corporate and cloud network.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Profile</th>
+      <th>IP</th>
+      <th>Default Route</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>HQ-Route</td>
+      <td>172.16.1.0/24</td>
+      <td>Yes</td>
+      <td>Default Routes are only used for the purpose of client access, or more secure access to services. Generally, Default Routes should not be necessary for clients connecting to the VPN. However if Customer requires specific IP addresses for access to services, this would be the access used.</td>
+    </tr>
+    <tr>
+      <td>HQ</td>
+      <td>172.16.2.0/24</td>
+      <td>No</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>BranchOffice</td>
+      <td>172.16.3.0/24</td>
+      <td>No</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>General-Route</td>
+      <td>172.16.4.0-172.16.7.254/22</td>
+      <td>Yes</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>General</td>
+      <td>172.16.8.0-172.16.11.254/22</td>
+      <td>No</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Engineering-Route</td>
+      <td>172.16.12.0-172.16.15.254/22</td>
+      <td>Yes</td>
+      <td>Has access to Platform network in Cloud</td>
+    </tr>
+    <tr>
+      <td>Engineering</td>
+      <td>172.16.16.0-172.16.19.254/22</td>
+      <td>No</td>
+      <td>Has access to Platform network in Cloud</td>
+    </tr>
+    <tr>
+      <td>Operations-Route</td>
+      <td>172.16.20.0-172.16.23.254/22</td>
+      <td>Yes</td>
+      <td>Has access to MGMT VLAN, Server VLAN, Cloud MGMT VLAN, and other special or restricted VLANs</td>
+    </tr>
+    <tr>
+      <td>Operations</td>
+      <td>172.16.24.0-172.16.27.254/22</td>
+      <td>No</td>
+      <td>Has access to MGMT VLAN, Server VLAN, Cloud MGMT VLAN, and other special or restricted VLANs</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>From an entry point or access perspective, the VPN should be able to access required services inbound as necessary. For instance, the engineering profiles should route to cloud infrastructure (platform, and other infrastructure that has been deployed) but not connect to the management sections of the network (201 vlan). The operations infrastructure should have access to the required amount of VLANs to perform their base job (MGMT, and other related services).</p>
+
+<p>We could also limit this to a much lower mask initially, but keep the space reserved for the upper mask. As it is unlikely to have more than 1000 clients connected at any one point in time. However, once the company becomes larger, this would be a good starting point.</p>
+
+<h1 id="cloud-infrastructure">Cloud Infrastructure</h1>
+
+<h2 id="asset-management-cloud-and-ipam-cloud">Asset Management (Cloud) and IPAM (Cloud)</h2>
+
+<h3 id="asset-management">Asset Management</h3>
+
+<p>The plan here is to hook up to the reseller’s database (if possible) and pull details from orders to feed into SnipeIT. An example of this can be done with CDW with their B2B unit. They drop csv files of purchases into a storage bucket for you to pull from. Alternatively, this could exist when working directly with Dell, Lenovo/IBM, or others. Since the service can also be used with end user computing hardware as well, create scripts to interact with reseller’s websites to automatically load data.</p>
+
+<p>It also allows for the use of tags to easily separate the EUC vs infrastructure based hardware, and has a license integration. When setting up a client to automatically add/create assets, it can also be completely automated - by then checking out a device automatically to the end user based on the API data from the MDM. This would then become the Source of Truth for all assets. There are also several tools that exist that allow you to create inventory and asset information from other services (JAMF, PowerShell, AD, etc).</p>
+
+<p>Since this requires a database backend, and will host a web frontend over docker/kubernetes, we need to setup a CloudSQL DB for Postgres, and use HELM or deploy SnipeIT directly into Kubernetes. Optionally, we can then do one of two things. As SnipeIT supports a <a href="https://github.com/snipe/snipe-it/pull/5142">limited capability</a> of SAML/oAuth2, and <a href="https://github.com/snipe/snipe-it/pull/8036">progress</a> is actively being made to improve it, we would want to hook it up to both LDAP (in this case preferably Okta’s LDAP interface, but, if required, an AD instance inside GCP) and then configure SAML Authentication to the front end to utilize the backend email address configuration.</p>
+
+<h3 id="ipam">IPAM</h3>
+
+<p>Very much in the same aspect of the Asset Management tool, Netbox also supports tags, the ability to set configurations based on the API, <a href="https://github.com/netbox-community/netbox/issues/2328">SAML authentication</a>. Alternatively if the need to break away or keep a separate Data Center Inventory Management tool exists from the above Asset Management tool, netbox is also used as a DCIM tool.</p>
+
+<p>Much in the same way with tags support, we would use them to differentiate between sets of configuration, and is quite a versatile tool when it comes to IP Address Management. It’s quite comprehensive.</p>
+
+<p>While the use of dynamic updates to the API would be a customized tool, <a href="https://github.com/netbox-community/go-netbox">some tools</a> already exist that allow you to upload client data into Netbox. However extensive testing would need to be used to validate their viability into the infrastructure.</p>
+
+<p><a href="/assets/blog/2020/09/eg-infra-engg/Company_XYZ-Asset_Management_IPAM_Deployment.png">Diagram</a>
+<img src="/assets/blog/2020/09/eg-infra-engg/Company_XYZ-Asset_Management_IPAM_Deployment.png" alt="Diagram" /></p>
+
+<h3 id="deployment-steps">Deployment Steps</h3>
+<p>This can be initially deployed into a server model method, but if we go the serverless method (offloading database servers into GCP, and running the instances through kubernetes) we deal with less overhead of management of servers. The configuration is stated exactly as is described, and can be brought up and scaled up without much effort.</p>
+
+<h4 id="asset-management-1">Asset Management</h4>
+
+<p><a href="/assets/blog/2020/09/eg-infra-engg/example-assetmanagement-docker-compose.yaml">Docker Compose file</a> <a href="#example-docker-compose-for-snipeit-hosted-in-gcp">- Appendix</a></p>
+
+<h2 id="cicd-system">CI/CD System</h2>
+
+<p>Traditionally, I have used Jenkins and self hosting for a CI/CD system - and this has worked well. You do have to worry about the infrastructure that is a part of the CI/CD system. If Github Cloud meets the business requirements, I would suggest using it over Jenkins. Since Github Cloud Actions uses MacStadium for macOS runners, it makes running services through it much easier and you don’t have to worry about virtualization of macOS hardware. On the Windows and Linux side they utilize AzureAD. This way we can simplify and provide less complexity into the infrastructure. The only issue becomes cost to benefit ratios. For comparison, if we find that Github Enterprise meets the requirements of the business better due to security, going the Jenkins route or CircleCI route would be better. On the Jenkins side, there are multiple guides for GCP deployments if that is the route to go. However while managing Github Enterprise was quite easy from past experience, if deployed incorrectly (which I inherited). It can create enormous latency due to a past team deploying the Github Enterprise system to the west coast of the US while having members in Central and Western Europe.</p>
+
+<h2 id="identity-management-infrastructure">Identity Management Infrastructure</h2>
+
+<p>If we are deploying infrastructure into GCP, the best route to use is Google’s Cloud Identity. However we need to populate that data into GCP somehow, and that is where our SoT Identity-AAS (IDaaS) provider comes in. I have personal experience with Okta, and think it has more dynamic uses compared to solely using G Suite as an Identity Management tool for all services. I have used that as the backbone to the rest of the infrastructure. From Okta, you can push users into Active Directory. So far, I have found that it works well. The key thing here is that because you can push groups from Okta to any service in a more flexible way than using Active Directory, and you bypass the limitations of AzureAD (for instance, you can’t push AzureAD users into Active Directory on brand new deployments) you end up with a more flexible and modular system. In addition, you can stand up any number of Active Directory environments with the same data from Okta, making it easy to create “staging” or development AD servers for testing when needed with the exact same data that would be considered production.</p>
+
+<p><a href="/assets/blog/2020/09/eg-infra-engg/Company_XYZ-AD_in_GCP_v1.png">Diagram</a>
+<img src="/assets/blog/2020/09/eg-infra-engg/Company_XYZ-AD_in_GCP_v1.png" alt="Diagram" /></p>
+
+<p>Google Cloud Shell Commands<br />
+<a href="/assets/blog/2020/09/eg-infra-engg/IAM_AD-Infrastructure_GCP_Shell_Commands.txt">Script/Commands</a></p>
+
+<p>We are deploying a limited range of machines into this space, so we would want to split the subnet from a 10.X.X.0/24 to a 14 host per subnet /28 CIDR mask. If it is done this way, we can also save a subnet and utilize it for multiple regions and zones which would be ideal. If we don’t want to do that, we could just use 10.X.X.0/24 and 10.X.Y.0/24 as alternative subnets for the AD configuration. However we would waste a ton of IP space.</p>
+
+<p>The reason for deploying a limited range of machines into this space is because we do not need dozens of Windows Domain Controllers. As client devices would be running against other services that would mimic the traditional behavior of binding, we only need to use the Domain Controllers to provide a backup to the LDAP interface being served by Okta. While Google’s LDAP does provide certificate based, there are options to work around the <a href="https://support.google.com/cloudidentity/answer/9048541">certificate deployments</a>.</p>
+
+<p>We want to provision this into two different regions (or at least in two separate regions that are closest to each office and the overall services we are providing), to provide maximum coverage over all. We would then incorporate the use of <a href="https://cloud.google.com/vpc/docs/vpc-peering">VPC Peering</a> to allow those two to communicate between each other. However, to keep things simple for this document, we will deploy into the same region.</p>
+
+<p>Even after performing all of the commands used above, to use the identity aware proxy, we would need to deploy it first. After doing research, it does not appear as if the command line tool is quite ready to deploy Identity Access Proxy services, as it is still in <a href="https://cloud.google.com/sdk/gcloud/reference/beta/iap/web/set-iam-policy">beta</a>. So I would use the GUI to deploy it for convenience.</p>
+
+<h2 id="task-management">Task Management</h2>
+
+<h3 id="jira-cloud-vs-jira-server">Jira Cloud vs Jira Server</h3>
+
+<p>The two major difference between deploying these two are:</p>
+<ol>
+  <li>Price Ratio per User</li>
+  <li>Managed by Atlassian vs Managed by Companies Teams</li>
+</ol>
+
+<p>For companies less than 300 people, it makes sense to deploy Jira Cloud, and add on the corresponding services that are required - especially due to the cost involved in employee salary and maintenance fees. However, once the company hits 500 people or more, it makes more financial sense to pay for Server (and ideally more sense for Data Center due to SAML authentication) and self-host it in the cloud so that it is available to all employees where needed.</p>
+
+<p>Ideally, we want to put the infrastructure behind a load balancer and host multiple front ends so that there isn’t too much load on a single node, I would start out with two and then create more as needed. You would use GCP’s <a href="https://cloud.google.com/compute/docs/autoscaler">autoscaler</a> functions for this to work, so that as load increases the hosts increase as well. We would be deploying the Cloud Load Balancer with an exposed port 443 and terminate the connection internally on port 8080 (the default port for Jira).</p>
+
+<p><a href="/assets/blog/2020/09/eg-infra-engg/Company_XYZ-Jira_Confluence_Deployment.png">Diagram</a>
+<img src="/assets/blog/2020/09/eg-infra-engg/Company_XYZ-Jira_Confluence_Deployment.png" alt="Diagram" /></p>
+
+<h1 id="future-plans">Future Plans</h1>
+<p>Deploy this using Docker and/or Kubernetes. I don’t believe that this is an officially supported method by Atlassian as I can’t find any documentation on their site about this. But, Atlassian has been creating docker images for both <a href="https://hub.docker.com/r/atlassian/jira-software">Jira</a> and <a href="https://hub.docker.com/r/atlassian/confluence-server">Confluence</a> which are listed in Docker Hub. While deploying, we would utilize CloudSQL on GCP for the backend of both services, and Cloud Storage as a way to host uploads, images, and other data. Similar to the compute version, we would still be using Cloud Storage and CloudSQL as the backends, so the deployment or upgrade path to roll out kubernetes should be simple. Again, this would follow the serverless based infrastructure.</p>
+
+<p><a href="/assets/blog/2020/09/eg-infra-engg/Company_XYZ-Kubernetes_Jira_Confluence_Deployment.png">Diagram</a>
+<img src="/assets/blog/2020/09/eg-infra-engg/Company_XYZ-Kubernetes_Jira_Confluence_Deployment.png" alt="Diagram" /></p>
+
+<h1 id="summarization">Summarization</h1>
+<p>Besides deploying all of the above services, I would start by getting a good foundational service for each requirement of the business. Then, I would grow it and expand upon it. With the above, we have the basics to start doing a lot of “grow your own” processes. Starting on the networking side, the Palo Alto Network Firewalls have built in URL filtering when a license is applied, they have VPN software access for deployments, and can perform several other features as needed by the security team. We can then start to export log data into Kibana/ElasticSearch for analysis</p>
+
+<p>The reason why I have only shown infrastructure being deployed into the cloud, is due to it minimizing any potential security risks to each office. While it might be convenient to deploy infrastructure into the office for initial use, it creates risks when performing assessments and an inconvenience to end-users trying to access those services. In the cases of infrastructure deployed in the office, it should be minimal or what is necessary to achieve the business requirement for the office. From a network standpoint, this should be an IDS/IPS, DHCP, and DNS, networking equipment. From a virtualization standpoint, the infrastructure exists internally to allow local developer and testing infrastructure in each office location as well.</p>
+
+<p>All in all, SaaS vs Cloud services would be based on a few factors:</p>
+<ol>
+  <li>Cost per seat ratio</li>
+  <li>Business benefit</li>
+  <li>Administration costs</li>
+  <li>Time Costs
+Once those factors have been determined, you can then make adequate decisions on where or how to deploy each service. Benefiting both the business and the end user.</li>
+</ol>
+
+<p>With the range of software and services outlined in this document, there should be a complete infrastructure stack for a productive corporate infrastructure.</p>
+
+<h1 id="appendix">Appendix:</h1>
+
+<h2 id="supporting-files">Supporting Files</h2>
+<p><a href="/assets/blog/2020/09/eg-infra-engg/Archive.zip">Collection of all files</a></p>
+
+<h2 id="list-of-infrastructure-services-to-deploy">List of Infrastructure Services to Deploy</h2>
+<ul>
+  <li>Asset Management
+    <ul>
+      <li>SnipeIT</li>
+    </ul>
+  </li>
+  <li>Authentication, Authorization, Accounting, Identity
+    <ul>
+      <li>SaaS based HRIS service to integrate with Identity Management tool
+        <ul>
+          <li>BambooHR</li>
+          <li>Workday</li>
+        </ul>
+      </li>
+      <li>SaaS Identity Management &amp; LDAP (Azure or Okta)
+        <ul>
+          <li>Okta (Recommended)</li>
+          <li>Azure</li>
+        </ul>
+      </li>
+      <li>Push SaaS data into Cloud hosted LDAP, if required (Active Directory, AWS managed AD, GCP cloud directory)</li>
+    </ul>
+  </li>
+  <li>Continuous Integration/Continuous Delivery (CI/CD)
+    <ul>
+      <li>Jenkins</li>
+      <li>Github Workflows</li>
+      <li>ArgoCD</li>
+    </ul>
+  </li>
+  <li>Containers &amp; Orchestration
+    <ul>
+      <li>Docker - Containerization</li>
+      <li>Kubernetes - Orchestration</li>
+      <li>Twistlock - Security/Vulnerability Reporting</li>
+    </ul>
+  </li>
+  <li>Git / Revision Control
+    <ul>
+      <li>Github Cloud (Preferred)</li>
+      <li>Github Enterprise</li>
+      <li>Gitlab Cloud</li>
+    </ul>
+  </li>
+  <li>Hypervisor
+    <ul>
+      <li>ESXi/VSphere</li>
+      <li>Xen</li>
+      <li>proxmox</li>
+    </ul>
+  </li>
+  <li>LAMES (Logging, Alerting, Monitoring Excellence &amp; Security)
+    <ul>
+      <li>Infrastructure Monitoring</li>
+      <li>Grafana</li>
+      <li>Prometheus</li>
+      <li>Elasticsearch, Logstash, Kibana</li>
+      <li>AlertManager</li>
+      <li>Osquery</li>
+    </ul>
+  </li>
+  <li>Network Performance Monitoring
+    <ul>
+      <li>SaaS/Cloud Network Monitoring
+        <ul>
+          <li>ThousandEyes</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Network Management
+    <ul>
+      <li>SaaS or Cloud based management portal (IE: Software Defined Networking)
+        <ul>
+          <li>Meraki</li>
+          <li>Unifi</li>
+          <li>Juniper Sky</li>
+          <li>Palo Alto</li>
+          <li>Velocloud</li>
+        </ul>
+      </li>
+      <li>SaaS/Cloud hosted RADIUS based authentication/802.1x
+        <ul>
+          <li>Implement EAP-TTLS - https://tools.ietf.org/html/rfc5281#section-11.2.5</li>
+        </ul>
+      </li>
+      <li>Security
+        <ul>
+          <li>IDS
+            <ul>
+              <li>Vectra</li>
+              <li>Cisco Firepower</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>IPAM/DCIM
+    <ul>
+      <li>Nextbox in Cloud Environment</li>
+    </ul>
+  </li>
+  <li>Productivity software
+    <ul>
+      <li>Email &amp; Document Editing
+        <ul>
+          <li>G Suite (primary)</li>
+          <li>O365 (secondary, where required for finance)</li>
+        </ul>
+      </li>
+      <li>Instant Communication
+        <ul>
+          <li>Slack (Recommended)</li>
+          <li>Microsoft Teams</li>
+          <li>RocketChat</li>
+        </ul>
+      </li>
+      <li>Telecommunications/conferencing
+        <ul>
+          <li>Phone System
+SaaS based where possible/Cloud self-hosted where not
+            <ul>
+              <li>SaaS options:
+                <ul>
+                  <li>Zoom Phone</li>
+                  <li>RingCentral</li>
+                  <li>Twilio</li>
+                  <li>CloudTalk</li>
+                </ul>
+              </li>
+              <li>Cloud self-hosted options:
+                <ul>
+                  <li>Asterisk</li>
+                  <li>OpenSIP</li>
+                  <li>FreePBX</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>Video conferencing
+            <ul>
+              <li>Zoom</li>
+              <li>WebEx</li>
+              <li>Pexip*</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Task Management
+    <ul>
+      <li>Jira (Cloud - SaaS)</li>
+      <li>Jira Server (Cloud - Self Hosted)</li>
+      <li>Asana</li>
+    </ul>
+  </li>
+  <li>EUC Management
+    <ul>
+      <li>Full Disk Encryption
+        <ul>
+          <li>Windows - Bitlocker (Using AES- XTS 256) &amp; Crypt-Server for escrow</li>
+          <li>macOS - Crypt2 &amp; Crypt-Server for escrow</li>
+        </ul>
+      </li>
+      <li>macOS Management
+        <ul>
+          <li>DEP and MDM tool that is compatible with “installapplication” MDM specification/command
+            <ul>
+              <li>Fleetsmith</li>
+              <li>Mosyle</li>
+              <li>Simplemdm</li>
+              <li>Micromdm</li>
+              <li>JAMF</li>
+              <li>Workspace One</li>
+            </ul>
+          </li>
+          <li>Installapplications - bootstrapping, configuration stored on cloud storage</li>
+          <li>DEPNotify - Visual display to the end user for bootstrapping process</li>
+          <li>Munki - bootstrapping, software management, patch management</li>
+          <li>Nudge - patch management/minimum OS version enforcement</li>
+          <li>Privileges - User escalation to administrator on a per department basis</li>
+          <li>GCP Cloud Storage Backend</li>
+        </ul>
+      </li>
+      <li>Time Series Reporting
+        <ul>
+          <li>Sal - Compatible with both macOS and Windows, as well as Linux and Chromebooks</li>
+        </ul>
+      </li>
+      <li>Windows Management
+        <ul>
+          <li>MDM
+            <ul>
+              <li>Workspace One</li>
+              <li>Intune</li>
+            </ul>
+          </li>
+          <li>Autopilot or OOBE experience - Automates client experience</li>
+          <li>Configuration Management
+            <ul>
+              <li>Chef/</li>
+              <li>Ansible -</li>
+            </ul>
+          </li>
+          <li>Package Management
+            <ul>
+              <li>chocolatey</li>
+              <li>winget</li>
+              <li>nuget</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="example-docker-compose-for-snipeit-hosted-in-gcp">Example docker-compose for SnipeIT hosted in GCP</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+</pre></td><td class="rouge-code"><pre>  Docker-compose.yml
+  ---
+  apiVersion: apps/v1
+  kind: StatefulSet
+  metadata:
+    namespace: snipe
+    name: snipe
+    labels:
+      app: snipe
+  spec:
+    serviceName: snipe
+    volumeClaimTemplates:
+    - metadata:
+        name: snipe-disk
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        resources:
+          requests:
+            storage: 100Gi
+    replicas: 1
+    selector:
+      matchLabels:
+        app: snipe
+    template:
+      metadata:
+        labels:
+          app: snipe
+      spec:
+        containers:
+        - name: snipe-it
+          image: imagename
+          env:
+          - name: APP_KEY
+            valueFrom:
+              secretKeyRef:
+                name: snipe-app-key
+                key: APP_KEY
+          - name: MAIL_ENV_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: snipe-mail-key
+                key: MAIL_ENV_PASSWORD
+          - name: MAIL_ENV_USERNAME
+            value: example@example.com
+          - name: APP_DEBUG
+            value: "false"
+          - name: MAIL_PORT_587_TCP_ADDR
+            value: smtp.gmail.com
+          - name: MAIL_PORT_587_TCP_PORT
+            value: "587"
+          - name: MAIL_ENV_FROM_ADDR
+            value: example@example.com
+          - name: MAIL_ENV_FROM_NAME
+            value: Example
+          - name: MAIL_ENV_ENCRYPTION
+            value: tls
+          - name: APP_URL
+            value: snipe.example.com:443
+          - name: MYSQL_PORT_3306_TCP_PORT
+            value: "3306"
+          - name: MYSQL_PORT_3306_TCP_ADDR
+            valueFrom:
+              secretKeyRef:
+                name: snipe-database
+                key: host
+          - name: MYSQL_DATABASE
+            valueFrom:
+              secretKeyRef:
+                name: snipe-database
+                key: database
+          - name: MYSQL_USER
+            valueFrom:
+              secretKeyRef:
+                name: snipe-database
+                key: username
+          - name: MYSQL_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: snipe-database
+                key: password
+          ports:
+          - containerPort: 80
+          resources:
+            requests:
+              cpu: 150m
+              memory: 512Mi
+            limits:
+              cpu: 150m
+              memory: 512Mi
+          volumeMounts:
+          - mountPath: /var/lib/snipeit
+            name: snipe-disk
+          - mountPath: /var/www/html/storage/app/backups
+            name: backup-disk
+        - name: snipe-it-backup-sidecar
+          image: imagename2
+          env:
+          - name: GCP_CREDENTIALS_LOCATION
+            value: /tmp/gcpCredentials/creds.json
+          resources:
+            requests:
+              cpu: 50m
+              memory: 128Mi
+            limits:
+              cpu: 50m
+              memory: 128Mi
+          volumeMounts:
+          - mountPath: /var/lib/snipeit
+            name: snipe-disk
+          - mountPath: /shared
+            name: backup-disk
+          - name: gcp-credentials
+            mountPath: "/tmp/gcpCredentials/"
+            readOnly: true
+        volumes:
+        - name: gcp-credentials
+          secret:
+            secretName: snipe-backup-sidecar
+        - name: backup-disk
+          emptyDir: {}
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h2 id="gcloud-compute-scripts-for-an-active-directory-deployment">GCloud Compute Scripts for an Active Directory Deployment</h2>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+</pre></td><td class="rouge-code"><pre>  export region=us-east1
+  export zone_1=${region}-b
+  export zone_2=${region}-c
+  export vpc_name=winaddcnet
+  export project_id=company-xyz-ldap
+
+  gcloud config set compute/region ${region}
+  gcloud config set project ${project_id}
+
+  gcloud compute networks create ${vpc_name}  \
+      --description "VPC network to deploy Active Directory" \
+      --subnet-mode custom
+
+  gcloud compute networks subnets create private-ad-zone-1 \
+    --network ${vpc_name} \
+    --range 10.250.250.0/28
+
+  gcloud compute networks subnets create private-ad-zone-2 \
+      --network ${vpc_name} \
+      --range 10.250.250.16/28
+
+  gcloud compute firewall-rules create allow-internal-ports-private-ad \
+      --network ${vpc_name} \
+      --allow tcp:88,135,389,445,464,636,3268,3269,49152-65535,udp:88,123,389,464,icmp \
+      --source-ranges  10.0.0.0/8,172.16.0.0/12,192.168.0.0/16 \
+      --target-tags=ad
+
+  gcloud compute firewall-rules create allow-internal-ports-private-dns \
+      --network ${vpc_name} \
+      --allow tcp:53,udp:53,icmp \
+      --source-ranges  10.0.0.0/8,172.16.0.0/12,192.168.0.0/16 \
+      --target-tags=ad
+
+  gcloud compute firewall-rules create allow-rdp \
+      --network ${vpc_name} \
+      --allow tcp:3389 \
+      --source-ranges 35.235.240.0/20 \
+      --target-tags=rdp
+
+  #source ranges should be adjusted for each service that needs to reach out to the ingress ldap port.
+  gcloud compute firewall-rules create allow-ingress-ldaps \
+      --network ${vpc_name} \
+      --allow tcp:636 \
+      --source-ranges 1.2.3.4/32 \
+      --target-tags=ldaps-ingress
+
+
+  gcloud compute instances create ad-dc1 --machine-type n1-standard-2 \
+      --boot-disk-type pd-ssd \
+      --boot-disk-size 50GB \
+      --image-family windows-2019 --image-project windows-cloud \
+      --network ${vpc_name} \
+      --zone ${zone_1} \
+      --subnet private-ad-zone-1 \
+      --private-network-ip=10.250.250.1
+
+  gcloud compute reset-windows-password ad-dc1 --zone ${zone_1} --quiet
+
+  gcloud compute instances create ad-dc2 --machine-type n1-standard-2 \
+      --boot-disk-size 50GB \
+      --boot-disk-type pd-ssd \
+      --image-family windows-2019 --image-project windows-cloud \
+      --can-ip-forward \
+      --network ${vpc_name} \
+      --zone ${zone_2} \
+      --subnet private-ad-zone-2 \
+      --private-network-ip=10.250.250.17
+
+  gcloud compute reset-windows-password ad-dc2 --zone ${zone_2} --quiet
+
+
+  #Configuring the Windows Domain Controller is separate from the GCP Configuration, so won't configure it in this guide.
+  #Below will allow you to rdp from your local machine into the GCP proxy/tunnel.
+  gcloud beta compute start-iap-tunnel ad-dc1 3389 \
+      --local-host-port=localhost:53389 \
+      --zone=${zone_1} \
+      --project=${project-id}
+
+  gcloud beta compute start-iap-tunnel ad-dc2 3389 \
+      --local-host-port=localhost:63389 \
+      --zone=${zone_2} \
+      --project=${project-id}
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h2 id="networking-and-software-equipment">Networking and Software Equipment</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Make</th>
+      <th>Item/SKU</th>
+      <th>SKU</th>
+      <th style="text-align: center">QTY</th>
+      <th style="text-align: center">Cost</th>
+      <th>Required?</th>
+      <th> </th>
+      <th>Note</th>
+      <th style="text-align: center">SUM</th>
+      <th style="text-align: center">Total Sum</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">$63,746</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">Sectional Sum</td>
+    </tr>
+    <tr>
+      <td>Firewall</td>
+      <td> </td>
+      <td> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+      <td> </td>
+      <td> </td>
+      <td>Firewall</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">$19,814</td>
+    </tr>
+    <tr>
+      <td>Palo Alto Networks</td>
+      <td>Firewall PA-850</td>
+      <td>PA-850</td>
+      <td style="text-align: center">2.00</td>
+      <td style="text-align: center">$6,000</td>
+      <td>Yes</td>
+      <td> </td>
+      <td> </td>
+      <td style="text-align: center">$12,000</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td>Palo Alto Networks</td>
+      <td>Palo PANDb URL Filtering for PA-850</td>
+      <td>PAN-PA-850-URL4-HA2</td>
+      <td style="text-align: center">2.00</td>
+      <td style="text-align: center">$1,500</td>
+      <td>No, recommended</td>
+      <td> </td>
+      <td> </td>
+      <td style="text-align: center">$3,000</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td>Palo Alto Networks</td>
+      <td>Palo Premium Support Program - extended service agreement 2 - 1 year</td>
+      <td>PAN-SVC-PREM-850</td>
+      <td style="text-align: center">2.00</td>
+      <td style="text-align: center">$907</td>
+      <td>No, recommended</td>
+      <td> </td>
+      <td> </td>
+      <td style="text-align: center">$1,814</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td>Palo Alto Networks</td>
+      <td>Palo Alto GlobalProtect Gateway for PA-850 - subscription license</td>
+      <td>PAN-PA-850-GP-HA2</td>
+      <td style="text-align: center">2.00</td>
+      <td style="text-align: center">$1,500</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td style="text-align: center">$3,000</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td>Palo Alto Networks</td>
+      <td> </td>
+      <td> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td>Switches</td>
+      <td> </td>
+      <td> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+      <td> </td>
+      <td> </td>
+      <td>Switches</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">$22,960</td>
+    </tr>
+    <tr>
+      <td>Juniper Networks</td>
+      <td>EX3400-48P</td>
+      <td>EX3400-48P</td>
+      <td style="text-align: center">2.00</td>
+      <td style="text-align: center">$4,000</td>
+      <td>Yes</td>
+      <td> </td>
+      <td> </td>
+      <td style="text-align: center">$8,000</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td>Juniper Networks</td>
+      <td>EX-SFP-10GE-DAC-1M /</td>
+      <td>740-030076</td>
+      <td style="text-align: center">4.00</td>
+      <td style="text-align: center">$20</td>
+      <td>Yes</td>
+      <td> </td>
+      <td> </td>
+      <td style="text-align: center">$80</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td>Juniper Networks</td>
+      <td>Juniper Care Next-Day - extended service agreement - 3 years - shipment</td>
+      <td>SVC-ND-EX3300-48P-3</td>
+      <td style="text-align: center">2.00</td>
+      <td style="text-align: center">$1,290</td>
+      <td>No, recommended</td>
+      <td> </td>
+      <td> </td>
+      <td style="text-align: center">$2,580</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td>Juniper Networks</td>
+      <td>Juniper Care Core - technical support - 1 year</td>
+      <td>SVC-COR-EX34-48</td>
+      <td style="text-align: center">2.00</td>
+      <td style="text-align: center">$150</td>
+      <td>No, recommended</td>
+      <td> </td>
+      <td> </td>
+      <td style="text-align: center">$300</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td>Meraki</td>
+      <td>MS-390</td>
+      <td>MS390-48UX2</td>
+      <td style="text-align: center">2.00</td>
+      <td style="text-align: center">$6,000</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td style="text-align: center">$12,000</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td>Meraki</td>
+      <td>4 x 10G Uplink Module</td>
+      <td>MA-MOD-4X10G</td>
+      <td style="text-align: center">2.00</td>
+      <td style="text-align: center">$750</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td>Access Points</td>
+      <td> </td>
+      <td> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+      <td> </td>
+      <td> </td>
+      <td>Access Points</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">$8,130</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+      <td> </td>
+      <td> </td>
+      <td>Amount of WAPs will be dependent on Office Layout, Client QTY, and several other factors. Purchasing 6 as a minimum, but obviously the number will be a lot more.</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td>Meraki</td>
+      <td>Cisco Meraki MR55</td>
+      <td>MR55-HW</td>
+      <td style="text-align: center">6.00</td>
+      <td style="text-align: center">$1,250</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td style="text-align: center">$7,500</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td>Meraki</td>
+      <td>Cisco Meraki Enterprise Cloud Controller - subscription license (1 year)</td>
+      <td>LIC-ENT-1YR</td>
+      <td style="text-align: center">6.00</td>
+      <td style="text-align: center">$105</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td style="text-align: center">$630</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td>Security</td>
+      <td> </td>
+      <td> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+      <td> </td>
+      <td> </td>
+      <td>Security</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td>Vecta</td>
+      <td>Brain/Controller</td>
+      <td> </td>
+      <td style="text-align: center">1.00</td>
+      <td style="text-align: center"> </td>
+      <td>Yes, for Cloud Deployment</td>
+      <td> </td>
+      <td> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td>Vectra</td>
+      <td>Sensor</td>
+      <td> </td>
+      <td style="text-align: center">1.00</td>
+      <td style="text-align: center"> </td>
+      <td>Yes, for offices</td>
+      <td> </td>
+      <td> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td>Cables</td>
+      <td> </td>
+      <td> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+      <td> </td>
+      <td> </td>
+      <td>Cables</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">$2,307</td>
+    </tr>
+    <tr>
+      <td>Tripp Lite</td>
+      <td>Tripp Lite Cat6 Gigabit Snagless Molded Patch Cable (RJ45 M/M) Blue, 7’</td>
+      <td>N201-007-BL</td>
+      <td style="text-align: center">30.00</td>
+      <td style="text-align: center">$6</td>
+      <td>Yes</td>
+      <td> </td>
+      <td> </td>
+      <td style="text-align: center">$180</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td>Tripp Lite</td>
+      <td>Tripp Lite 1000ft Cat6 Gigabit Bulk Cable Solid CMP Plenum PVC Gray TAA</td>
+      <td>N224-01K-GY</td>
+      <td style="text-align: center">4.00</td>
+      <td style="text-align: center">$362</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td style="text-align: center">$1,448</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td>Tripp Lite</td>
+      <td>Tripp Lite Cat6 Gigabit Snagless Molded Patch Cable (RJ45 M/M) Blue, 10’</td>
+      <td>N201-010-BL</td>
+      <td style="text-align: center">20.00</td>
+      <td style="text-align: center">$7</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td style="text-align: center">$140</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td>Tripp Lite</td>
+      <td>Tripp Lite Cat6 Gigabit Snagless Molded Patch Cable (RJ45 M/M) Blue, 15’</td>
+      <td>N201-015-BL</td>
+      <td style="text-align: center">20.00</td>
+      <td style="text-align: center">$9</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td style="text-align: center">$180</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>Tripp Lite Cat6 Gigabit Snagless Molded Patch Cable (RJ45 M/M) Blue, 5’</td>
+      <td>N201-005-BL</td>
+      <td style="text-align: center">60.00</td>
+      <td style="text-align: center">$6</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td style="text-align: center">$359</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td>Server</td>
+      <td> </td>
+      <td> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+      <td> </td>
+      <td> </td>
+      <td>Server</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">$10,000</td>
+    </tr>
+    <tr>
+      <td>Dell</td>
+      <td>R440</td>
+      <td>N/A</td>
+      <td style="text-align: center">2.00</td>
+      <td style="text-align: center">$5,000</td>
+      <td>Yes</td>
+      <td> </td>
+      <td>Approximate value, as these will be custom spec’d, and does not have a specific SKU model.</td>
+      <td style="text-align: center">$10,000</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td>Palo Alto Networks</td>
+      <td>Firewall PA-850</td>
+      <td>PA-850</td>
+      <td style="text-align: center">2.00</td>
+      <td style="text-align: center">$6,000</td>
+      <td>Yes</td>
+      <td> </td>
+      <td> </td>
+      <td style="text-align: center">$12,000</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td>Palo Alto Networks</td>
+      <td>Palo PANDb URL Filtering for PA-850</td>
+      <td>PAN-PA-850-URL4-HA2</td>
+      <td style="text-align: center">2.00</td>
+      <td style="text-align: center">$1,500</td>
+      <td>No, recommended</td>
+      <td> </td>
+      <td> </td>
+      <td style="text-align: center">$3,000</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td>Palo Alto Networks</td>
+      <td>Palo Premium Support Program - extended service agreement 2 - 1 year</td>
+      <td>PAN-SVC-PREM-850</td>
+      <td style="text-align: center">2.00</td>
+      <td style="text-align: center">$907</td>
+      <td>No, recommended</td>
+      <td> </td>
+      <td> </td>
+      <td style="text-align: center">$1,814</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td>Palo Alto Networks</td>
+      <td>Palo Alto GlobalProtect Gateway for PA-850 - subscription license</td>
+      <td>PAN-PA-850-GP-HA2</td>
+      <td style="text-align: center">2.00</td>
+      <td style="text-align: center">$1,500</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td style="text-align: center">$3,000</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td>Palo Alto Networks</td>
+      <td> </td>
+      <td> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td>Switches</td>
+      <td> </td>
+      <td> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+      <td> </td>
+      <td> </td>
+      <td>Switches</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">$22,960</td>
+    </tr>
+    <tr>
+      <td>Juniper Networks</td>
+      <td>EX3400-48P</td>
+      <td>EX3400-48P</td>
+      <td style="text-align: center">2.00</td>
+      <td style="text-align: center">$4,000</td>
+      <td>Yes</td>
+      <td> </td>
+      <td> </td>
+      <td style="text-align: center">$8,000</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td>Juniper Networks</td>
+      <td>EX-SFP-10GE-DAC-1M /</td>
+      <td>740-030076</td>
+      <td style="text-align: center">4.00</td>
+      <td style="text-align: center">$20</td>
+      <td>Yes</td>
+      <td> </td>
+      <td> </td>
+      <td style="text-align: center">$80</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td>Juniper Networks</td>
+      <td>Juniper Care Next-Day - extended service agreement - 3 years - shipment</td>
+      <td>SVC-ND-EX3300-48P-3</td>
+      <td style="text-align: center">2.00</td>
+      <td style="text-align: center">$1,290</td>
+      <td>No, recommended</td>
+      <td> </td>
+      <td> </td>
+      <td style="text-align: center">$2,580</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td>Juniper Networks</td>
+      <td>Juniper Care Core - technical support - 1 year</td>
+      <td>SVC-COR-EX34-48</td>
+      <td style="text-align: center">2.00</td>
+      <td style="text-align: center">$150</td>
+      <td>No, recommended</td>
+      <td> </td>
+      <td> </td>
+      <td style="text-align: center">$300</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td>Meraki</td>
+      <td>MS-390</td>
+      <td>MS390-48UX2</td>
+      <td style="text-align: center">2.00</td>
+      <td style="text-align: center">$6,000</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td style="text-align: center">$12,000</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td>Meraki</td>
+      <td>4 x 10G Uplink Module</td>
+      <td>MA-MOD-4X10G</td>
+      <td style="text-align: center">2.00</td>
+      <td style="text-align: center">$750</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td>Access Points</td>
+      <td> </td>
+      <td> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+      <td> </td>
+      <td> </td>
+      <td>Access Points</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">$8,130</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+      <td> </td>
+      <td> </td>
+      <td>Amount of WAPs will be dependent on Office Layout, Client QTY, and several other factors. Purchasing 6 as a minimum, but obviously the number will be a lot more.</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td>Meraki</td>
+      <td>Cisco Meraki MR55</td>
+      <td>MR55-HW</td>
+      <td style="text-align: center">6.00</td>
+      <td style="text-align: center">$1,250</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td style="text-align: center">$7,500</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td>Meraki</td>
+      <td>Cisco Meraki Enterprise Cloud Controller - subscription license (1 year)</td>
+      <td>LIC-ENT-1YR</td>
+      <td style="text-align: center">6.00</td>
+      <td style="text-align: center">$105</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td style="text-align: center">$630</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td>Security</td>
+      <td> </td>
+      <td> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+      <td> </td>
+      <td> </td>
+      <td>Security</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td>Vecta</td>
+      <td>Brain/Controller</td>
+      <td> </td>
+      <td style="text-align: center">1.00</td>
+      <td style="text-align: center"> </td>
+      <td>Yes, for Cloud Deployment</td>
+      <td> </td>
+      <td> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td>Vectra</td>
+      <td>Sensor</td>
+      <td> </td>
+      <td style="text-align: center">1.00</td>
+      <td style="text-align: center"> </td>
+      <td>Yes, for offices</td>
+      <td> </td>
+      <td> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td>Cables</td>
+      <td> </td>
+      <td> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+      <td> </td>
+      <td> </td>
+      <td>Cables</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">$2,307</td>
+    </tr>
+    <tr>
+      <td>Tripp Lite</td>
+      <td>Tripp Lite Cat6 Gigabit Snagless Molded Patch Cable (RJ45 M/M) Blue, 7’</td>
+      <td>N201-007-BL</td>
+      <td style="text-align: center">30.00</td>
+      <td style="text-align: center">$6</td>
+      <td>Yes</td>
+      <td> </td>
+      <td> </td>
+      <td style="text-align: center">$180</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td>Tripp Lite</td>
+      <td>Tripp Lite 1000ft Cat6 Gigabit Bulk Cable Solid CMP Plenum PVC Gray TAA</td>
+      <td>N224-01K-GY</td>
+      <td style="text-align: center">4.00</td>
+      <td style="text-align: center">$362</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td style="text-align: center">$1,448</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td>Tripp Lite</td>
+      <td>Tripp Lite Cat6 Gigabit Snagless Molded Patch Cable (RJ45 M/M) Blue, 10’</td>
+      <td>N201-010-BL</td>
+      <td style="text-align: center">20.00</td>
+      <td style="text-align: center">$7</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td style="text-align: center">$140</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td>Tripp Lite</td>
+      <td>Tripp Lite Cat6 Gigabit Snagless Molded Patch Cable (RJ45 M/M) Blue, 15’</td>
+      <td>N201-015-BL</td>
+      <td style="text-align: center">20.00</td>
+      <td style="text-align: center">$9</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td style="text-align: center">$180</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td>Tripp Lite</td>
+      <td>Tripp Lite Cat6 Gigabit Snagless Molded Patch Cable (RJ45 M/M) Blue, 5’</td>
+      <td>N201-005-BL</td>
+      <td style="text-align: center">60.00</td>
+      <td style="text-align: center">$6</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td style="text-align: center">$359</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td>Server</td>
+      <td> </td>
+      <td> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+      <td> </td>
+      <td> </td>
+      <td>Server</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">$10,000</td>
+    </tr>
+    <tr>
+      <td>Dell</td>
+      <td>R440</td>
+      <td>N/A</td>
+      <td style="text-align: center">2.00</td>
+      <td style="text-align: center">$5,000</td>
+      <td>Yes</td>
+      <td> </td>
+      <td>Approximate value, as these will be custom spec’d, and does not have a specific SKU model.</td>
+      <td style="text-align: center">$10,000</td>
+      <td style="text-align: center"> </td>
+    </tr>
+  </tbody>
+</table>
+</p>
+                                
+                                    
+                                        <div id="disqus_thread"></div>
+<script>
+
+var disqus_config = function () {
+this.page.url = "https://andrewdoering.org/blog/2020/09/01/infrastructure-engineer-deployment-example";  
+this.page.identifier = "infrastructure-engineer-deployment-example"; 
+};
+
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://andrewdoering-org.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                            
+                                    
+                                
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                
+        </section>
+        
+        <!--   Blog-Single End  -->
+
+
+        <!--   Footer Start  -->
+<footer class="bg-dark">
+    <div class="container">
+        <div class="row py-5">
+            <div class="col-lg-4">
+                <h4 class="text-white mt-3 mt-lg-0">About <span class="base-color"> Me</span></h4>
+                <p class="text-white pt-3 mb-0">Andrew Doering resides in San Francisco, and currently maintains a position at
+                    ThousandEyes as a Senior IT Engineer. </p>
+            </div>
+            <div class="col-lg-4">
+                <h4 class="text-white mt-3 mt-lg-0">Contact <span class="base-color">Me</span></h4>
+                <ul class="list-unstyled text-white pt-2 mb-0">
+                    <li class="py-1"><i class="fas fa-map-marker-alt pr-2"></i> San Francisco, CA, USA</li>
+                    <li class="py-1"><a class="text-white link-hover" href="tel:+1 919 904 4396"><i class="fas fa-phone-square-alt pr-2" aria-hidden="true"></i>
+                        +1 919 904 4396</a></li>
+                    <li class="py-1"><a class="text-white link-hover" href="mailto:contact@andrewdoering.org"><i class="fas fa-envelope pr-2 pr-2" aria-hidden="true"></i>
+                        contact@andrewdoering.org</a></li>        
+                </ul>
+            </div>
+            <div class="col-lg-4">
+                <h4 class="text-white mt-3 mt-lg-0">My <span class="base-color">Socials</span></h4>
+                <ul class="list-unstyled text-white socials pt-2 mb-0">
+                    <li class="py-1"><a class="text-white link-hover" href="https://www.facebook.com/and.doe"><i class="fab fa-facebook-f pr-2" aria-hidden="true"></i>
+                            Facebook</a></li>
+                    <li class="py-1"><a class="text-white link-hover" href="https://www.linkedin.com/in/andrewdoering"><i class="fab fa-linkedin pr-2"
+                                aria-hidden="true"></i> LinkedIn</a></li>
+                    <li class="py-1"><a class="text-white link-hover" href="https://www.github.com/delize"><i class="fab fa-github pr-1" aria-hidden="true"></i>
+                            Github</a></li>
+                    <li class="py-1"><a class="text-white link-hover" href="https://www.instagram.com/dolos01"><i class="fab fa-instagram pr-2" aria-hidden="true"></i>
+                            Instagram</a></li>
+                    <li class="py-1"><a class="text-white link-hover" href="skype:andrew-doering"><i class="fab fa-skype pr-2" aria-hidden="true"></i> andrew-doering</a>
+                    </li>
+                    <li class="py-1"><a class="text-white link-hover" href="https://www.macadmins.org/"><i class="fab fa-slack pr-2" aria-hidden="true"></i> @heimdall</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+                <div class="col-lg-12 border-top pb-5 align-center">
+                    <a class="text-white link-hover" href="https://www.github.com/delize/delize.github.io"><span class="mt-3 mb-0 d-lg-inline-block align-left text-center text-white link-hover d-block d-lg-inline-block float-lg-left">See me on Github © 2021</span></a>
+                    <a class="text-white link-hover" href="/donate"><span class="mt-3 mb-0 d-lg-inline-block align-center d-block text-white link-hover">Donate!</span></a>
+                <a class="mt-4 mt-lg-3 mb-0 text-white back-to-top d-block d-lg-inline-block float-lg-right text-center" href="javascript:void(0);">Back To Top</a>
+            </div>
+        </div>
+    </div>
+</footer>
+<!--   Footer End  -->
+        <!--  JavaScripts  -->
+<script src=https://andrewdoering.org/assets/js/jquery-3.4.1.min.js></script>
+<!--  Bootstrap Js  -->
+<!-- <script src="assets/js/bootstrap.js"></script> -->
+<script src=https://andrewdoering.org/assets/js/bootstrap.min.js></script>
+<!--  Easing Js  -->
+<script src=https://andrewdoering.org/assets/js/jquery.easing.min.js></script>
+<!--  Isotope Js  -->
+<script src=https://andrewdoering.org/assets/js/slyslider.js></script>
+<!--  Pop UP JS Js  -->
+<script src=https://andrewdoering.org/assets/js/jquery.magnific-popup.min.js></script>
+<!--  Owl carousel Js  -->
+<script src=https://andrewdoering.org/assets/js/owl.carousel.min.js></script>
+<!--  Wow Js  -->
+<script src=https://andrewdoering.org/assets/js/wow.min.js></script>
+<!--  Typed Js  -->
+<script src=https://andrewdoering.org/assets/js/typed.js></script>
+<!--  Custom JS  -->
+<script src=https://andrewdoering.org/assets/js/uone.js></script>
+
+
+    </body>
+</html>

@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Monitoring ZFS and Docker with TIG</title>
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<meta name="author" content="Andrew Doering" />
+<meta name="ROBOTS" content="">
+        <!--  Custom Style CSS  -->
+<link rel="stylesheet" href=https://andrewdoering.org/assets/css/style-post.css>
+        <!--  Custom Style CSS  -->
+<link rel="stylesheet" href=https://andrewdoering.org/assets/css/style-blog.css>
+        <!--  FavIcon  -->
+<link rel="apple-touch-icon" sizes="180x180" href="https://andrewdoering.org/assets/favicon//apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="https://andrewdoering.org/assets/favicon//favicon-32x32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="https://andrewdoering.org/assets/favicon//favicon-16x16.png" />
+<link rel="manifest" href="https://andrewdoering.org/assets/favicon/site.webmanifest">
+
+<!-- Google Fonts -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli:300,400,600%7CPoppins:400,500,600,700" />
+
+<!--  Bootstrap CSS  -->
+<!-- <link rel="stylesheet" href="https://andrewdoering.org/assets/css/bootstrap.css" /> -->
+<link rel="stylesheet" href="https://andrewdoering.org/assets/css/bootstrap.min.css" />
+<!--  Line Icon CSS  -->
+<link rel="stylesheet" href="https://andrewdoering.org/assets/css/LineIcons.css" />
+<!--  Font Awesome CSS  -->
+<link rel="stylesheet" href="https://andrewdoering.org/assets/css/all.min.css" />
+<!-- <link rel="stylesheet" href="https://andrewdoering.org/assets/css/font-awesome.min.css" /> -->
+<!--  Animate CSS  -->
+<link rel="stylesheet" href="https://andrewdoering.org/assets/css/animate.css" /> 
+<!--  Magnific Popup CSS  -->
+<link rel="stylesheet" href="https://andrewdoering.org/assets/css/magnific-popup.css" />
+<!--  Owl-carousel CSS  -->
+<link rel="stylesheet" href="https://andrewdoering.org/assets/css/owl.carousel.min.css" />
+<!--  Custom Style CSS  -->
+<link rel="stylesheet" href="https://andrewdoering.org/assets/css/style-custom.css" />
+
+        
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-66440601-3"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'UA-66440601-3');
+</script>
+        
+        <style>
+            .hero-bg {
+              background-image: url("/assets/blog/2020/10/grafana_cc_img.jpg")
+            }
+        </style>
+    </head>
+
+    <body data-spy="scroll" data-target="#scrollspy" data-offset="61" class="pt-hero">
+        <!--    Header Start    -->
+<header id="header" class="header page-header bg-white fixed-top">
+    <nav id="scrollspy" class="navbar navbar-expand-lg header-nav">
+        <div class="container">
+            <a class="navbar-brand font-weight-bold text-dark" href="https://andrewdoering.org/">
+                <span>Andrew Doering</span>
+            </a>
+            
+            <!--  Navbar Toggler Button Start -->
+            <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#toggle-menu" aria-controls="toggle-menu" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="lni-menu size-md"></span>
+            </button>
+            
+            <!--  Navbar Toggler Button End -->
+            <div class="collapse navbar-collapse" id="toggle-menu">
+                <ul class="navbar-nav nav-pills ml-auto">
+                    <li class="nav-item">
+                        <li><a class="nav-link text-dark" href="/blog/categories">Categories & Tags</a></li>
+                         <li><a class="nav-link text-dark" href="/blog">Back to Blog</a></li>
+                        
+                        
+                        
+                    </li>
+                </ul>
+            </div> 
+        </div>
+    </nav>
+</header>
+<!--    Header End    -->
+
+        <!--    Header End    -->
+
+        <!--    Hero Start    -->
+        <a class="color-scheme text-white bg-base-color d-inline-block" href="javascript:void(0)"><i class="lni-night text-white"></i><span class="text-white">Dark</span></a>
+<a class="color-scheme color-scheme-light text-white bg-base-color d-none" href="javascript:void(0)"><i class="lni-sun text-white"></i><span class="text-white">Light</span></a>
+        <section class="hero hero-bg page-hero py-6" id="hero">
+            <div class="text-center hero-content mx-auto">
+                <h1 class="text-white center mb-4 col-lg-8" style="margin=4px">Monitoring ZFS and Docker with TIG</h1>
+                <p class="mx-auto text-white">
+                    <a href="/" class="text-white">Home</a>
+                    /
+                    <a href="/blog" class="text-white">Blog</a>
+                    /
+                    <a href="/blog/2020/10/11/monitoring-zfs-and-docker-with-tig/" class="text-white">Monitoring ZFS and Docker with TIG</a>
+                </p>
+            </div>
+        </section>
+        <!--    Hero End    -->
+
+        <!--   Blog-single   Start -->
+        <section class="py-6">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 blog">
+                        <div class="rounded px-lg-1">
+                            <div class="text-md-left">
+                                <h4 class="mb-4 text-centered" >Monitoring ZFS and Docker with TIG</h4>
+                                <img src="/assets/blog/2020/10/grafana_cc_img.jpg" alt="" class="img-fluid w-100 rounded">
+                                <span class="d-inline-block py-4"> Published: Oct 11, 2020 
+                                        
+                                        / By <span class="purple-color text-right"> Andrew Doering. </span>
+                                        </span>
+                                <p class="link-"><ul>
+  <li><a href="#introduction">Introduction</a></li>
+  <li><a href="#getting-started">Getting Started</a></li>
+  <li><a href="#getting-influxdb-and-grafana-running-in-docker">Getting InfluxDB and Grafana running in Docker</a>
+    <ul>
+      <li><a href="#configuring-telegraf">Configuring Telegraf</a></li>
+      <li><a href="#configuring-influxdb">Configuring InfluxDB</a></li>
+      <li><a href="#configuring-graphs-in-grafana">Configuring Graphs in Grafana</a></li>
+    </ul>
+  </li>
+  <li><a href="#future-things-i-want-to-do">Future things I want to do</a></li>
+</ul>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>I just want to start off by saying, this is the first TIG stack deployment I have ever done, and was a lot easier then I expected (at least for this use case). I also have another use case of wanting to monitor logs to determine how often issues are appearing, and that use case could be a bit more challenging, however I have not done a lot of research into it.</p>
+
+<p>I have a homemade NAS system at home, that incorporates ESXi, Ubuntu, ZFS, and Docker for applications/services I want to run. One of the biggest issues I have is monitoring long term performance on the device. Because I am not running VSphere and am solely running ESXi, it makes it difficult to grab metrics from the hypervisor, so I am left to grab metrics from the guest.</p>
+
+<p>I wanted a way to have historical data from the system in case something went <em>horribly</em> (not really, but maybe) wrong for troubleshooting purposes, being sent to another server.</p>
+
+<p>A bit of background on the system in place here, and yes - I am a data hoarder and a fan of data storage systems.</p>
+
+<p><strong>TIG System Specs:</strong></p>
+<ul>
+  <li>CPU: Intel NUC 8i3BEH1</li>
+  <li>Memory: 16GB RAM</li>
+  <li>Storage: 1x 128 GB NVME</li>
+</ul>
+
+<p><strong>ESXi Hypervisor Specs:</strong></p>
+
+<ul>
+  <li>OS: ESXi 7.0</li>
+  <li>CPU: AMD Ryzen 7 1700 Eight-Core Processor</li>
+  <li>Memory: 64 GB ECC Memory</li>
+  <li>Storage:
+    <ul>
+      <li>NVME: 1x Samsung 970 Pro 1TB, 1x WD SN750 1TB</li>
+      <li>SSD: 2x Intel DC S3510 120 GB</li>
+      <li>SATA: 6x WD Red 6TB Drives</li>
+    </ul>
+  </li>
+  <li>GPU: Nvidia GT 710</li>
+  <li>Motherboard: ASRock X470 Master SLI/AC</li>
+  <li>HBA: LSI 2008 PCI-E Card</li>
+</ul>
+
+<p><strong>NAS Guest Specs:</strong></p>
+
+<ul>
+  <li>OS: Ubuntu 20.04 LTS</li>
+  <li>Memory: 48 GB</li>
+  <li>Root Drive: 40 GB</li>
+  <li>Passthrough:
+    <ul>
+      <li>HBA: LSI SAS2008 PCI-Express Fusion-MPT SAS-2 Falcon rev. 03 (<a href="https://forums.serverbuilds.net/t/guide-updating-your-lsi-sas-controller-with-a-uefi-motherboard/131">Flashed to IT mode</a>)</li>
+      <li>ZFS Pool: 32 TB (WD RED 6TB Drives - SATA_WDC_WD60EFRX-68L_WD)</li>
+      <li>Cache: 1TB</li>
+    </ul>
+  </li>
+</ul>
+
+<p>You might think 48 GB of memory is overkill for a system that mainly deals with storage and a few applications. Unfortunately, not at the current moment - but I do agree, it is overkill. I also use rclone as an online storage system with Google Drive as a backend. Meaning this is my normal:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre>    nas:~$ free -mh
+                total        used        free      shared  buff/cache   available
+    Mem:           47Gi        31Gi       1.1Gi       9.0Mi        14Gi        15Gi
+    Swap:         3.8Gi       3.0Gi       909Mi
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>There is definitely some room for improvement, don’t get me wrong, but at the moment. However, without any historical data to go off of and just looking at the above command fro time to time, it isn’t sufficient to fine tune it further and make optimizations.</p>
+
+<p>So with all that said and done, the things I wanted to monitor came out to be:</p>
+
+<ul>
+  <li>Memory Usage</li>
+  <li>CPU Usage</li>
+  <li>File System Usage</li>
+  <li>Docker</li>
+  <li>ZFS Pool</li>
+  <li>Network Traffic</li>
+</ul>
+
+<h2 id="getting-started">Getting Started</h2>
+
+<h2 id="getting-influxdb-and-grafana-running-in-docker">Getting InfluxDB and Grafana running in Docker</h2>
+
+<p>Thankfully, Grafana and InfluxDB already provide decent out of the box docker images, so no modification is needed for a small scale deployment and what I am trying to accomplish.</p>
+
+<p>I started out doing this for my docker-compose file</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+</pre></td><td class="rouge-code"><pre>    version: '3.3'
+    services:
+        grafana:
+            ports:
+                - '3000:3000'
+            container_name: grafana
+            environment:
+                - 'GF_INSTALL_PLUGINS=grafana-clock-panel,grafana-simple-json-datasource'
+            volumes:
+                - '/media/docker/grafana/plugins:/var/lib/grafana/plugins'
+                - '/media/docker/grafana/logs:/var/log/grafana'
+                - '/media/docker/grafana/config:/etc/grafana/'
+                - '/media/docker/grafana/data:/var/lib/grafana'
+            restart: always
+            image: grafana/grafana
+            networks:
+                - lame
+        influxdb:
+            container_name: influxdb
+            ports:
+                - '8086:8086'
+                - '2003:2003'
+            environment:
+                - INFLUXDB_HTTP_AUTH_ENABLED=true
+                - INFLUXDB_ADMIN_USER=$myuser
+                - INFLUXDB_ADMIN_PASSWORD=$mysecret
+            volumes:
+                - '/media/docker/influxdb:/var/lib/influxdb'
+            restart: always
+            image: influxdb
+            networks:
+                - lame
+    networks:
+        lame:
+            name: lame
+            driver: bridge
+
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>I am aware Docker volume stores are supposedly the more supported/official way to go, due to their flexibility and ease of use, and honestly I do agree with that for larger scale systems. For my use case, it’s just more convenient to me to use bind mounts at the current moment.</p>
+
+<p>You might notice I don’t have a web front end (something like Nginx, Traefik) in use here. I am hosting this for internal use only and it is not publicly available. Any public facing service goes through a different endpoint entirely (an nginx entrypoint). If I was setting up TIG publicly,  I would consider using Traefik and enable docker swarm for ease of use. This is something I might do in the future, as I would love to implement Google’s oAuth service into Grafana, and at that point, I would feel more comfortable putting the service publicly on the internet for me to auth into.</p>
+
+<p>Anyways, getting back on track.</p>
+
+<h3 id="configuring-telegraf">Configuring Telegraf</h3>
+
+<p>Setting up telegraf is super easy, install the application, uncomment out the lines you want to monitor, and potentially add other information to.</p>
+
+<p>On your system that you want to monitor (in my case, the NAS), edit <code class="language-plaintext highlighter-rouge">/etc/telegraf/telegraf.conf</code> with your favorite editor. An example of my configuration file is below.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+</pre></td><td class="rouge-code"><pre>    cat /etc/telegraf/telegraf.conf | grep -v "#"
+    [global_tags]
+    user = "$USER"
+    device = "nas"
+
+    [agent]
+    interval = "5s"
+    round_interval = true
+    metric_batch_size = 1000
+    metric_buffer_limit = 10000
+    collection_jitter = "0s"
+    flush_interval = "10s"
+    flush_jitter = "0s"
+    precision = "ms"
+    hostname = "nas"
+    omit_hostname = false
+
+    [[outputs.influxdb]]
+    urls = ["http://$TIGSERVER:8086"]
+    database = "nas"
+    username = "$muyser"
+    password = "$mysecret"
+
+    [[outputs.health]]
+    service_address = "http://:20202"
+    read_timeout = "5s"
+    write_timeout = "5s"
+    basic_username = "teegraf"
+    basic_password = "P4ssw0rd!"
+
+    [[processors.date]]
+        field_key = "month"
+        date_format = "Jan"
+        date_offset = "0s"
+        timezone = "America/Los_Angeles"
+
+    [[processors.enum]]
+        [[processors.enum.mapping]]
+        [processors.enum.mapping.value_mappings]
+
+    [[processors.port_name]]
+    tag = "port"
+    dest = "service"
+
+
+    [[processors.reverse_dns]]
+    lookup_timeout = "3s"
+    max_parallel_lookups = 10
+    [[processors.reverse_dns.lookup]]
+
+
+    [[inputs.cpu]]
+    percpu = true
+    totalcpu = true
+    collect_cpu_time = false
+    report_active = false
+
+    [[inputs.disk]]
+    ignore_fs = ["tmpfs", "devtmpfs", "devfs", "iso9660", "overlay", "aufs", "squashfs"]
+
+    [[inputs.diskio]]
+    device_tags = ["ID_FS_TYPE", "ID_FS_USAGE"]
+    name_templates = ["$ID_FS_LABEL","$DM_VG_NAME/$DM_LV_NAME"]
+
+    [[inputs.kernel]]
+
+    [[inputs.mem]]
+
+    [[inputs.processes]]
+
+    [[inputs.swap]]
+
+    [[inputs.system]]
+
+    [[inputs.cgroup]]
+        paths = [
+        "/cgroup/memory",
+        "/cgroup/memory/child1",
+        "/cgroup/memory/child2/*",
+        ]
+        files = ["memory.*usage*", "memory.limit_in_bytes"]
+
+    [[inputs.dns_query]]
+        servers = ["192.168.2.2", "1.1.1.1", "8.8.8.8"]
+        domains = ["google.com"]
+
+    [[inputs.docker]]
+    endpoint = "unix:///var/run/docker.sock"
+    gather_services = false
+    container_names = []
+    source_tag = false
+    container_name_include = []
+    container_state_include = []
+    perdevice = true
+    total = false
+
+    [[inputs.ethtool]]
+    interface_include = ["eth0", "ens160"]
+    interface_exclude = ["eth1"]
+
+    [[inputs.internal]]
+    collect_memstats = true
+
+    [[inputs.kernel_vmstat]]
+
+    [[inputs.linux_sysctl_fs]]
+
+    [[inputs.net]]
+        interfaces = ["eth0", "ens160"]
+
+    [[inputs.netstat]]
+
+    [[inputs.ping]]
+    urls = ["google.com", "192.168.2.1", "192.168.2.2", "andrewdoering.org" ]
+
+    [[inputs.smart]]
+    use_sudo = true
+    attributes = true
+    timeout = "30s"
+
+    [[inputs.sysstat]]
+        sadf_path = "/usr/bin/sadf"
+        activities = ["DISK", "INT", "ALL", "XALL", "XDISK"]
+    [inputs.sysstat.options]
+        -C = "cpu"
+        -B = "paging"
+        -b = "io"
+        -q = "queue"
+        "-r ALL" = "mem_util"
+        "-u ALL" = "cpu_util"
+        -v = "inode"
+        -W = "swap"
+        -w = "task"
+        [[inputs.sysstat.device_tags.sda]]
+        vg = "rootvg"
+
+    [[inputs.systemd_units]]
+    timeout = "1s"
+    unittype = "service"
+
+    [[inputs.temp]]
+
+    [[inputs.zfs]]
+    kstatPath = "/proc/spl/kstat/zfs"
+    kstatMetrics = ["abdstats", "arcstats", "dnodestats", "dbufcachestats",
+        "dmu_tx", "fm", "vdev_mirror_stats", "zfetchstats", "zil"]
+    poolMetrics = true
+
+    [[inputs.docker_log]]
+        endpoint = "unix:///var/run/docker.sock"
+
+    [[inputs.processes]]
+
+    [[inputs.interrupts]]
+
+    [[inputs.ipvs]]
+
+    [[inputs.procstat]]
+    pattern = "httpd|java|python|telegraf|tomcat8|htop|apache2|www-data|rclone|docker"
+    user = "daemon|root|telegraf|www-data|tomcat8|andrew"
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>I won’t lie, I might have gone a bit overboard on the configuration of monitoring details, especially for what my original intent was to log. However, this achieves what I want. With this, I get a pretty decent reporting tool. Some improvements above could be using variables in the configuration file, to allow for the file to be replicated or used without having to modify or specialize it to specific systems. This is something I am planning on doing as I write up my ansible repo.</p>
+
+<h3 id="configuring-influxdb">Configuring InfluxDB</h3>
+
+<p>Considering this TIG is only monitoring a single host, I setup InfluxDB to have a longer retention time of the data, specifically two years worth of time. If it was monitoring several systems, I would probably lower this to 6 months for 5 devices, mainly just to be on the conservative side.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre>    auth
+    create retention policy "2_year" on "nas" DURATION 104 replication 1
+    alter retention policy "autogen" on "nas" duration 104w SHARD DURATION 104w DEFAULT
+    show retention policies on nas
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Once you have changed retention, and have telegraf running, double check that you have data feeding in correctly by checking one of the values, an example of that can be done by performing the following command:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+</pre></td><td class="rouge-code"><pre>    &gt; show tag values on nas from docker_container_status with key = container_name
+    name: docker_container_status
+    key            value
+    ---            -----
+    container_name apollo
+    container_name athena
+    container_name bazarr
+    container_name bazarr-swedish
+    container_name calibre
+    container_name calibre-web
+    container_name dionysus
+    container_name jackett
+    container_name lazylibrarian
+    container_name lidarr
+    container_name netdata
+    container_name radarr
+    container_name radarr-swedish
+    container_name readarr
+    container_name rutorrent
+    container_name sonarr
+    container_name sonarr-swedish
+    container_name znc
+    &gt; 
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>From here, you should be able to start setting up graphs in Grafana.</p>
+
+<h3 id="configuring-graphs-in-grafana">Configuring Graphs in Grafana</h3>
+
+<p>Grafana hosts a lot of good template graphfs <a href="https://grafana.com/grafana/dashboards">here</a>, and admittedly, a lot of them for my use case don’t work (beacuse I was not using Docker Swarm, or the default template just didn’t align with my database). So it required a bit of rework in some cases to fix the Variables configurations.</p>
+
+<p><img src="/assets/blog/2020/10/docker-dashboard.png" alt="Docker Dashboard" /></p>
+
+<p>When it comes to System Performance, I came across another pre-made graph, that had the features I wanted, but, didn’t work instantly when loading via the dashboard id. After a bit of tweaking to data sources, and Variables, I eventually got it working well and now have a rotating dashboard.</p>
+
+<p><img src="/assets/blog/2020/10/system-dashboard.png" alt="System Dashboard" /></p>
+
+<h2 id="future-things-i-want-to-do">Future things I want to do</h2>
+
+<p>I really want to look into using <a href="https://sriramajeyam.com/grafana-infinity-datasource/">Grafana Infinity</a> to pull public data, and have some ideas on using some of the other <a href="https://grafana.com/grafana/plugins?type=datasource">public plugins</a>. As I mentioned, I really want to pull in logs from different systems as datasources, namely rclone, nginx/traefik, pihole, and unifi to name a few.</p>
+
+<p>I had done some research into scraping smart fans, and using temperature sensors as input data, but, living in a 400sqft apartment there is not a lot of variation, and unfortunately, I don’t have a lot of electrical outlets in my apartment. My entire bedroom has two.</p>
+
+<p>However, this was a pretty good learning experience, and a good start going forward. Plenty of room to expand as I get more space and more time to utilize it.</p>
+
+<p>I also reached out to some of my co-workers to see if they could tell me what the newest and best thing is, and have been hearing a lot about <a href="http://netdata.cloud/">netdata.cloud</a>, so that is also something I may look at moving to in the long term.</p>
+</p>
+                                
+                                    
+                                        <div id="disqus_thread"></div>
+<script>
+
+var disqus_config = function () {
+this.page.url = "https://andrewdoering.org/blog/2020/10/10/monitoring-zfs-and-docker-with-tig";  
+this.page.identifier = "monitoring-zfs-and-docker-with-tig"; 
+};
+
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://andrewdoering-org.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                            
+                                    
+                                
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                
+        </section>
+        
+        <!--   Blog-Single End  -->
+
+
+        <!--   Footer Start  -->
+<footer class="bg-dark">
+    <div class="container">
+        <div class="row py-5">
+            <div class="col-lg-4">
+                <h4 class="text-white mt-3 mt-lg-0">About <span class="base-color"> Me</span></h4>
+                <p class="text-white pt-3 mb-0">Andrew Doering resides in San Francisco, and currently maintains a position at
+                    ThousandEyes as a Senior IT Engineer. </p>
+            </div>
+            <div class="col-lg-4">
+                <h4 class="text-white mt-3 mt-lg-0">Contact <span class="base-color">Me</span></h4>
+                <ul class="list-unstyled text-white pt-2 mb-0">
+                    <li class="py-1"><i class="fas fa-map-marker-alt pr-2"></i> San Francisco, CA, USA</li>
+                    <li class="py-1"><a class="text-white link-hover" href="tel:+1 919 904 4396"><i class="fas fa-phone-square-alt pr-2" aria-hidden="true"></i>
+                        +1 919 904 4396</a></li>
+                    <li class="py-1"><a class="text-white link-hover" href="mailto:contact@andrewdoering.org"><i class="fas fa-envelope pr-2 pr-2" aria-hidden="true"></i>
+                        contact@andrewdoering.org</a></li>        
+                </ul>
+            </div>
+            <div class="col-lg-4">
+                <h4 class="text-white mt-3 mt-lg-0">My <span class="base-color">Socials</span></h4>
+                <ul class="list-unstyled text-white socials pt-2 mb-0">
+                    <li class="py-1"><a class="text-white link-hover" href="https://www.facebook.com/and.doe"><i class="fab fa-facebook-f pr-2" aria-hidden="true"></i>
+                            Facebook</a></li>
+                    <li class="py-1"><a class="text-white link-hover" href="https://www.linkedin.com/in/andrewdoering"><i class="fab fa-linkedin pr-2"
+                                aria-hidden="true"></i> LinkedIn</a></li>
+                    <li class="py-1"><a class="text-white link-hover" href="https://www.github.com/delize"><i class="fab fa-github pr-1" aria-hidden="true"></i>
+                            Github</a></li>
+                    <li class="py-1"><a class="text-white link-hover" href="https://www.instagram.com/dolos01"><i class="fab fa-instagram pr-2" aria-hidden="true"></i>
+                            Instagram</a></li>
+                    <li class="py-1"><a class="text-white link-hover" href="skype:andrew-doering"><i class="fab fa-skype pr-2" aria-hidden="true"></i> andrew-doering</a>
+                    </li>
+                    <li class="py-1"><a class="text-white link-hover" href="https://www.macadmins.org/"><i class="fab fa-slack pr-2" aria-hidden="true"></i> @heimdall</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+                <div class="col-lg-12 border-top pb-5 align-center">
+                    <a class="text-white link-hover" href="https://www.github.com/delize/delize.github.io"><span class="mt-3 mb-0 d-lg-inline-block align-left text-center text-white link-hover d-block d-lg-inline-block float-lg-left">See me on Github © 2021</span></a>
+                    <a class="text-white link-hover" href="/donate"><span class="mt-3 mb-0 d-lg-inline-block align-center d-block text-white link-hover">Donate!</span></a>
+                <a class="mt-4 mt-lg-3 mb-0 text-white back-to-top d-block d-lg-inline-block float-lg-right text-center" href="javascript:void(0);">Back To Top</a>
+            </div>
+        </div>
+    </div>
+</footer>
+<!--   Footer End  -->
+        <!--  JavaScripts  -->
+<script src=https://andrewdoering.org/assets/js/jquery-3.4.1.min.js></script>
+<!--  Bootstrap Js  -->
+<!-- <script src="assets/js/bootstrap.js"></script> -->
+<script src=https://andrewdoering.org/assets/js/bootstrap.min.js></script>
+<!--  Easing Js  -->
+<script src=https://andrewdoering.org/assets/js/jquery.easing.min.js></script>
+<!--  Isotope Js  -->
+<script src=https://andrewdoering.org/assets/js/slyslider.js></script>
+<!--  Pop UP JS Js  -->
+<script src=https://andrewdoering.org/assets/js/jquery.magnific-popup.min.js></script>
+<!--  Owl carousel Js  -->
+<script src=https://andrewdoering.org/assets/js/owl.carousel.min.js></script>
+<!--  Wow Js  -->
+<script src=https://andrewdoering.org/assets/js/wow.min.js></script>
+<!--  Typed Js  -->
+<script src=https://andrewdoering.org/assets/js/typed.js></script>
+<!--  Custom JS  -->
+<script src=https://andrewdoering.org/assets/js/uone.js></script>
+
+
+    </body>
+</html>
